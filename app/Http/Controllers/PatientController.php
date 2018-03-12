@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use JavaScript;
 
 class PatientController extends Controller
 {
@@ -48,8 +49,10 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        $patient = Patient::find($id);
-        return view('form', compact('patient'));
+        JavaScript::put([
+            'patient' => Patient::find($id),
+        ]);
+        return view('form');
     }
 
     /**
@@ -87,5 +90,18 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getData($id)
+    {
+        $patient = Patient::find($id);
+        return $patient;
+    }
+
+    public function updateField(Request $request, $id)
+    {
+        $patient = Patient::findOrFail($id);
+        $patient->age = $request->age;
+        $patient->save();
     }
 }

@@ -13,3 +13,7 @@
 Route::get('/', 'PatientController@index');
 
 Route::resource('patient', 'PatientController');
+
+//Route::get('/patient/data/{id}', 'PatientController@getData');
+
+Route::put('/patient/update/{id}', 'PatientController@updateField');
