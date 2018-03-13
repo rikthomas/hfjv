@@ -92,16 +92,10 @@ class PatientController extends Controller
         //
     }
 
-    public function getData($id)
-    {
-        $patient = Patient::find($id);
-        return $patient;
-    }
-
     public function updateField(Request $request, $id)
     {
         $patient = Patient::findOrFail($id);
-        $patient->age = $request->age;
+        $patient[$request->field] = $request->value;
         $patient->save();
     }
 }
