@@ -78,38 +78,49 @@ module.exports = __webpack_require__(43);
 
 Vue.component('form-field', {
 
-  props: ['label', 'type', 'placeholder', 'name'],
+	props: ['label', 'type', 'placeholder', 'name'],
 
-  template: '\n\t\t<p class="control is-expanded">\n          <label class="label">{{ label }}</label>\n          <input :type="type" class="input" :placeholder="placeholder" :name="name" v-model="value" @blur="updateField">\n        </p>\n\t',
+	template: '\n\t\t<p class="control is-expanded">\n          <label class="label">{{ label }}</label>\n          <input :type="type" class="input" :class="{\'is-success\': isSaved, \'is-danger\': isDirty}"  :placeholder="placeholder" :name="name" v-model="value" @blur="updateField" @keyup="dirtyCheck">\n        </p>\n\t',
 
-  data: function data() {
-    return {
-      value: ''
-    };
-  },
-  created: function created() {
-    this.value = patient[this.name];
-  },
+	data: function data() {
+		return {
+			value: '',
+			isDirty: false,
+			isSaved: false
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+	},
 
 
-  methods: {
-    updateField: function updateField() {
-      var field = this.name;
-      var newValue = Number(this.value);
-      axios.put('/patient/update/' + patient.id, {
-        field: field,
-        value: newValue
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }
+	methods: {
+		updateField: function updateField() {
+			var _this = this;
+
+			if (this.value != patient[this.name]) {
+				var field = this.name;
+				var newValue = this.value;
+				axios.put('/patient/update/' + patient.id, {
+					field: field,
+					value: newValue
+				}).then(function () {
+					_this.isDirty = false;
+					_this.isSaved = true;
+					//patient[this.name] = newValue;
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		},
+		dirtyCheck: function dirtyCheck() {
+			this.isDirty = this.value != patient[this.name] ? true : false;
+		}
+	}
 });
 
 new Vue({
-  el: '#app'
+	el: '#app'
 });
 
 /***/ })
