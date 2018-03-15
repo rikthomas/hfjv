@@ -76,7 +76,96 @@ module.exports = __webpack_require__(43);
 /***/ 43:
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/rik/Documents/Programming/hfjv/resources/assets/js/home_scripts.js'");
+window.Event = new Vue();
+
+Vue.component('form-field', {
+
+	props: ['label', 'type', 'placeholder', 'name'],
+
+	template: '\n\t\t<p class="control is-expanded">\n          <label class="label">{{ label }}</label>\n          <input :type="type" class="input" :class="{\'is-success\': isSaved, \'is-danger\': isDirty}"  :placeholder="placeholder" :name="name" v-model="value" @blur="updateField" @keyup="dirtyCheck">\n        </p>\n\t',
+
+	data: function data() {
+		return {
+			value: '',
+			isDirty: false,
+			isSaved: false
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+		if (this.name == 'weight') {
+			Event.$emit('weight', this.value);
+		}
+		if (this.name == 'height') {
+			Event.$emit('height', this.value);
+		}
+	},
+
+
+	methods: {
+		updateField: function updateField() {
+			var _this = this;
+
+			if (this.value != patient[this.name]) {
+				var field = this.name;
+				var newValue = this.value;
+				axios.put('/patient/update/' + patient.id, {
+					field: field,
+					value: newValue
+				}).then(function () {
+					_this.isDirty = false;
+					_this.isSaved = true;
+					patient[_this.name] = newValue;
+					if (_this.name == 'weight') {
+						Event.$emit('weight', _this.value);
+					}
+					if (_this.name == 'height') {
+						Event.$emit('height', _this.value);
+					}
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		},
+		dirtyCheck: function dirtyCheck() {
+			this.isDirty = this.value != patient[this.name] ? true : false;
+		}
+	}
+});
+
+new Vue({
+	el: '#app',
+
+	data: {
+		weight: '',
+		height: ''
+	},
+
+	created: function created() {
+		var _this2 = this;
+
+		Event.$on('weight', function (weight) {
+			_this2.weight = weight;
+		});
+		Event.$on('height', function (height) {
+			_this2.height = height;
+		});
+	},
+
+	computed: {
+		bmi: function bmi() {
+			return (this.weight / Math.pow(this.height / 100, 2)).toFixed(1);
+		}
+	},
+	watch: {
+		bmi: function bmi() {
+			axios.put('/patient/update/' + patient.id, {
+				field: 'bmi',
+				value: this.bmi
+			});
+		}
+	}
+});
 
 /***/ })
 

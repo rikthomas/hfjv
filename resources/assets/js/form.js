@@ -1,3 +1,5 @@
+window.Event = new Vue();
+
 Vue.component('form-field', {
 
 	props: ['label', 'type', 'placeholder', 'name'],
@@ -19,6 +21,8 @@ Vue.component('form-field', {
 
 	created() {
 		this.value = patient[this.name];
+		if (this.name=='weight'){Event.$emit('weight', this.value);}
+		if (this.name=='height'){Event.$emit('height', this.value);}
 	},
 
 	methods: {
@@ -33,7 +37,9 @@ Vue.component('form-field', {
 	            }).then(() => {
 	                this.isDirty = false;
 	                this.isSaved = true;
-	                //patient[this.name] = newValue;
+	                patient[this.name] = newValue;
+	                if (this.name=='weight'){Event.$emit('weight', this.value);}
+					if (this.name=='height'){Event.$emit('height', this.value);}
 	              })
 	              .catch(function (error) {
 	                console.log(error);
@@ -48,4 +54,27 @@ Vue.component('form-field', {
 
 new Vue({
 	el: '#app',
+
+	data: {
+		weight: '',
+		height: '',
+	},
+
+	created() {
+		Event.$on('weight', (weight) => { this.weight = weight });
+		Event.$on('height', (height) => { this.height = height });
+	},
+	computed: {
+		bmi: function () {
+			 return (this.weight/Math.pow((this.height/100), 2)).toFixed(1);
+		}
+	},
+	watch: {
+		bmi: function() {
+			axios.put('/patient/update/' + patient.id, {
+	                field: 'bmi',
+	                value: this.bmi,
+	            })
+		}
+	}
 });

@@ -6,13 +6,19 @@
             <div class="column is-half is-offset-one-quarter">
                 <article class="message">
                     <div class="message-header">
-                        <p>Test Demo</p>
+                        <p>Weight and Measures</p>
                     </div>
                     <div class="message-body">
                         <div class="field is-grouped">
                             <form-field label="Age" type="number" placeholder="is just a number" name="age"></form-field>
                             <form-field label="Weight" type="number" placeholder="in kg" name="weight"></form-field>
+                        </div>
+                        <div class="field is-grouped">
                             <form-field label="Height" type="number" placeholder="in cm" name="height"></form-field>
+                            <p class="control is-expanded">
+                              <label class="label">BMI</label>
+                              <input type="number" class="input" name="bmi" v-model="bmi" disabled>
+                            </p>
                         </div>
                     </div>
                 </article>
@@ -23,5 +29,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/home_scripts.js') }}"></script>
+<script src="{{ asset('js/form.js') }}"></script>
 @endpush
