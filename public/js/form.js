@@ -133,6 +133,12 @@ Vue.component('form-field', {
 	}
 });
 
+Vue.component('form-preassess', {
+
+	template: '\n\t\t<p class="control">\n\t\t    <label class="label">ASA</label>\n\t\t      <label class="radio">\n\t\t        <input type="radio" name="asa">\n\t\t        1\n\t\t      </label>\n\t\t      <label class="radio">\n\t\t        <input type="radio" name="asa">\n\t\t        2\n\t\t      </label>\n\t\t      <label class="radio">\n\t\t        <input type="radio" name="asa">\n\t\t        3\n\t\t      </label>\n\t\t      <label class="radio">\n\t\t        <input type="radio" name="asa">\n\t\t        4\n\t\t      </label>\n\t\t      <label class="radio">\n\t\t        <input type="radio" name="asa">\n\t\t        5\n\t\t      </label>\n\t\t</p>\n\t'
+
+});
+
 new Vue({
 	el: '#app',
 

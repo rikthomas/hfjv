@@ -52,6 +52,36 @@ Vue.component('form-field', {
     }
 });
 
+Vue.component('form-preassess', {
+
+	template: `
+		<p class="control">
+		    <label class="label">ASA</label>
+		      <label class="radio">
+		        <input type="radio" name="asa">
+		        1
+		      </label>
+		      <label class="radio">
+		        <input type="radio" name="asa">
+		        2
+		      </label>
+		      <label class="radio">
+		        <input type="radio" name="asa">
+		        3
+		      </label>
+		      <label class="radio">
+		        <input type="radio" name="asa">
+		        4
+		      </label>
+		      <label class="radio">
+		        <input type="radio" name="asa">
+		        5
+		      </label>
+		</p>
+	`
+
+});
+
 new Vue({
 	el: '#app',
 

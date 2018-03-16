@@ -22,6 +22,16 @@
                         </div>
                     </div>
                 </article>
+                <article class="message">
+                    <div class="message-header">
+                        <p>Pre-Assessment</p>
+                    </div>
+                    <div class="message-body">
+                        <div class="field is-grouped">
+                            <form-preassess></form-preassess>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
