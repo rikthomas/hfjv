@@ -30,10 +30,12 @@ new Vue({
 	},
 	watch: {
 		bmi: function() {
+			if(isFinite(this.bmi)){
 			axios.put('/patient/update/' + patient.id, {
 	                field: 'bmi',
 	                value: this.bmi,
 	            })
+			}
 		}
 	}
 });

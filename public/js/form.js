@@ -360,10 +360,12 @@ new Vue({
 	},
 	watch: {
 		bmi: function bmi() {
-			axios.put('/patient/update/' + patient.id, {
-				field: 'bmi',
-				value: this.bmi
-			});
+			if (isFinite(this.bmi)) {
+				axios.put('/patient/update/' + patient.id, {
+					field: 'bmi',
+					value: this.bmi
+				});
+			}
 		}
 	}
 });
