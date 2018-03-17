@@ -27,8 +27,11 @@
                         <p>Pre-Assessment</p>
                     </div>
                     <div class="message-body">
-                        <div class="field is-grouped">
-                            <form-preassess></form-preassess>
+                        <div class="field">
+                            <form-asa></form-asa>
+                        </div>
+                        <div class="field">
+                            <form-yes-no label="Cardiovascular morbidity" name="cvs"></form-yes-no>
                         </div>
                     </div>
                 </article>

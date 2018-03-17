@@ -18,6 +18,20 @@ class CreatePatientsTable extends Migration
             $table->integer('age')->nullable();
             $table->integer('weight')->nullable();
             $table->integer('height')->nullable();
+            $table->integer('bmi')->nullable();
+            $table->integer('asa')->nullable();
+            $table->string('cvs')->nullable();
+            $table->string('ht')->nullable();
+            $table->string('anti-ht')->nullable();
+            $table->string('mi')->nullable();
+            $table->string('stents')->nullable();
+            $table->string('cva')->nullable();
+            $table->string('lvef')->nullable();
+            $table->string('as')->nullable();
+            $table->string('valve')->nullable();
+            $table->string('af')->nullable();
+            $table->string('cardiomyopathy')->nullable();
+            $table->string('othercvs')->nullable();
             $table->timestamps();
         });
     }
