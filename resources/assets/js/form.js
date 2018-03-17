@@ -6,17 +6,22 @@ Vue.component('form-asa', require('./components/FormAsa.vue'));
 
 Vue.component('form-yes-no', require('./components/FormYesNo.vue'));
 
+Vue.component('form-cvs', require('./components/FormCvs.vue'));
+
 new Vue({
 	el: '#app',
 
 	data: {
 		weight: '',
 		height: '',
+		cvsVisible: '',
 	},
 
 	created() {
+		this.cvsVisible = patient.cvs=='yes' ? true : false;
 		Event.$on('weight', (weight) => { this.weight = weight });
 		Event.$on('height', (height) => { this.height = height });
+		Event.$on('cvsDrop', (value) => { this.cvsVisible = value=='yes' ? true : false});
 	},
 	computed: {
 		bmi: function () {

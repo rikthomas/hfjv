@@ -6,7 +6,7 @@
             <div class="column is-half is-offset-one-quarter">
                 <article class="message">
                     <div class="message-header">
-                        <p>Weight and Measures</p>
+                        <p>Weights and Measures</p>
                     </div>
                     <div class="message-body">
                         <div class="field is-grouped">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="message">
+                <article class="message is-info">
                     <div class="message-header">
                         <p>Pre-Assessment</p>
                     </div>
@@ -32,6 +32,16 @@
                         </div>
                         <div class="field">
                             <form-yes-no label="Cardiovascular morbidity" name="cvs"></form-yes-no>
+                        </div>
+                    </div>
+                </article>
+                <article class="message is-danger" v-if="cvsVisible">
+                    <div class="message-header">
+                        <p>Cardiovascular Disease</p>
+                    </div>
+                    <div class="message-body">
+                        <div class="field">
+                            <form-cvs></form-cvs>
                         </div>
                     </div>
                 </article>

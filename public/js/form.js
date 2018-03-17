@@ -63,105 +63,9 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 10:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(47)
-/* template */
-var __vue_template__ = __webpack_require__(48)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/FormField.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8974f922", Component.options)
-  } else {
-    hotAPI.reload("data-v-8974f922", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 11:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(51)
-/* template */
-var __vue_template__ = __webpack_require__(52)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/FormYesNo.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-62542b06", Component.options)
-  } else {
-    hotAPI.reload("data-v-62542b06", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 3:
+/******/ ([
+/* 0 */,
+/* 1 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -270,42 +174,182 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 45:
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(47)
+/* template */
+var __vue_template__ = __webpack_require__(48)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormField.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8974f922", Component.options)
+  } else {
+    hotAPI.reload("data-v-8974f922", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(52)
+/* template */
+var __vue_template__ = __webpack_require__(53)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormYesNo.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62542b06", Component.options)
+  } else {
+    hotAPI.reload("data-v-62542b06", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(46);
 
 
 /***/ }),
-
-/***/ 46:
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 window.Event = new Vue();
 
 Vue.component('form-field', __webpack_require__(10));
 
-Vue.component('form-asa', __webpack_require__(58));
+Vue.component('form-asa', __webpack_require__(49));
 
 Vue.component('form-yes-no', __webpack_require__(11));
+
+Vue.component('form-cvs', __webpack_require__(54));
 
 new Vue({
 	el: '#app',
 
 	data: {
 		weight: '',
-		height: ''
+		height: '',
+		cvsVisible: ''
 	},
 
 	created: function created() {
 		var _this = this;
 
+		this.cvsVisible = patient.cvs == 'yes' ? true : false;
 		Event.$on('weight', function (weight) {
 			_this.weight = weight;
 		});
 		Event.$on('height', function (height) {
 			_this.height = height;
+		});
+		Event.$on('cvsDrop', function (value) {
+			_this.cvsVisible = value == 'yes' ? true : false;
 		});
 	},
 
@@ -325,8 +369,7 @@ new Vue({
 });
 
 /***/ }),
-
-/***/ 47:
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -395,8 +438,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-
-/***/ 48:
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -517,152 +559,15 @@ if (false) {
 }
 
 /***/ }),
-
-/***/ 51:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-	props: ['label', 'name'],
-
-	data: function data() {
-		return {
-			value: '',
-			isTicked: false
-		};
-	},
-	created: function created() {
-		this.value = patient[this.name];
-	},
-
-
-	methods: {
-		updateYN: function updateYN() {
-			var _this = this;
-
-			var field = this.name;
-			var newValue = this.value;
-			axios.put('/patient/update/' + patient.id, {
-				field: field,
-				value: newValue
-			}).then(function () {
-				_this.isTicked = true;
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}
-
-});
-
-/***/ }),
-
-/***/ 52:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("p", { staticClass: "control is-expanded" }, [
-    _c("label", { staticClass: "label" }, [_vm._v(_vm._s(_vm.label))]),
-    _vm._v(" "),
-    _c("label", { staticClass: "radio" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.value,
-            expression: "value"
-          }
-        ],
-        attrs: { type: "radio", name: _vm.name, value: "yes" },
-        domProps: { checked: _vm._q(_vm.value, "yes") },
-        on: {
-          change: [
-            function($event) {
-              _vm.value = "yes"
-            },
-            _vm.updateYN
-          ]
-        }
-      }),
-      _vm._v("\n        Yes\n      ")
-    ]),
-    _vm._v(" "),
-    _c("label", { staticClass: "radio" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.value,
-            expression: "value"
-          }
-        ],
-        attrs: { type: "radio", name: _vm.name, value: "no" },
-        domProps: { checked: _vm._q(_vm.value, "no") },
-        on: {
-          change: [
-            function($event) {
-              _vm.value = "no"
-            },
-            _vm.updateYN
-          ]
-        }
-      }),
-      _vm._v("\n        No\n    ")
-    ]),
-    _vm._v(" \n    "),
-    _vm.isTicked
-      ? _c("i", {
-          staticClass: "fas fa-check",
-          staticStyle: { color: "green" }
-        })
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-62542b06", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 58:
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(59)
+var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(60)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -701,8 +606,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-
-/***/ 59:
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -735,7 +639,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
@@ -767,8 +670,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-
-/***/ 60:
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -916,6 +818,463 @@ if (false) {
   }
 }
 
-/***/ })
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/******/ });
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: ['label', 'name'],
+
+	data: function data() {
+		return {
+			value: '',
+			isTicked: false
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+	},
+
+
+	methods: {
+		updateYN: function updateYN() {
+			var _this = this;
+
+			var field = this.name;
+			var newValue = this.value;
+			axios.put('/patient/update/' + patient.id, {
+				field: field,
+				value: newValue
+			}).then(function () {
+				patient[_this.name] = newValue;
+				_this.isTicked = true;
+				if (_this.name == 'cvs') {
+					Event.$emit('cvsDrop', _this.value);
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("p", { staticClass: "control is-expanded" }, [
+    _c("label", { staticClass: "label" }, [_vm._v(_vm._s(_vm.label))]),
+    _vm._v(" "),
+    _c("label", { staticClass: "radio" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.value,
+            expression: "value"
+          }
+        ],
+        attrs: { type: "radio", name: _vm.name, value: "yes" },
+        domProps: { checked: _vm._q(_vm.value, "yes") },
+        on: {
+          change: [
+            function($event) {
+              _vm.value = "yes"
+            },
+            _vm.updateYN
+          ]
+        }
+      }),
+      _vm._v("\n        Yes\n      ")
+    ]),
+    _vm._v(" "),
+    _c("label", { staticClass: "radio" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.value,
+            expression: "value"
+          }
+        ],
+        attrs: { type: "radio", name: _vm.name, value: "no" },
+        domProps: { checked: _vm._q(_vm.value, "no") },
+        on: {
+          change: [
+            function($event) {
+              _vm.value = "no"
+            },
+            _vm.updateYN
+          ]
+        }
+      }),
+      _vm._v("\n        No\n    ")
+    ]),
+    _vm._v(" \n    "),
+    _vm.isTicked
+      ? _c("i", {
+          staticClass: "fas fa-check",
+          staticStyle: { color: "green" }
+        })
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62542b06", module.exports)
+  }
+}
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormCvs.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-69b0d515", Component.options)
+  } else {
+    hotAPI.reload("data-v-69b0d515", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			lvef: '',
+			isTicked: false
+		};
+	},
+	created: function created() {
+		this.lvef = patient.lvef;
+	},
+
+
+	methods: {
+		updateLVEF: function updateLVEF() {
+			var _this = this;
+
+			var newValue = this.lvef;
+			axios.put('/patient/update/' + patient.id, {
+				field: 'lvef',
+				value: newValue
+			}).then(function () {
+				_this.isTicked = true;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-yes-no", { attrs: { label: "Hypertension", name: "ht" } }),
+        _vm._v(" "),
+        _c("form-field", {
+          attrs: {
+            label: "If so, then how many?",
+            type: "number",
+            placeholder: "number of antihypertensives",
+            name: "anti-ht"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-yes-no", { attrs: { label: "Previous MI?", name: "mi" } }),
+        _vm._v(" "),
+        _c("form-yes-no", { attrs: { label: "Any stents?", name: "stents" } }),
+        _vm._v(" "),
+        _c("form-yes-no", { attrs: { label: "CVA?", name: "cva" } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "field" }, [
+      _c("p", { staticClass: "control is-expanded" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("LVEF if known")]),
+        _vm._v(" "),
+        _c("label", { staticClass: "radio" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.lvef,
+                expression: "lvef"
+              }
+            ],
+            attrs: { type: "radio", value: "<35%" },
+            domProps: { checked: _vm._q(_vm.lvef, "<35%") },
+            on: {
+              change: [
+                function($event) {
+                  _vm.lvef = "<35%"
+                },
+                _vm.updateLVEF
+              ]
+            }
+          }),
+          _vm._v("\n\t\t        <35%\n\t\t      ")
+        ]),
+        _vm._v(" "),
+        _c("label", { staticClass: "radio" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.lvef,
+                expression: "lvef"
+              }
+            ],
+            attrs: { type: "radio", value: "35-50%" },
+            domProps: { checked: _vm._q(_vm.lvef, "35-50%") },
+            on: {
+              change: [
+                function($event) {
+                  _vm.lvef = "35-50%"
+                },
+                _vm.updateLVEF
+              ]
+            }
+          }),
+          _vm._v("\n\t\t        35-50%\n\t\t      ")
+        ]),
+        _vm._v(" "),
+        _c("label", { staticClass: "radio" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.lvef,
+                expression: "lvef"
+              }
+            ],
+            attrs: { type: "radio", value: ">50%" },
+            domProps: { checked: _vm._q(_vm.lvef, ">50%") },
+            on: {
+              change: [
+                function($event) {
+                  _vm.lvef = ">50%"
+                },
+                _vm.updateLVEF
+              ]
+            }
+          }),
+          _vm._v("\n\t\t        >50%\n\t\t      ")
+        ]),
+        _vm._v(" \n\t\t      "),
+        _vm.isTicked
+          ? _c("i", {
+              staticClass: "fas fa-check",
+              staticStyle: { color: "green" }
+            })
+          : _vm._e()
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-yes-no", { attrs: { label: "Aortic Stenosis", name: "as" } }),
+        _vm._v(" "),
+        _c("form-field", {
+          attrs: {
+            label: "Valve area",
+            type: "text",
+            placeholder: "or peak gradient if known",
+            name: "valve"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-yes-no", {
+          attrs: { label: "Atrial Fibrillaton", name: "af" }
+        }),
+        _vm._v(" "),
+        _c("form-yes-no", {
+          attrs: { label: "Cardiomyopathy", name: "cardiomyopathy" }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field" },
+      [
+        _c("form-field", {
+          attrs: {
+            label: "Other cardiac disease",
+            type: "text",
+            placeholder: "please state....",
+            name: "othercvs"
+          }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-69b0d515", module.exports)
+  }
+}
+
+/***/ })
+/******/ ]);
