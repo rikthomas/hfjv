@@ -15,3 +15,5 @@ Route::get('/', 'PatientController@index');
 Route::resource('patient', 'PatientController');
 
 Route::put('/patient/update/{id}', 'PatientController@updateField');
+
+Route::put('/patient/delcvs/{id}', 'PatientController@deleteCVS');

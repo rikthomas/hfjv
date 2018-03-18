@@ -2,7 +2,7 @@
 	<div>
 		<div class="field is-grouped">
 			<form-yes-no label="Hypertension" name="ht"></form-yes-no>
-			<form-field label="If so, then how many?" type="number" placeholder="number of antihypertensives" name="anti-ht"></form-field>
+			<form-field label="If so, then how many?" type="number" placeholder="number of antihypertensives" name="antiht"></form-field>
 		</div>
 		<div class="field is-grouped">
 			<form-yes-no label="Previous MI?" name="mi"></form-yes-no>

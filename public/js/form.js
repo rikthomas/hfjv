@@ -329,13 +329,16 @@ Vue.component('form-yes-no', __webpack_require__(11));
 
 Vue.component('form-cvs', __webpack_require__(54));
 
+Vue.component('form-delete-modal', __webpack_require__(61));
+
 new Vue({
 	el: '#app',
 
 	data: {
 		weight: '',
 		height: '',
-		cvsVisible: ''
+		cvsVisible: '',
+		modalVisible: false
 	},
 
 	created: function created() {
@@ -348,8 +351,31 @@ new Vue({
 		Event.$on('height', function (height) {
 			_this.height = height;
 		});
+		Event.$on('closeCvsModal', function () {
+			axios.put('/patient/update/' + patient.id, {
+				field: 'cvs',
+				value: 'yes'
+			}).then(function () {
+				patient.cvs = 'yes';
+				_this.reload();
+			});
+			_this.modalVisible = false;
+		});
+		//Event.$on('cvsDrop', (value) => { this.cvsVisible = value=='yes' ? true : false});
 		Event.$on('cvsDrop', function (value) {
-			_this.cvsVisible = value == 'yes' ? true : false;
+			if (value == 'yes') {
+				this.cvsVisible = true;
+			} else if (value == 'no' & (patient.ht != null || patient.antiht != null || patient.mi != null || patient.stents != null || patient.cva != null || patient.lvef != null || patient.as != null || patient.valve != null || patient.af != null || patient.cardiomyopathy != null || patient.othercvs != null)) {
+				this.modalVisible = true;
+			} else {
+				this.cvsVisible = false;
+			}
+		}.bind(this));
+		Event.$on('deleteCvsData', function () {
+			axios.put('/patient/delcvs/' + patient.id);
+			_this.modalVisible = false;
+			_this.cvsVisible = false;
+			_this.reload();
 		});
 	},
 
@@ -366,6 +392,11 @@ new Vue({
 					value: this.bmi
 				});
 			}
+		}
+	},
+	methods: {
+		reload: function reload() {
+			location.reload();
 		}
 	}
 });
@@ -845,7 +876,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-	props: ['label', 'name'],
+	props: ['label', 'name', 'checked'],
 
 	data: function data() {
 		return {
@@ -1113,7 +1144,7 @@ var render = function() {
             label: "If so, then how many?",
             type: "number",
             placeholder: "number of antihypertensives",
-            name: "anti-ht"
+            name: "antiht"
           }
         })
       ],
@@ -1275,6 +1306,153 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-69b0d515", module.exports)
+  }
+}
+
+/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(62)
+/* template */
+var __vue_template__ = __webpack_require__(63)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormDeleteModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5ab4bc77", Component.options)
+  } else {
+    hotAPI.reload("data-v-5ab4bc77", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	methods: {
+		close: function close() {
+			Event.$emit('closeCvsModal');
+		},
+		ok: function ok() {
+			Event.$emit('deleteCvsData');
+		}
+	}
+
+});
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal is-active" }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _vm._v(
+          "\n      If you click OK you will erase all of the data from the CVS section? Are you sure you want to do that?\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.ok } },
+          [_vm._v("OK then!")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "button is-danger", on: { click: _vm.close } },
+          [_vm._v("Belay that order!")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "modal-card-head" }, [
+      _c("p", { staticClass: "modal-card-title" }, [
+        _vm._v("Whoa there Nelly!")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5ab4bc77", module.exports)
   }
 }
 

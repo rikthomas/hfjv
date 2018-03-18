@@ -17,7 +17,7 @@
 
 	export default {
 
-		props: ['label', 'name'],
+		props: ['label', 'name', 'checked'],
 
 		data() {
 			return{

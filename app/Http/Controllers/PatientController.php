@@ -98,4 +98,21 @@ class PatientController extends Controller
         $patient[$request->field] = $request->value;
         $patient->save();
     }
+
+    public function deleteCVS($id)
+    {
+        $patient = Patient::findOrFail($id);
+        $patient->ht = null;
+        $patient->antiht = null;
+        $patient->mi = null;
+        $patient->stents = null;
+        $patient->cva = null;
+        $patient->lvef = null;
+        $patient->as = null;
+        $patient->valve = null;
+        $patient->af = null;
+        $patient->cardiomyopathy = null;
+        $patient->othercvs = null;
+        $patient->save();
+    }
 }

@@ -22,7 +22,7 @@ class CreatePatientsTable extends Migration
             $table->integer('asa')->nullable();
             $table->string('cvs')->nullable();
             $table->string('ht')->nullable();
-            $table->integer('anti-ht')->nullable();
+            $table->integer('antiht')->nullable();
             $table->string('mi')->nullable();
             $table->string('stents')->nullable();
             $table->string('cva')->nullable();

@@ -35,6 +35,7 @@
                         </div>
                     </div>
                 </article>
+                <form-delete-modal v-if="modalVisible"></form-delete-modal>
                 <article class="message is-danger" v-if="cvsVisible">
                     <div class="message-header">
                         <p>Cardiovascular Disease</p>
@@ -43,6 +44,7 @@
                         <div class="field">
                             <form-cvs></form-cvs>
                         </div>
+                        <div><button class="button" @click="reload">Reload</button></div>
                     </div>
                 </article>
             </div>
