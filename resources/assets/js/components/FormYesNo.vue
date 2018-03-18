@@ -42,6 +42,8 @@
 	            	patient[this.name] = newValue;
 	                this.isTicked = true;
 	                if (this.name=='cvs'){Event.$emit('cvsDrop', this.value);}
+	                if (this.name=='resp'){Event.$emit('respDrop', this.value);}
+	                if (this.name=='pft'){Event.$emit('pftDrop', this.value);}
 	              })
 	              .catch(function (error) {
 	                console.log(error);

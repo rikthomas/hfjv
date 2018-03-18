@@ -329,7 +329,11 @@ Vue.component('form-yes-no', __webpack_require__(11));
 
 Vue.component('form-cvs', __webpack_require__(54));
 
-Vue.component('form-delete-modal', __webpack_require__(61));
+Vue.component('form-delete-cvs-modal', __webpack_require__(67));
+
+Vue.component('form-delete-resp-modal', __webpack_require__(70));
+
+Vue.component('form-resp', __webpack_require__(64));
 
 new Vue({
 	el: '#app',
@@ -338,13 +342,16 @@ new Vue({
 		weight: '',
 		height: '',
 		cvsVisible: '',
-		modalVisible: false
+		respVisible: '',
+		modalVisible: false,
+		respModalVisible: false
 	},
 
 	created: function created() {
 		var _this = this;
 
 		this.cvsVisible = patient.cvs == 'yes' ? true : false;
+		this.respVisible = patient.resp == 'yes' ? true : false;
 		Event.$on('weight', function (weight) {
 			_this.weight = weight;
 		});
@@ -375,6 +382,31 @@ new Vue({
 			axios.put('/patient/delcvs/' + patient.id);
 			_this.modalVisible = false;
 			_this.cvsVisible = false;
+			_this.reload();
+		});
+		Event.$on('closeRespModal', function () {
+			axios.put('/patient/update/' + patient.id, {
+				field: 'resp',
+				value: 'yes'
+			}).then(function () {
+				patient.resp = 'yes';
+				_this.reload();
+			});
+			_this.respModalVisible = false;
+		});
+		Event.$on('respDrop', function (value) {
+			if (value == 'yes') {
+				this.respVisible = true;
+			} else if (value == 'no' & (patient.asthma != null || patient.copd != null || patient.bronchiectasis != null || patient.steroids != null || patient.icu != null || patient.control != null || patient.pft != null || patient.fev1 != null || patient.fvc != null || patient.fevfvc != null || patient.pefr != null || patient.otherresp != null)) {
+				this.respModalVisible = true;
+			} else {
+				this.respVisible = false;
+			}
+		}.bind(this));
+		Event.$on('deleteRespData', function () {
+			axios.put('/patient/delresp/' + patient.id);
+			_this.respModalVisible = false;
+			_this.respVisible = false;
 			_this.reload();
 		});
 	},
@@ -904,6 +936,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				if (_this.name == 'cvs') {
 					Event.$emit('cvsDrop', _this.value);
 				}
+				if (_this.name == 'resp') {
+					Event.$emit('respDrop', _this.value);
+				}
+				if (_this.name == 'pft') {
+					Event.$emit('pftDrop', _this.value);
+				}
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -1314,15 +1352,18 @@ if (false) {
 /* 58 */,
 /* 59 */,
 /* 60 */,
-/* 61 */
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(62)
+var __vue_script__ = __webpack_require__(66)
 /* template */
-var __vue_template__ = __webpack_require__(63)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1339,7 +1380,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/FormDeleteModal.vue"
+Component.options.__file = "resources/assets/js/components/FormResp.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -1348,9 +1389,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5ab4bc77", Component.options)
+    hotAPI.createRecord("data-v-62d2d9eb", Component.options)
   } else {
-    hotAPI.reload("data-v-5ab4bc77", Component.options)
+    hotAPI.reload("data-v-62d2d9eb", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -1361,7 +1402,244 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 62 */
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-yes-no", { attrs: { label: "Asthma", name: "asthma" } }),
+        _vm._v(" "),
+        _c("form-yes-no", { attrs: { label: "COPD", name: "copd" } }),
+        _vm._v(" "),
+        _c("form-yes-no", {
+          attrs: { label: "Bronchiectasis", name: "bronchiectasis" }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-yes-no", { attrs: { label: "Steroids", name: "steroids" } }),
+        _vm._v(" "),
+        _c("form-yes-no", { attrs: { label: "Previous ITU", name: "icu" } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-yes-no", {
+          attrs: { label: "Disease well controlled?", name: "control" }
+        }),
+        _vm._v(" "),
+        _c("form-yes-no", {
+          attrs: { label: "Lung function tests?", name: "pft" }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm.pftsVisible
+      ? _c(
+          "div",
+          { staticClass: "field is-grouped" },
+          [
+            _c("form-field", {
+              attrs: {
+                label: "FEV1",
+                type: "number",
+                placeholder: "Litres",
+                name: "fev1"
+              }
+            }),
+            _vm._v(" "),
+            _c("form-field", {
+              attrs: {
+                label: "FVC",
+                type: "number",
+                placeholder: "Litres",
+                name: "fvc"
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.pftsVisible
+      ? _c(
+          "div",
+          { staticClass: "field is-grouped" },
+          [
+            _c("form-field", {
+              attrs: {
+                label: "FEV1/FVC",
+                type: "number",
+                placeholder: "%",
+                name: "fevfvc"
+              }
+            }),
+            _vm._v(" "),
+            _c("form-field", {
+              attrs: {
+                label: "PEFR",
+                type: "number",
+                placeholder: "L/min",
+                name: "pefr"
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      { attrs: { claa: "field" } },
+      [
+        _c("form-field", {
+          attrs: {
+            label: "Other respiratory disease",
+            type: "text",
+            placeholder: "",
+            name: "otherresp"
+          }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62d2d9eb", module.exports)
+  }
+}
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			pftsVisible: false
+		};
+	},
+	created: function created() {
+		Event.$on('pftDrop', function (value) {
+			if (value == 'yes') {
+				this.pftsVisible = true;
+			} else {
+				this.pftsVisible = false;
+			}
+		}.bind(this));
+	}
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(68)
+/* template */
+var __vue_template__ = __webpack_require__(69)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormDeleteCvsModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4a857553", Component.options)
+  } else {
+    hotAPI.reload("data-v-4a857553", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1400,7 +1678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 63 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1452,7 +1730,150 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5ab4bc77", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-4a857553", module.exports)
+  }
+}
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(71)
+/* template */
+var __vue_template__ = __webpack_require__(72)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormDeleteRespModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-37e1a187", Component.options)
+  } else {
+    hotAPI.reload("data-v-37e1a187", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	methods: {
+		close: function close() {
+			Event.$emit('closeRespModal');
+		},
+		ok: function ok() {
+			Event.$emit('deleteRespData');
+		}
+	}
+
+});
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal is-active" }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _vm._v(
+          "\n      If you click OK you will erase all of the data from the Resp section? Are you sure you want to do that?\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.ok } },
+          [_vm._v("OK then!")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "button is-danger", on: { click: _vm.close } },
+          [_vm._v("Belay that order!")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "modal-card-head" }, [
+      _c("p", { staticClass: "modal-card-title" }, [
+        _vm._v("Steady on Captain!")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-37e1a187", module.exports)
   }
 }
 

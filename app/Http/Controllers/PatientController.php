@@ -115,4 +115,22 @@ class PatientController extends Controller
         $patient->othercvs = null;
         $patient->save();
     }
+
+    public function deleteResp($id)
+    {
+        $patient = Patient::findOrFail($id);
+        $patient->asthma = null;
+        $patient->copd = null;
+        $patient->bronchiectasis = null;
+        $patient->steroids = null;
+        $patient->icu = null;
+        $patient->control = null;
+        $patient->pft = null;
+        $patient->fev1 = null;
+        $patient->fvc = null;
+        $patient->fevfvc = null;
+        $patient->pefr = null;
+        $patient->otherresp = null;
+        $patient->save();
+    }
 }

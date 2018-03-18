@@ -30,12 +30,17 @@
                         <div class="field">
                             <form-asa></form-asa>
                         </div>
-                        <div class="field">
-                            <form-yes-no label="Cardiovascular morbidity" name="cvs"></form-yes-no>
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <form-yes-no label="Cardiovascular morbidity" name="cvs"></form-yes-no>
+                            </p>
+                            <p class="control is-expanded">
+                                <form-yes-no label="Respiratory morbidity" name="resp"></form-yes-no>
+                            </p>
                         </div>
                     </div>
                 </article>
-                <form-delete-modal v-if="modalVisible"></form-delete-modal>
+                <form-delete-cvs-modal v-if="modalVisible"></form-delete-cvs-modal>
                 <article class="message is-danger" v-if="cvsVisible">
                     <div class="message-header">
                         <p>Cardiovascular Disease</p>
@@ -44,7 +49,17 @@
                         <div class="field">
                             <form-cvs></form-cvs>
                         </div>
-                        <div><button class="button" @click="reload">Reload</button></div>
+                    </div>
+                </article>
+                <form-delete-resp-modal v-if="respModalVisible"></form-delete-resp-modal>
+                <article class="message is-warning" v-if="respVisible">
+                    <div class="message-header">
+                        <p>Respiratory Disease</p>
+                    </div>
+                    <div class="message-body">
+                        <div class="field">
+                            <form-resp></form-resp>
+                        </div>
                     </div>
                 </article>
             </div>

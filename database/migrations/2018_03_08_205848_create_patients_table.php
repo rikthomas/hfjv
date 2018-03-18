@@ -32,6 +32,19 @@ class CreatePatientsTable extends Migration
             $table->string('af')->nullable();
             $table->string('cardiomyopathy')->nullable();
             $table->string('othercvs')->nullable();
+            $table->string('resp')->nullable();
+            $table->string('asthma')->nullable();
+            $table->string('copd')->nullable();
+            $table->string('bronchiectasis')->nullable();
+            $table->string('steroids')->nullable();
+            $table->string('icu')->nullable();
+            $table->string('control')->nullable();
+            $table->string('pft')->nullable();
+            $table->integer('fev1')->nullable();
+            $table->integer('fvc')->nullable();
+            $table->integer('fevfvc')->nullable();
+            $table->integer('pefr')->nullable();
+            $table->string('otherresp')->nullable();
             $table->timestamps();
         });
     }

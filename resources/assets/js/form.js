@@ -8,7 +8,11 @@ Vue.component('form-yes-no', require('./components/FormYesNo.vue'));
 
 Vue.component('form-cvs', require('./components/FormCvs.vue'));
 
-Vue.component('form-delete-modal', require('./components/FormDeleteModal.vue'));
+Vue.component('form-delete-cvs-modal', require('./components/FormDeleteCvsModal.vue'));
+
+Vue.component('form-delete-resp-modal', require('./components/FormDeleteRespModal.vue'));
+
+Vue.component('form-resp', require('./components/FormResp.vue'));
 
 new Vue({
 	el: '#app',
@@ -17,11 +21,14 @@ new Vue({
 		weight: '',
 		height: '',
 		cvsVisible: '',
+		respVisible: '',
 		modalVisible: false,
+		respModalVisible: false,
 	},
 
 	created() {
 		this.cvsVisible = patient.cvs=='yes' ? true : false;
+		this.respVisible = patient.resp=='yes' ? true : false;
 		Event.$on('weight', (weight) => { this.weight = weight });
 		Event.$on('height', (height) => { this.height = height });
 		Event.$on('closeCvsModal', () => 
@@ -51,6 +58,34 @@ new Vue({
 			axios.put('/patient/delcvs/' + patient.id);
 			this.modalVisible = false;
 			this.cvsVisible = false;
+			this.reload();
+		});
+		Event.$on('closeRespModal', () => 
+			{ 
+				axios.put('/patient/update/' + patient.id, {
+	                field: 'resp',
+	                value: 'yes',
+	            }).then(() => {
+	            patient.resp = 'yes';	
+	            this.reload();
+				})
+				this.respModalVisible = false;
+	        });
+		Event.$on('respDrop', function(value){
+			if (value=='yes')
+			{
+				this.respVisible = true;
+			} else if (value=='no' & (patient.asthma!=null || patient.copd!=null || patient.bronchiectasis!=null || patient.steroids!=null || patient.icu!=null || patient.control!=null || patient.pft!=null || patient.fev1!=null || patient.fvc!=null || patient.fevfvc!=null || patient.pefr!=null || patient.otherresp!=null))
+			{
+				this.respModalVisible = true;
+			} else {
+				this.respVisible = false;
+			}
+		}.bind(this));
+		Event.$on('deleteRespData', () => {
+			axios.put('/patient/delresp/' + patient.id);
+			this.respModalVisible = false;
+			this.respVisible = false;
 			this.reload();
 		});
 	},
