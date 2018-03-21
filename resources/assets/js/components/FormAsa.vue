@@ -1,27 +1,16 @@
 <template>
 	<p class="control is-expanded">
-		    <label class="label">ASA</label>
-		      <label class="radio">
-		        <input type="radio" v-model="asa" value="1" @change="updateAsa">
-		        1
-		      </label>
-		      <label class="radio">
-		        <input type="radio" v-model="asa" value="2" @change="updateAsa">
-		        2
-		      </label>
-		      <label class="radio">
-		        <input type="radio" v-model="asa" value="3" @change="updateAsa">
-		        3
-		      </label>
-		      <label class="radio">
-		        <input type="radio" v-model="asa" value="4" @change="updateAsa">
-		        4
-		      </label>
-		      <label class="radio">
-		        <input type="radio" v-model="asa" value="5" @change="updateAsa">
-		        5
-		      </label>&nbsp
-		      <i class="fas fa-check" style="color:green" v-if="isTicked"></i>	      
+		    <label class="label has-text-info">ASA</label>	      
+		        <input class="is-checkradio" id="asa1" type="radio" v-model="asa" value="1" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateAsa">
+		        <label for="asa1">1</label>		      
+		        <input class="is-checkradio" id="asa2" type="radio" v-model="asa" value="2" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateAsa">
+		        <label for="asa2">2</label>		      
+		        <input class="is-checkradio" id="asa3" type="radio" v-model="asa" value="3" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateAsa">
+		        <label for="asa3">3</label>		      
+		        <input class="is-checkradio" id="asa4" type="radio" v-model="asa" value="4" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateAsa">
+		        <label for="asa4">4</label>		      
+		        <input class="is-checkradio" id="asa5" type="radio" v-model="asa" value="5" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateAsa">
+		        <label for="asa5">5</label>
 		</p>
 </template>
 
@@ -31,7 +20,7 @@
 		data() {
 			return {
 				asa: '',
-				isTicked: false
+				isSuccess: true
 			}
 		},
 
@@ -42,12 +31,13 @@
 		methods: {
 			updateAsa()
 			{
+	        	this.isSuccess = false;
 	        	let newValue = this.asa;
 	            axios.put('/patient/update/' + patient.id, {
 	                field: 'asa',
 	                value: newValue,
 	            }).then(() => {
-	                this.isTicked = true;
+	                this.isSuccess = true;
 	              })
 	              .catch(function (error) {
 	                console.log(error);

@@ -30,13 +30,9 @@
                         <div class="field">
                             <form-asa></form-asa>
                         </div>
-                        <div class="field is-grouped">
-                            <p class="control is-expanded">
-                                <form-yes-no label="Cardiovascular morbidity" name="cvs"></form-yes-no>
-                            </p>
-                            <p class="control is-expanded">
-                                <form-yes-no label="Respiratory morbidity" name="resp"></form-yes-no>
-                            </p>
+                        <div class="field">
+                                <form-check-yes label="Cardiovascular morbidity" name="cvs"></form-check-yes>
+                                <form-check-yes label="Respiratory morbidity" name="resp"></form-check-yes>
                         </div>
                     </div>
                 </article>

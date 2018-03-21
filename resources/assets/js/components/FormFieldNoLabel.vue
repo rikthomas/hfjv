@@ -1,6 +1,5 @@
 <template>
 	<p class="control is-expanded">
-      <label class="label" :class="textColor">{{ label }}</label>
       <input :type="type" class="input" :class="{'is-success': isSaved, 'is-danger': isDirty}"  :placeholder="placeholder" :name="name" v-model="value" @blur="updateField" @keyup="dirtyCheck">
     </p>
 </template>
@@ -9,7 +8,7 @@
 
 	export default {
 
-		props: ['label', 'type', 'placeholder', 'name', 'textColor'],
+		props: ['type', 'placeholder', 'name'],
 
 		data() {
 			return {

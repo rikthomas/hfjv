@@ -14,6 +14,10 @@ Vue.component('form-delete-resp-modal', require('./components/FormDeleteRespModa
 
 Vue.component('form-resp', require('./components/FormResp.vue'));
 
+Vue.component('form-check-yes', require('./components/FormCheckYes.vue'));
+
+Vue.component('form-field-no-label', require('./components/FormFieldNoLabel'));
+
 new Vue({
 	el: '#app',
 
@@ -27,15 +31,15 @@ new Vue({
 	},
 
 	created() {
-		this.cvsVisible = patient.cvs=='yes' ? true : false;
-		this.respVisible = patient.resp=='yes' ? true : false;
+		this.cvsVisible = patient.cvs==1 ? true : false;
+		this.respVisible = patient.resp==1 ? true : false;
 		Event.$on('weight', (weight) => { this.weight = weight });
 		Event.$on('height', (height) => { this.height = height });
 		Event.$on('closeCvsModal', () => 
 			{ 
 				axios.put('/patient/update/' + patient.id, {
 	                field: 'cvs',
-	                value: 'yes',
+	                value: true,
 	            }).then(() => {
 	            patient.cvs = 'yes';	
 	            this.reload();
@@ -44,10 +48,10 @@ new Vue({
 	        });
 		//Event.$on('cvsDrop', (value) => { this.cvsVisible = value=='yes' ? true : false});
 		Event.$on('cvsDrop', function(value){
-			if (value=='yes')
+			if (value===true)
 			{
 				this.cvsVisible = true;
-			} else if (value=='no' & (patient.ht!=null || patient.antiht!=null || patient.mi!=null || patient.stents!=null || patient.cva!=null || patient.lvef!=null || patient.as!=null || patient.valve!=null || patient.af!=null || patient.cardiomyopathy!=null || patient.othercvs!=null))
+			} else if (value===false & (patient.ht!==null || patient.antiht!==null || patient.mi!==null || patient.stents!==null || patient.cva!==null || patient.lvef!==null || patient.as!==null || patient.valve!==null || patient.af!==null || patient.cardiomyopathy!==null || patient.othercvs!==null))
 			{
 				this.modalVisible = true;
 			} else {
@@ -64,7 +68,7 @@ new Vue({
 			{ 
 				axios.put('/patient/update/' + patient.id, {
 	                field: 'resp',
-	                value: 'yes',
+	                value: true,
 	            }).then(() => {
 	            patient.resp = 'yes';	
 	            this.reload();
@@ -72,10 +76,10 @@ new Vue({
 				this.respModalVisible = false;
 	        });
 		Event.$on('respDrop', function(value){
-			if (value=='yes')
+			if (value===true)
 			{
 				this.respVisible = true;
-			} else if (value=='no' & (patient.asthma!=null || patient.copd!=null || patient.bronchiectasis!=null || patient.steroids!=null || patient.icu!=null || patient.control!=null || patient.pft!=null || patient.fev1!=null || patient.fvc!=null || patient.fevfvc!=null || patient.pefr!=null || patient.otherresp!=null))
+			} else if (value===false & (patient.asthma!==null || patient.copd!==null || patient.bronchiectasis!==null || patient.steroids!==null || patient.icu!==null || patient.control!==null || patient.pft!==null || patient.fev1!==null || patient.fvc!==null || patient.fevfvc!==null || patient.pefr!==null || patient.otherresp!==null))
 			{
 				this.respModalVisible = true;
 			} else {

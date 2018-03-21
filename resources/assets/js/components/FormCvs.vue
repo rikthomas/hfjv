@@ -1,42 +1,38 @@
 <template>
 	<div>
 		<div class="field is-grouped">
-			<form-yes-no label="Hypertension" name="ht"></form-yes-no>
-			<form-field label="If so, then how many?" type="number" placeholder="number of antihypertensives" name="antiht"></form-field>
+			<form-check-yes label="Hypertension" name="ht"></form-check-yes>
+			<form-field-no-label type="number" placeholder="number of antihypertensives" name="antiht"></form-field-no-label>
 		</div>
 		<div class="field is-grouped">
-			<form-yes-no label="Previous MI?" name="mi"></form-yes-no>
-			<form-yes-no label="Any stents?" name="stents"></form-yes-no>
-			<form-yes-no label="CVA?" name="cva"></form-yes-no>
+			<form-check-yes label="Previous MI?" name="mi"></form-check-yes>
+			<form-check-yes label="Any stents?" name="stents"></form-check-yes>
+			<form-check-yes label="CVA?" name="cva"></form-check-yes>
 		</div>
 		<div class="field">
 			<p class="control is-expanded">
-			    <label class="label">LVEF if known</label>
-			      <label class="radio">
-			        <input type="radio" v-model="lvef" value="<35%" @change="updateLVEF">
-			        <35%
+			    <label class="label has-text-danger">LVEF if known</label>
+			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef1" value="<35%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
+			        <label for="lvef1"><35%</label>
 			      </label>
-			      <label class="radio">
-			        <input type="radio" v-model="lvef" value="35-50%" @change="updateLVEF">
-			        35-50%
+			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef2" value="35-50%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
+			        <label for="lvef2">35-50%</label>
 			      </label>
-			      <label class="radio">
-			        <input type="radio" v-model="lvef" value=">50%" @change="updateLVEF">
-			        >50%
-			      </label>&nbsp
-			      <i class="fas fa-check" style="color:green" v-if="isTicked"></i>	      
+			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef3" value=">50%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
+			        <label for="lvef3">>50%</label>
+			      </label>     
 			</p>
 		</div>
 		<div class="field is-grouped">
-			<form-yes-no label="Aortic Stenosis" name="as"></form-yes-no>
-			<form-field label="Valve area" type="text" placeholder="or peak gradient if known" name="valve"></form-field>
+			<form-check-yes label="Aortic Stenosis" name="as"></form-check-yes>
+			<form-field-no-label type="text" placeholder="valve area or peak gradient if known" name="valve"></form-field-no-label>
 		</div>
 		<div class="field is-grouped">
-			<form-yes-no label="Atrial Fibrillaton" name="af"></form-yes-no>
-			<form-yes-no label="Cardiomyopathy" name="cardiomyopathy"></form-yes-no>
+			<form-check-yes label="Atrial Fibrillaton" name="af"></form-check-yes>
+			<form-check-yes label="Cardiomyopathy" name="cardiomyopathy"></form-check-yes>
 		</div>
 		<div class="field">
-			<form-field label="Other cardiac disease" type="text" placeholder="please state...." name="othercvs"></form-field>
+			<form-field label="Other cardiac disease" textColor="has-text-danger" type="text" placeholder="please state...." name="othercvs"></form-field>
 		</div>
 	</div>
 </template>
@@ -46,12 +42,14 @@
 
 	import FormField from './FormField.vue';
 	import FormYesNo from './FormYesNo.vue';
+	import FormCheckYes from './FormCheckYes.vue';
+	import FormFieldNoLabel from './FormFieldNoLabel';
 	export default{
 
 		data() {
 			return {
 				lvef: '',
-				isTicked: false
+				isSuccess: true
 			}
 		},
 
@@ -62,12 +60,13 @@
 		methods: {
 			updateLVEF()
 			{
+	        	this.isSuccess = false
 	        	let newValue = this.lvef;
 	            axios.put('/patient/update/' + patient.id, {
 	                field: 'lvef',
 	                value: newValue,
 	            }).then(() => {
-	                this.isTicked = true;
+	                this.isSuccess = true;
 	              })
 	              .catch(function (error) {
 	                console.log(error);

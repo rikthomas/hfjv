@@ -1,17 +1,17 @@
 <template>
 	<div>
 		<div class="field is-grouped">
-			<form-yes-no label="Asthma" name="asthma"></form-yes-no>
-			<form-yes-no label="COPD" name="copd"></form-yes-no>
-			<form-yes-no label="Bronchiectasis" name="bronchiectasis"></form-yes-no>
+			<form-check-yes label="Asthma" name="asthma"></form-check-yes>
+			<form-check-yes label="COPD" name="copd"></form-check-yes>
+			<form-check-yes label="Bronchiectasis" name="bronchiectasis"></form-check-yes>
 		</div>
 		<div class="field is-grouped">
-			<form-yes-no label="Steroids" name="steroids"></form-yes-no>
-			<form-yes-no label="Previous ITU" name="icu"></form-yes-no>
+			<form-check-yes label="Steroids" name="steroids"></form-check-yes>
+			<form-check-yes label="Previous ITU" name="icu"></form-check-yes>
 		</div>
 		<div class="field is-grouped">
-			<form-yes-no label="Disease well controlled?" name="control"></form-yes-no>
-			<form-yes-no label="Lung function tests?" name="pft"></form-yes-no>
+			<form-check-yes label="Disease well controlled?" name="control"></form-check-yes>
+			<form-check-yes label="Lung function tests?" name="pft"></form-check-yes>
 		</div>
 		<div class="field is-grouped" v-if="pftsVisible">
 			<form-field label="FEV1" type="number" placeholder="Litres" name="fev1"></form-field>
@@ -30,17 +30,19 @@
 <script>
 	import FormField from './FormField.vue';
 	import FormYesNo from './FormYesNo.vue';
+	import FormCheckYes from './FormCheckYes.vue';
 	export default {
 
 		data() {
 			return {
-				pftsVisible: false,
+				pftsVisible: '',
 			}
 		},
 
 		created() {
+			this.pftsVisible = patient.pft==1 ? true : false;
 			Event.$on('pftDrop', function(value) {
-				if (value=='yes') {
+				if (value===true) {
 					this.pftsVisible = true;
 				} else {
 					this.pftsVisible = false;

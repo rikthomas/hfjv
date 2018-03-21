@@ -176,13 +176,7 @@ module.exports = function normalizeComponent (
 /***/ }),
 /* 2 */,
 /* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -229,7 +223,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 11 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -276,6 +270,12 @@ module.exports = Component.exports
 
 
 /***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
 /* 12 */,
 /* 13 */,
 /* 14 */,
@@ -321,19 +321,23 @@ module.exports = __webpack_require__(46);
 
 window.Event = new Vue();
 
-Vue.component('form-field', __webpack_require__(10));
+Vue.component('form-field', __webpack_require__(4));
 
 Vue.component('form-asa', __webpack_require__(49));
 
-Vue.component('form-yes-no', __webpack_require__(11));
+Vue.component('form-yes-no', __webpack_require__(5));
 
 Vue.component('form-cvs', __webpack_require__(54));
 
-Vue.component('form-delete-cvs-modal', __webpack_require__(67));
+Vue.component('form-delete-cvs-modal', __webpack_require__(57));
 
-Vue.component('form-delete-resp-modal', __webpack_require__(70));
+Vue.component('form-delete-resp-modal', __webpack_require__(60));
 
-Vue.component('form-resp', __webpack_require__(64));
+Vue.component('form-resp', __webpack_require__(63));
+
+Vue.component('form-check-yes', __webpack_require__(70));
+
+Vue.component('form-field-no-label', __webpack_require__(73));
 
 new Vue({
 	el: '#app',
@@ -350,8 +354,8 @@ new Vue({
 	created: function created() {
 		var _this = this;
 
-		this.cvsVisible = patient.cvs == 'yes' ? true : false;
-		this.respVisible = patient.resp == 'yes' ? true : false;
+		this.cvsVisible = patient.cvs == 1 ? true : false;
+		this.respVisible = patient.resp == 1 ? true : false;
 		Event.$on('weight', function (weight) {
 			_this.weight = weight;
 		});
@@ -361,7 +365,7 @@ new Vue({
 		Event.$on('closeCvsModal', function () {
 			axios.put('/patient/update/' + patient.id, {
 				field: 'cvs',
-				value: 'yes'
+				value: true
 			}).then(function () {
 				patient.cvs = 'yes';
 				_this.reload();
@@ -370,9 +374,9 @@ new Vue({
 		});
 		//Event.$on('cvsDrop', (value) => { this.cvsVisible = value=='yes' ? true : false});
 		Event.$on('cvsDrop', function (value) {
-			if (value == 'yes') {
+			if (value === true) {
 				this.cvsVisible = true;
-			} else if (value == 'no' & (patient.ht != null || patient.antiht != null || patient.mi != null || patient.stents != null || patient.cva != null || patient.lvef != null || patient.as != null || patient.valve != null || patient.af != null || patient.cardiomyopathy != null || patient.othercvs != null)) {
+			} else if (value === false & (patient.ht !== null || patient.antiht !== null || patient.mi !== null || patient.stents !== null || patient.cva !== null || patient.lvef !== null || patient.as !== null || patient.valve !== null || patient.af !== null || patient.cardiomyopathy !== null || patient.othercvs !== null)) {
 				this.modalVisible = true;
 			} else {
 				this.cvsVisible = false;
@@ -387,7 +391,7 @@ new Vue({
 		Event.$on('closeRespModal', function () {
 			axios.put('/patient/update/' + patient.id, {
 				field: 'resp',
-				value: 'yes'
+				value: true
 			}).then(function () {
 				patient.resp = 'yes';
 				_this.reload();
@@ -395,9 +399,9 @@ new Vue({
 			_this.respModalVisible = false;
 		});
 		Event.$on('respDrop', function (value) {
-			if (value == 'yes') {
+			if (value === true) {
 				this.respVisible = true;
-			} else if (value == 'no' & (patient.asthma != null || patient.copd != null || patient.bronchiectasis != null || patient.steroids != null || patient.icu != null || patient.control != null || patient.pft != null || patient.fev1 != null || patient.fvc != null || patient.fevfvc != null || patient.pefr != null || patient.otherresp != null)) {
+			} else if (value === false & (patient.asthma !== null || patient.copd !== null || patient.bronchiectasis !== null || patient.steroids !== null || patient.icu !== null || patient.control !== null || patient.pft !== null || patient.fev1 !== null || patient.fvc !== null || patient.fevfvc !== null || patient.pefr !== null || patient.otherresp !== null)) {
 				this.respModalVisible = true;
 			} else {
 				this.respVisible = false;
@@ -450,7 +454,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-	props: ['label', 'type', 'placeholder', 'name'],
+	props: ['label', 'type', 'placeholder', 'name', 'textColor'],
 
 	data: function data() {
 		return {
@@ -511,7 +515,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("p", { staticClass: "control is-expanded" }, [
-    _c("label", { staticClass: "label" }, [_vm._v(_vm._s(_vm.label))]),
+    _c("label", { staticClass: "label", class: _vm.textColor }, [
+      _vm._v(_vm._s(_vm.label))
+    ]),
     _vm._v(" "),
     _vm.type === "checkbox"
       ? _c("input", {
@@ -692,23 +698,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			asa: '',
-			isTicked: false
+			isSuccess: true
 		};
 	},
 	created: function created() {
@@ -720,12 +715,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		updateAsa: function updateAsa() {
 			var _this = this;
 
+			this.isSuccess = false;
 			var newValue = this.asa;
 			axios.put('/patient/update/' + patient.id, {
 				field: 'asa',
 				value: newValue
 			}).then(function () {
-				_this.isTicked = true;
+				_this.isSuccess = true;
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -743,134 +739,107 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("p", { staticClass: "control is-expanded" }, [
-    _c("label", { staticClass: "label" }, [_vm._v("ASA")]),
+    _c("label", { staticClass: "label has-text-info" }, [_vm._v("ASA")]),
     _vm._v(" "),
-    _c("label", { staticClass: "radio" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.asa,
-            expression: "asa"
-          }
-        ],
-        attrs: { type: "radio", value: "1" },
-        domProps: { checked: _vm._q(_vm.asa, "1") },
-        on: {
-          change: [
-            function($event) {
-              _vm.asa = "1"
-            },
-            _vm.updateAsa
-          ]
-        }
-      }),
-      _vm._v("\n\t        1\n\t      ")
-    ]),
+    _c("input", {
+      directives: [
+        { name: "model", rawName: "v-model", value: _vm.asa, expression: "asa" }
+      ],
+      staticClass: "is-checkradio",
+      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+      attrs: { id: "asa1", type: "radio", value: "1" },
+      domProps: { checked: _vm._q(_vm.asa, "1") },
+      on: {
+        change: [
+          function($event) {
+            _vm.asa = "1"
+          },
+          _vm.updateAsa
+        ]
+      }
+    }),
     _vm._v(" "),
-    _c("label", { staticClass: "radio" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.asa,
-            expression: "asa"
-          }
-        ],
-        attrs: { type: "radio", value: "2" },
-        domProps: { checked: _vm._q(_vm.asa, "2") },
-        on: {
-          change: [
-            function($event) {
-              _vm.asa = "2"
-            },
-            _vm.updateAsa
-          ]
-        }
-      }),
-      _vm._v("\n\t        2\n\t      ")
-    ]),
+    _c("label", { attrs: { for: "asa1" } }, [_vm._v("1")]),
     _vm._v(" "),
-    _c("label", { staticClass: "radio" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.asa,
-            expression: "asa"
-          }
-        ],
-        attrs: { type: "radio", value: "3" },
-        domProps: { checked: _vm._q(_vm.asa, "3") },
-        on: {
-          change: [
-            function($event) {
-              _vm.asa = "3"
-            },
-            _vm.updateAsa
-          ]
-        }
-      }),
-      _vm._v("\n\t        3\n\t      ")
-    ]),
+    _c("input", {
+      directives: [
+        { name: "model", rawName: "v-model", value: _vm.asa, expression: "asa" }
+      ],
+      staticClass: "is-checkradio",
+      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+      attrs: { id: "asa2", type: "radio", value: "2" },
+      domProps: { checked: _vm._q(_vm.asa, "2") },
+      on: {
+        change: [
+          function($event) {
+            _vm.asa = "2"
+          },
+          _vm.updateAsa
+        ]
+      }
+    }),
     _vm._v(" "),
-    _c("label", { staticClass: "radio" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.asa,
-            expression: "asa"
-          }
-        ],
-        attrs: { type: "radio", value: "4" },
-        domProps: { checked: _vm._q(_vm.asa, "4") },
-        on: {
-          change: [
-            function($event) {
-              _vm.asa = "4"
-            },
-            _vm.updateAsa
-          ]
-        }
-      }),
-      _vm._v("\n\t        4\n\t      ")
-    ]),
+    _c("label", { attrs: { for: "asa2" } }, [_vm._v("2")]),
     _vm._v(" "),
-    _c("label", { staticClass: "radio" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.asa,
-            expression: "asa"
-          }
-        ],
-        attrs: { type: "radio", value: "5" },
-        domProps: { checked: _vm._q(_vm.asa, "5") },
-        on: {
-          change: [
-            function($event) {
-              _vm.asa = "5"
-            },
-            _vm.updateAsa
-          ]
-        }
-      }),
-      _vm._v("\n\t        5\n\t      ")
-    ]),
-    _vm._v(" \n\t      "),
-    _vm.isTicked
-      ? _c("i", {
-          staticClass: "fas fa-check",
-          staticStyle: { color: "green" }
-        })
-      : _vm._e()
+    _c("input", {
+      directives: [
+        { name: "model", rawName: "v-model", value: _vm.asa, expression: "asa" }
+      ],
+      staticClass: "is-checkradio",
+      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+      attrs: { id: "asa3", type: "radio", value: "3" },
+      domProps: { checked: _vm._q(_vm.asa, "3") },
+      on: {
+        change: [
+          function($event) {
+            _vm.asa = "3"
+          },
+          _vm.updateAsa
+        ]
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: "asa3" } }, [_vm._v("3")]),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        { name: "model", rawName: "v-model", value: _vm.asa, expression: "asa" }
+      ],
+      staticClass: "is-checkradio",
+      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+      attrs: { id: "asa4", type: "radio", value: "4" },
+      domProps: { checked: _vm._q(_vm.asa, "4") },
+      on: {
+        change: [
+          function($event) {
+            _vm.asa = "4"
+          },
+          _vm.updateAsa
+        ]
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: "asa4" } }, [_vm._v("4")]),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        { name: "model", rawName: "v-model", value: _vm.asa, expression: "asa" }
+      ],
+      staticClass: "is-checkradio",
+      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+      attrs: { id: "asa5", type: "radio", value: "5" },
+      domProps: { checked: _vm._q(_vm.asa, "5") },
+      on: {
+        change: [
+          function($event) {
+            _vm.asa = "5"
+          },
+          _vm.updateAsa
+        ]
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: "asa5" } }, [_vm._v("5")])
   ])
 }
 var staticRenderFns = []
@@ -1011,7 +980,7 @@ var render = function() {
     _vm._v(" \n    "),
     _vm.isTicked
       ? _c("i", {
-          staticClass: "fas fa-check",
+          staticClass: "fas fa-check-circle",
           staticStyle: { color: "green" }
         })
       : _vm._e()
@@ -1080,10 +1049,14 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__);
 //
 //
 //
@@ -1124,10 +1097,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
+
+
 
 
 
@@ -1136,7 +1107,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			lvef: '',
-			isTicked: false
+			isSuccess: true
 		};
 	},
 	created: function created() {
@@ -1148,12 +1119,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		updateLVEF: function updateLVEF() {
 			var _this = this;
 
+			this.isSuccess = false;
 			var newValue = this.lvef;
 			axios.put('/patient/update/' + patient.id, {
 				field: 'lvef',
 				value: newValue
 			}).then(function () {
-				_this.isTicked = true;
+				_this.isSuccess = true;
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -1175,11 +1147,10 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-yes-no", { attrs: { label: "Hypertension", name: "ht" } }),
+        _c("form-check-yes", { attrs: { label: "Hypertension", name: "ht" } }),
         _vm._v(" "),
-        _c("form-field", {
+        _c("form-field-no-label", {
           attrs: {
-            label: "If so, then how many?",
             type: "number",
             placeholder: "number of antihypertensives",
             name: "antiht"
@@ -1193,97 +1164,97 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-yes-no", { attrs: { label: "Previous MI?", name: "mi" } }),
+        _c("form-check-yes", { attrs: { label: "Previous MI?", name: "mi" } }),
         _vm._v(" "),
-        _c("form-yes-no", { attrs: { label: "Any stents?", name: "stents" } }),
+        _c("form-check-yes", {
+          attrs: { label: "Any stents?", name: "stents" }
+        }),
         _vm._v(" "),
-        _c("form-yes-no", { attrs: { label: "CVA?", name: "cva" } })
+        _c("form-check-yes", { attrs: { label: "CVA?", name: "cva" } })
       ],
       1
     ),
     _vm._v(" "),
     _c("div", { staticClass: "field" }, [
       _c("p", { staticClass: "control is-expanded" }, [
-        _c("label", { staticClass: "label" }, [_vm._v("LVEF if known")]),
-        _vm._v(" "),
-        _c("label", { staticClass: "radio" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.lvef,
-                expression: "lvef"
-              }
-            ],
-            attrs: { type: "radio", value: "<35%" },
-            domProps: { checked: _vm._q(_vm.lvef, "<35%") },
-            on: {
-              change: [
-                function($event) {
-                  _vm.lvef = "<35%"
-                },
-                _vm.updateLVEF
-              ]
-            }
-          }),
-          _vm._v("\n\t\t        <35%\n\t\t      ")
+        _c("label", { staticClass: "label has-text-danger" }, [
+          _vm._v("LVEF if known")
         ]),
         _vm._v(" "),
-        _c("label", { staticClass: "radio" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.lvef,
-                expression: "lvef"
-              }
-            ],
-            attrs: { type: "radio", value: "35-50%" },
-            domProps: { checked: _vm._q(_vm.lvef, "35-50%") },
-            on: {
-              change: [
-                function($event) {
-                  _vm.lvef = "35-50%"
-                },
-                _vm.updateLVEF
-              ]
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.lvef,
+              expression: "lvef"
             }
-          }),
-          _vm._v("\n\t\t        35-50%\n\t\t      ")
-        ]),
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { type: "radio", id: "lvef1", value: "<35%" },
+          domProps: { checked: _vm._q(_vm.lvef, "<35%") },
+          on: {
+            change: [
+              function($event) {
+                _vm.lvef = "<35%"
+              },
+              _vm.updateLVEF
+            ]
+          }
+        }),
         _vm._v(" "),
-        _c("label", { staticClass: "radio" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.lvef,
-                expression: "lvef"
-              }
-            ],
-            attrs: { type: "radio", value: ">50%" },
-            domProps: { checked: _vm._q(_vm.lvef, ">50%") },
-            on: {
-              change: [
-                function($event) {
-                  _vm.lvef = ">50%"
-                },
-                _vm.updateLVEF
-              ]
+        _c("label", { attrs: { for: "lvef1" } }, [_vm._v("<35%")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.lvef,
+              expression: "lvef"
             }
-          }),
-          _vm._v("\n\t\t        >50%\n\t\t      ")
-        ]),
-        _vm._v(" \n\t\t      "),
-        _vm.isTicked
-          ? _c("i", {
-              staticClass: "fas fa-check",
-              staticStyle: { color: "green" }
-            })
-          : _vm._e()
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { type: "radio", id: "lvef2", value: "35-50%" },
+          domProps: { checked: _vm._q(_vm.lvef, "35-50%") },
+          on: {
+            change: [
+              function($event) {
+                _vm.lvef = "35-50%"
+              },
+              _vm.updateLVEF
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "lvef2" } }, [_vm._v("35-50%")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.lvef,
+              expression: "lvef"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { type: "radio", id: "lvef3", value: ">50%" },
+          domProps: { checked: _vm._q(_vm.lvef, ">50%") },
+          on: {
+            change: [
+              function($event) {
+                _vm.lvef = ">50%"
+              },
+              _vm.updateLVEF
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "lvef3" } }, [_vm._v(">50%")])
       ])
     ]),
     _vm._v(" "),
@@ -1291,13 +1262,14 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-yes-no", { attrs: { label: "Aortic Stenosis", name: "as" } }),
+        _c("form-check-yes", {
+          attrs: { label: "Aortic Stenosis", name: "as" }
+        }),
         _vm._v(" "),
-        _c("form-field", {
+        _c("form-field-no-label", {
           attrs: {
-            label: "Valve area",
             type: "text",
-            placeholder: "or peak gradient if known",
+            placeholder: "valve area or peak gradient if known",
             name: "valve"
           }
         })
@@ -1309,11 +1281,11 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-yes-no", {
+        _c("form-check-yes", {
           attrs: { label: "Atrial Fibrillaton", name: "af" }
         }),
         _vm._v(" "),
-        _c("form-yes-no", {
+        _c("form-check-yes", {
           attrs: { label: "Cardiomyopathy", name: "cardiomyopathy" }
         })
       ],
@@ -1327,6 +1299,7 @@ var render = function() {
         _c("form-field", {
           attrs: {
             label: "Other cardiac disease",
+            textColor: "has-text-danger",
             type: "text",
             placeholder: "please state....",
             name: "othercvs"
@@ -1348,20 +1321,299 @@ if (false) {
 }
 
 /***/ }),
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(66)
+var __vue_script__ = __webpack_require__(58)
+/* template */
+var __vue_template__ = __webpack_require__(59)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormDeleteCvsModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4a857553", Component.options)
+  } else {
+    hotAPI.reload("data-v-4a857553", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	methods: {
+		close: function close() {
+			Event.$emit('closeCvsModal');
+		},
+		ok: function ok() {
+			Event.$emit('deleteCvsData');
+		}
+	}
+
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal is-active" }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _vm._v(
+          "\n      If you click OK you will erase all of the data from the CVS section? Are you sure you want to do that?\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.ok } },
+          [_vm._v("OK then!")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "button is-danger", on: { click: _vm.close } },
+          [_vm._v("Belay that order!")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "modal-card-head" }, [
+      _c("p", { staticClass: "modal-card-title" }, [
+        _vm._v("Whoa there Nelly!")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4a857553", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(61)
+/* template */
+var __vue_template__ = __webpack_require__(62)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormDeleteRespModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-37e1a187", Component.options)
+  } else {
+    hotAPI.reload("data-v-37e1a187", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	methods: {
+		close: function close() {
+			Event.$emit('closeRespModal');
+		},
+		ok: function ok() {
+			Event.$emit('deleteRespData');
+		}
+	}
+
+});
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal is-active" }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [
+        _vm._v(
+          "\n      If you click OK you will erase all of the data from the Resp section? Are you sure you want to do that?\n    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "modal-card-foot" }, [
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.ok } },
+          [_vm._v("OK then!")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "button is-danger", on: { click: _vm.close } },
+          [_vm._v("Belay that order!")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "modal-card-head" }, [
+      _c("p", { staticClass: "modal-card-title" }, [
+        _vm._v("Steady on Captain!")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-37e1a187", module.exports)
+  }
+}
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(64)
 /* template */
 var __vue_template__ = __webpack_require__(65)
 /* template functional */
@@ -1402,6 +1654,69 @@ module.exports = Component.exports
 
 
 /***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			pftsVisible: ''
+		};
+	},
+	created: function created() {
+		this.pftsVisible = patient.pft == 1 ? true : false;
+		Event.$on('pftDrop', function (value) {
+			if (value === true) {
+				this.pftsVisible = true;
+			} else {
+				this.pftsVisible = false;
+			}
+		}.bind(this));
+	}
+});
+
+/***/ }),
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1414,11 +1729,11 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-yes-no", { attrs: { label: "Asthma", name: "asthma" } }),
+        _c("form-check-yes", { attrs: { label: "Asthma", name: "asthma" } }),
         _vm._v(" "),
-        _c("form-yes-no", { attrs: { label: "COPD", name: "copd" } }),
+        _c("form-check-yes", { attrs: { label: "COPD", name: "copd" } }),
         _vm._v(" "),
-        _c("form-yes-no", {
+        _c("form-check-yes", {
           attrs: { label: "Bronchiectasis", name: "bronchiectasis" }
         })
       ],
@@ -1429,9 +1744,11 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-yes-no", { attrs: { label: "Steroids", name: "steroids" } }),
+        _c("form-check-yes", {
+          attrs: { label: "Steroids", name: "steroids" }
+        }),
         _vm._v(" "),
-        _c("form-yes-no", { attrs: { label: "Previous ITU", name: "icu" } })
+        _c("form-check-yes", { attrs: { label: "Previous ITU", name: "icu" } })
       ],
       1
     ),
@@ -1440,11 +1757,11 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-yes-no", {
+        _c("form-check-yes", {
           attrs: { label: "Disease well controlled?", name: "control" }
         }),
         _vm._v(" "),
-        _c("form-yes-no", {
+        _c("form-check-yes", {
           attrs: { label: "Lung function tests?", name: "pft" }
         })
       ],
@@ -1533,217 +1850,19 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			pftsVisible: false
-		};
-	},
-	created: function created() {
-		Event.$on('pftDrop', function (value) {
-			if (value == 'yes') {
-				this.pftsVisible = true;
-			} else {
-				this.pftsVisible = false;
-			}
-		}.bind(this));
-	}
-});
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(68)
-/* template */
-var __vue_template__ = __webpack_require__(69)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/FormDeleteCvsModal.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4a857553", Component.options)
-  } else {
-    hotAPI.reload("data-v-4a857553", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 68 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-	methods: {
-		close: function close() {
-			Event.$emit('closeCvsModal');
-		},
-		ok: function ok() {
-			Event.$emit('deleteCvsData');
-		}
-	}
-
-});
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "modal is-active" }, [
-    _c("div", { staticClass: "modal-background" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal-card" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("section", { staticClass: "modal-card-body" }, [
-        _vm._v(
-          "\n      If you click OK you will erase all of the data from the CVS section? Are you sure you want to do that?\n    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("footer", { staticClass: "modal-card-foot" }, [
-        _c(
-          "button",
-          { staticClass: "button is-success", on: { click: _vm.ok } },
-          [_vm._v("OK then!")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "button is-danger", on: { click: _vm.close } },
-          [_vm._v("Belay that order!")]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "modal-card-head" }, [
-      _c("p", { staticClass: "modal-card-title" }, [
-        _vm._v("Whoa there Nelly!")
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4a857553", module.exports)
-  }
-}
-
-/***/ }),
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(71)
+var __vue_script__ = __webpack_require__(72)
 /* template */
-var __vue_template__ = __webpack_require__(72)
+var __vue_template__ = __webpack_require__(71)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1760,7 +1879,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/FormDeleteRespModal.vue"
+Component.options.__file = "resources/assets/js/components/FormCheckYes.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -1769,9 +1888,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-37e1a187", Component.options)
+    hotAPI.createRecord("data-v-8ed2244c", Component.options)
   } else {
-    hotAPI.reload("data-v-37e1a187", Component.options)
+    hotAPI.reload("data-v-8ed2244c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -1783,6 +1902,69 @@ module.exports = Component.exports
 
 /***/ }),
 /* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "field" }, [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.value,
+          expression: "value"
+        }
+      ],
+      staticClass: "is-checkradio",
+      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+      attrs: { type: "checkbox", id: _vm.name },
+      domProps: {
+        checked: Array.isArray(_vm.value)
+          ? _vm._i(_vm.value, null) > -1
+          : _vm.value
+      },
+      on: {
+        change: [
+          function($event) {
+            var $$a = _vm.value,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false
+            if (Array.isArray($$a)) {
+              var $$v = null,
+                $$i = _vm._i($$a, $$v)
+              if ($$el.checked) {
+                $$i < 0 && (_vm.value = $$a.concat([$$v]))
+              } else {
+                $$i > -1 &&
+                  (_vm.value = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+              }
+            } else {
+              _vm.value = $$c
+            }
+          },
+          _vm.updateYN
+        ]
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: _vm.name } }, [_vm._v(_vm._s(_vm.label))])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8ed2244c", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1794,11 +1976,106 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: ['label', 'name'],
+
+	data: function data() {
+		return {
+			value: '',
+			isSuccess: true
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+	},
+
+
+	methods: {
+		updateYN: function updateYN() {
+			var _this = this;
+
+			this.isSuccess = false;
+			var field = this.name;
+			var newValue = this.value;
+			axios.put('/patient/update/' + patient.id, {
+				field: field,
+				value: newValue
+			}).then(function () {
+				_this.isSuccess = true;
+				patient[_this.name] = newValue;
+				if (_this.name == 'cvs') {
+					Event.$emit('cvsDrop', _this.value);
+				}
+				if (_this.name == 'resp') {
+					Event.$emit('respDrop', _this.value);
+				}
+				if (_this.name == 'pft') {
+					Event.$emit('pftDrop', _this.value);
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(74)
+/* template */
+var __vue_template__ = __webpack_require__(75)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormFieldNoLabel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-775bcc18", Component.options)
+  } else {
+    hotAPI.reload("data-v-775bcc18", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -1809,71 +2086,174 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
+	props: ['type', 'placeholder', 'name'],
+
+	data: function data() {
+		return {
+			value: '',
+			isDirty: false,
+			isSaved: false
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+		if (this.name == 'weight') {
+			Event.$emit('weight', this.value);
+		}
+		if (this.name == 'height') {
+			Event.$emit('height', this.value);
+		}
+	},
+
+
 	methods: {
-		close: function close() {
-			Event.$emit('closeRespModal');
+		updateField: function updateField() {
+			var _this = this;
+
+			if (this.value != patient[this.name]) {
+				var field = this.name;
+				var newValue = this.value;
+				axios.put('/patient/update/' + patient.id, {
+					field: field,
+					value: newValue
+				}).then(function () {
+					_this.isDirty = false;
+					_this.isSaved = true;
+					patient[_this.name] = newValue;
+					if (_this.name == 'weight') {
+						Event.$emit('weight', _this.value);
+					}
+					if (_this.name == 'height') {
+						Event.$emit('height', _this.value);
+					}
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
 		},
-		ok: function ok() {
-			Event.$emit('deleteRespData');
+		dirtyCheck: function dirtyCheck() {
+			this.isDirty = this.value != patient[this.name] ? true : false;
 		}
 	}
 
 });
 
 /***/ }),
-/* 72 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "modal is-active" }, [
-    _c("div", { staticClass: "modal-background" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal-card" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("section", { staticClass: "modal-card-body" }, [
-        _vm._v(
-          "\n      If you click OK you will erase all of the data from the Resp section? Are you sure you want to do that?\n    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("footer", { staticClass: "modal-card-foot" }, [
-        _c(
-          "button",
-          { staticClass: "button is-success", on: { click: _vm.ok } },
-          [_vm._v("OK then!")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "button is-danger", on: { click: _vm.close } },
-          [_vm._v("Belay that order!")]
-        )
-      ])
-    ])
+  return _c("p", { staticClass: "control is-expanded" }, [
+    _vm.type === "checkbox"
+      ? _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.value,
+              expression: "value"
+            }
+          ],
+          staticClass: "input",
+          class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
+          attrs: {
+            placeholder: _vm.placeholder,
+            name: _vm.name,
+            type: "checkbox"
+          },
+          domProps: {
+            checked: Array.isArray(_vm.value)
+              ? _vm._i(_vm.value, null) > -1
+              : _vm.value
+          },
+          on: {
+            blur: _vm.updateField,
+            keyup: _vm.dirtyCheck,
+            change: function($event) {
+              var $$a = _vm.value,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.value = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.value = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.value = $$c
+              }
+            }
+          }
+        })
+      : _vm.type === "radio"
+        ? _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.value,
+                expression: "value"
+              }
+            ],
+            staticClass: "input",
+            class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
+            attrs: {
+              placeholder: _vm.placeholder,
+              name: _vm.name,
+              type: "radio"
+            },
+            domProps: { checked: _vm._q(_vm.value, null) },
+            on: {
+              blur: _vm.updateField,
+              keyup: _vm.dirtyCheck,
+              change: function($event) {
+                _vm.value = null
+              }
+            }
+          })
+        : _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.value,
+                expression: "value"
+              }
+            ],
+            staticClass: "input",
+            class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
+            attrs: {
+              placeholder: _vm.placeholder,
+              name: _vm.name,
+              type: _vm.type
+            },
+            domProps: { value: _vm.value },
+            on: {
+              blur: _vm.updateField,
+              keyup: _vm.dirtyCheck,
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.value = $event.target.value
+              }
+            }
+          })
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "modal-card-head" }, [
-      _c("p", { staticClass: "modal-card-title" }, [
-        _vm._v("Steady on Captain!")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-37e1a187", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-775bcc18", module.exports)
   }
 }
 

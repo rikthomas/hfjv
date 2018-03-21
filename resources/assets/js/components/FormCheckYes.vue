@@ -1,28 +1,20 @@
 <template>
-		<p class="control is-expanded">
-			<label class="label">{{ label }}</label>
-			<label class="radio">
-		        <input type="radio" v-model="value" :name="name" value="yes" @change="updateYN">
-		        Yes
-		      </label>
-		      <label class="radio">
-		        <input type="radio" v-model="value" :name="name" value="no" @change="updateYN">
-		        No
-		    </label>&nbsp
-		    <i class="fas fa-check-circle" style="color:green" v-if="isTicked"></i>
-		</p>
+	<div class="field">
+		<input type="checkbox" class="is-checkradio" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" :id="name" v-model="value" @change="updateYN">
+		<label :for="name">{{ label }}</label>
+	</div>
 </template>
 
 <script>
 
-	export default {
+export default {
 
-		props: ['label', 'name', 'checked'],
+		props: ['label', 'name'],
 
 		data() {
 			return{
 				value: '',
-				isTicked: false
+				isSuccess: true,
 			}
 		},
 
@@ -33,14 +25,15 @@
 		methods: {
 			updateYN()
 			{
+				this.isSuccess = false;
 				let field = this.name;
 				let newValue = this.value;
 	            axios.put('/patient/update/' + patient.id, {
 	                field: field,
 	                value: newValue,
 	            }).then(() => {
+	            	this.isSuccess = true;
 	            	patient[this.name] = newValue;
-	                this.isTicked = true;
 	                if (this.name=='cvs'){Event.$emit('cvsDrop', this.value);}
 	                if (this.name=='resp'){Event.$emit('respDrop', this.value);}
 	                if (this.name=='pft'){Event.$emit('pftDrop', this.value);}
