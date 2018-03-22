@@ -18,6 +18,8 @@ Vue.component('form-check-yes', require('./components/FormCheckYes.vue'));
 
 Vue.component('form-field-no-label', require('./components/FormFieldNoLabel'));
 
+Vue.component('form-charlson', require('./components/FormCharlson.vue'));
+
 new Vue({
 	el: '#app',
 

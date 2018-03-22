@@ -339,6 +339,8 @@ Vue.component('form-check-yes', __webpack_require__(70));
 
 Vue.component('form-field-no-label', __webpack_require__(73));
 
+Vue.component('form-charlson', __webpack_require__(76));
+
 new Vue({
 	el: '#app',
 
@@ -1094,9 +1096,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -1126,6 +1125,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				value: newValue
 			}).then(function () {
 				_this.isSuccess = true;
+				patient.lvef = newValue;
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -2254,6 +2254,546 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-775bcc18", module.exports)
+  }
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(77)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormCharlson.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6f80dc97", Component.options)
+  } else {
+    hotAPI.reload("data-v-6f80dc97", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			liver: '',
+			tumour: '',
+			diabetes: '',
+			isSuccess: true,
+			isSuccessT: true,
+			isSuccessD: true
+		};
+	},
+	created: function created() {
+		this.liver = patient.liver;
+		this.tumour = patient.tumour;
+		this.diabetes = patient.diabetes;
+	},
+
+
+	methods: {
+		updateLiver: function updateLiver() {
+			var _this = this;
+
+			this.isSuccess = false;
+			var newValue = this.liver;
+			axios.put('/patient/update/' + patient.id, {
+				field: 'liver',
+				value: newValue
+			}).then(function () {
+				_this.isSuccess = true;
+				patient.liver = newValue;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		updateDiabetes: function updateDiabetes() {
+			var _this2 = this;
+
+			this.isSuccessD = false;
+			var newValue = this.diabetes;
+			axios.put('/patient/update/' + patient.id, {
+				field: 'diabetes',
+				value: newValue
+			}).then(function () {
+				_this2.isSuccessD = true;
+				patient.diabetes = newValue;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		updateTumour: function updateTumour() {
+			var _this3 = this;
+
+			this.isSuccessT = false;
+			var newValue = this.tumour;
+			axios.put('/patient/update/' + patient.id, {
+				field: 'tumour',
+				value: newValue
+			}).then(function () {
+				_this3.isSuccessT = true;
+				patient.tumour = newValue;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-check-yes", { attrs: { label: "MI", name: "mi" } }),
+        _vm._v(" "),
+        _c("form-check-yes", { attrs: { label: "CCF", name: "ccf" } }),
+        _vm._v(" "),
+        _c("form-check-yes", { attrs: { label: "PVD", name: "pvd" } }),
+        _vm._v(" "),
+        _c("form-check-yes", { attrs: { label: "CVD", name: "cvd" } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-check-yes", {
+          attrs: { label: "Dementia", name: "dementia" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", {
+          attrs: { label: "Chronic Pulmonary Disease", name: "pulmonary" }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-check-yes", {
+          attrs: { label: "Connective Tissue Disease", name: "tissue" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", { attrs: { label: "PUD", name: "pud" } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-check-yes", {
+          attrs: { label: "Moderate to Severe RF", name: "renal" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", {
+          attrs: { label: "Hemiplegia", name: "hemiplegia" }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field is-grouped" },
+      [
+        _c("form-check-yes", {
+          attrs: { label: "Leukaemia", name: "leukaemia" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", {
+          attrs: { label: "Lymphoma", name: "lymphoma" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", { attrs: { label: "AIDS", name: "aids" } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "field" }, [
+      _c("p", { staticClass: "control is-expanded" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Diabetes")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.diabetes,
+              expression: "diabetes"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccessD, "is-danger": !_vm.isSuccessD },
+          attrs: { type: "radio", id: "diabetes0", value: "0" },
+          domProps: { checked: _vm._q(_vm.diabetes, "0") },
+          on: {
+            change: [
+              function($event) {
+                _vm.diabetes = "0"
+              },
+              _vm.updateDiabetes
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "diabetes0" } }, [_vm._v("No")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.diabetes,
+              expression: "diabetes"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccessD, "is-danger": !_vm.isSuccessD },
+          attrs: { type: "radio", id: "diabetes1", value: "1" },
+          domProps: { checked: _vm._q(_vm.diabetes, "1") },
+          on: {
+            change: [
+              function($event) {
+                _vm.diabetes = "1"
+              },
+              _vm.updateDiabetes
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "diabetes1" } }, [_vm._v("Uncomplicated")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.diabetes,
+              expression: "diabetes"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccessD, "is-danger": !_vm.isSuccessD },
+          attrs: { type: "radio", id: "diabetes2", value: "2" },
+          domProps: { checked: _vm._q(_vm.diabetes, "2") },
+          on: {
+            change: [
+              function($event) {
+                _vm.diabetes = "2"
+              },
+              _vm.updateDiabetes
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "diabetes2" } }, [
+          _vm._v("End-Organ Damage")
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "field" }, [
+      _c("p", { staticClass: "control is-expanded" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Solid Tumour")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.tumour,
+              expression: "tumour"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccessT, "is-danger": !_vm.isSuccessT },
+          attrs: { type: "radio", id: "tumour0", value: "0" },
+          domProps: { checked: _vm._q(_vm.tumour, "0") },
+          on: {
+            change: [
+              function($event) {
+                _vm.tumour = "0"
+              },
+              _vm.updateTumour
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "tumour0" } }, [_vm._v("No")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.tumour,
+              expression: "tumour"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccessT, "is-danger": !_vm.isSuccessT },
+          attrs: { type: "radio", id: "tumour1", value: "2" },
+          domProps: { checked: _vm._q(_vm.tumour, "2") },
+          on: {
+            change: [
+              function($event) {
+                _vm.tumour = "2"
+              },
+              _vm.updateTumour
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "tumour1" } }, [_vm._v("Yes")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.tumour,
+              expression: "tumour"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccessT, "is-danger": !_vm.isSuccessT },
+          attrs: { type: "radio", id: "tumour2", value: "6" },
+          domProps: { checked: _vm._q(_vm.tumour, "6") },
+          on: {
+            change: [
+              function($event) {
+                _vm.tumour = "6"
+              },
+              _vm.updateTumour
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "tumour2" } }, [_vm._v("Metastatic")])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "field" }, [
+      _c("p", { staticClass: "control is-expanded" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Liver Disease")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.liver,
+              expression: "liver"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { type: "radio", id: "liver0", value: "0" },
+          domProps: { checked: _vm._q(_vm.liver, "0") },
+          on: {
+            change: [
+              function($event) {
+                _vm.liver = "0"
+              },
+              _vm.updateLiver
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "liver0" } }, [_vm._v("None")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.liver,
+              expression: "liver"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { type: "radio", id: "liver1", value: "1" },
+          domProps: { checked: _vm._q(_vm.liver, "1") },
+          on: {
+            change: [
+              function($event) {
+                _vm.liver = "1"
+              },
+              _vm.updateLiver
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "liver1" } }, [_vm._v("Mild")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.liver,
+              expression: "liver"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { type: "radio", id: "liver2", value: "3" },
+          domProps: { checked: _vm._q(_vm.liver, "3") },
+          on: {
+            change: [
+              function($event) {
+                _vm.liver = "3"
+              },
+              _vm.updateLiver
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "liver2" } }, [
+          _vm._v("Moderate to Severe")
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6f80dc97", module.exports)
   }
 }
 

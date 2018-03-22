@@ -58,6 +58,16 @@
                         </div>
                     </div>
                 </article>
+                <article class="message is-primary">
+                    <div class="message-header">
+                        <p>Charlson Comorbidity Index</p>
+                    </div>
+                    <div class="message-body">
+                        <div class="field">
+                            <form-charlson></form-charlson>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

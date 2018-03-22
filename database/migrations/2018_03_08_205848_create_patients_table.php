@@ -45,6 +45,21 @@ class CreatePatientsTable extends Migration
             $table->integer('fevfvc')->nullable();
             $table->integer('pefr')->nullable();
             $table->string('otherresp')->nullable();
+            $table->integer('aids')->nullable();
+            $table->integer('tumour')->nullable();
+            $table->integer('liver')->nullable();
+            $table->integer('ccf')->nullable();
+            $table->integer('pvd')->nullable();
+            $table->integer('cvd')->nullable();
+            $table->integer('dementia')->nullable();
+            $table->integer('tissue')->nullable();
+            $table->integer('pud')->nullable();
+            $table->integer('pulmonary')->nullable();
+            $table->integer('renal')->nullable();
+            $table->integer('hemiplegia')->nullable();
+            $table->integer('diabetes')->nullable();
+            $table->integer('leukaemia')->nullable();
+            $table->integer('lymphoma')->nullable();
             $table->timestamps();
         });
     }

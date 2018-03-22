@@ -14,13 +14,10 @@
 			    <label class="label has-text-danger">LVEF if known</label>
 			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef1" value="<35%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
 			        <label for="lvef1"><35%</label>
-			      </label>
 			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef2" value="35-50%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
 			        <label for="lvef2">35-50%</label>
-			      </label>
 			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef3" value=">50%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
 			        <label for="lvef3">>50%</label>
-			      </label>     
 			</p>
 		</div>
 		<div class="field is-grouped">
@@ -67,6 +64,7 @@
 	                value: newValue,
 	            }).then(() => {
 	                this.isSuccess = true;
+	                patient.lvef = newValue;
 	              })
 	              .catch(function (error) {
 	                console.log(error);
