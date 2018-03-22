@@ -56,8 +56,16 @@
 			        <label for="liver2">Moderate to Severe</label>   
 			</p>
 	</div>
-	
-
+	<div class="field is-grouped">
+		<p class="control is-expanded">
+          <label class="label">Charslon Score</label>
+          <input type="number" class="input" name="charslon" v-model="charlson" disabled>
+        </p>
+        <p class="control is-expanded">
+          <label class="label">10 Year Survival %</label>
+          <input type="number" class="input" name="tenyear" v-model="tenyear" disabled>
+        </p>	
+    </div>
 </div>
 </template>
 
@@ -77,6 +85,8 @@ import FormField from './FormField.vue';
 				isSuccess: true,
 				isSuccessT: true,
 				isSuccessD: true,
+				charlson: '',
+				tenyear: '',
 			}
 		},
 

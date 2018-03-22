@@ -2394,6 +2394,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2408,7 +2416,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			diabetes: '',
 			isSuccess: true,
 			isSuccessT: true,
-			isSuccessD: true
+			isSuccessD: true,
+			charlson: '',
+			tenyear: ''
 		};
 	},
 	created: function created() {
@@ -2796,6 +2806,60 @@ var render = function() {
         _c("label", { attrs: { for: "liver2" } }, [
           _vm._v("Moderate to Severe")
         ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "field is-grouped" }, [
+      _c("p", { staticClass: "control is-expanded" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("Charslon Score")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.charlson,
+              expression: "charlson"
+            }
+          ],
+          staticClass: "input",
+          attrs: { type: "number", name: "charslon", disabled: "" },
+          domProps: { value: _vm.charlson },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.charlson = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "control is-expanded" }, [
+        _c("label", { staticClass: "label" }, [_vm._v("10 Year Survival %")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.tenyear,
+              expression: "tenyear"
+            }
+          ],
+          staticClass: "input",
+          attrs: { type: "number", name: "tenyear", disabled: "" },
+          domProps: { value: _vm.tenyear },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.tenyear = $event.target.value
+            }
+          }
+        })
       ])
     ])
   ])
