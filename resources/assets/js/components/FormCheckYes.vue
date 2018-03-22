@@ -20,8 +20,6 @@ export default {
 
 		created() {
 			this.value = patient[this.name];
-			if (this.name=='mi') Event.$on('miCheck', (value) => { this.value = value });
-			if (this.name=='cvs') Event.$on('miCheck', (value) => { this.value = value });
 		},
 
 		methods: {
@@ -39,7 +37,6 @@ export default {
 	                if (this.name=='cvs'){Event.$emit('cvsDrop', this.value);}
 	                if (this.name=='resp'){Event.$emit('respDrop', this.value);}
 	                if (this.name=='pft'){Event.$emit('pftDrop', this.value);}
-	                if (this.name=='mi'){Event.$emit('miCheck', this.value);}
 	                if (this.name=='mi' || this.name=='ccf' || this.name=='pvd' || this.name=='cvd' || this.name=='pud'
 	                	|| this.name=='leukaemia' || this.name=='lymphoma' || this.name=='aids' || this.name=='pulmonary'
 	                	|| this.name=='tissue' || this.name=='renal' || this.name=='hemiplegia' || this.name=='dementia') {

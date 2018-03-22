@@ -374,9 +374,6 @@ new Vue({
 			});
 			_this.modalVisible = false;
 		});
-		Event.$on('miCheck', function (value) {
-			_this.cvsVisible = value == 1 ? true : false;
-		});
 		Event.$on('cvsDrop', function (value) {
 			if (value === true) {
 				this.cvsVisible = true;
@@ -1097,7 +1094,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -1166,13 +1162,11 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-check-yes", { attrs: { label: "Previous MI?", name: "mi" } }),
-        _vm._v(" "),
         _c("form-check-yes", {
           attrs: { label: "Any stents?", name: "stents" }
         }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "CVA?", name: "cva" } })
+        _c("form-check-yes", { attrs: { label: "Previous CVA?", name: "cva" } })
       ],
       1
     ),
@@ -1991,21 +1985,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	created: function created() {
-		var _this = this;
-
 		this.value = patient[this.name];
-		if (this.name == 'mi') Event.$on('miCheck', function (value) {
-			_this.value = value;
-		});
-		if (this.name == 'cvs') Event.$on('miCheck', function (value) {
-			_this.value = value;
-		});
 	},
 
 
 	methods: {
 		updateYN: function updateYN() {
-			var _this2 = this;
+			var _this = this;
 
 			this.isSuccess = false;
 			var field = this.name;
@@ -2014,22 +2000,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: field,
 				value: newValue
 			}).then(function () {
-				_this2.isSuccess = true;
-				patient[_this2.name] = newValue;
-				if (_this2.name == 'cvs') {
-					Event.$emit('cvsDrop', _this2.value);
+				_this.isSuccess = true;
+				patient[_this.name] = newValue;
+				if (_this.name == 'cvs') {
+					Event.$emit('cvsDrop', _this.value);
 				}
-				if (_this2.name == 'resp') {
-					Event.$emit('respDrop', _this2.value);
+				if (_this.name == 'resp') {
+					Event.$emit('respDrop', _this.value);
 				}
-				if (_this2.name == 'pft') {
-					Event.$emit('pftDrop', _this2.value);
+				if (_this.name == 'pft') {
+					Event.$emit('pftDrop', _this.value);
 				}
-				if (_this2.name == 'mi') {
-					Event.$emit('miCheck', _this2.value);
-				}
-				if (_this2.name == 'mi' || _this2.name == 'ccf' || _this2.name == 'pvd' || _this2.name == 'cvd' || _this2.name == 'pud' || _this2.name == 'leukaemia' || _this2.name == 'lymphoma' || _this2.name == 'aids' || _this2.name == 'pulmonary' || _this2.name == 'tissue' || _this2.name == 'renal' || _this2.name == 'hemiplegia' || _this2.name == 'dementia') {
-					_this2.function();
+				if (_this.name == 'mi' || _this.name == 'ccf' || _this.name == 'pvd' || _this.name == 'cvd' || _this.name == 'pud' || _this.name == 'leukaemia' || _this.name == 'lymphoma' || _this.name == 'aids' || _this.name == 'pulmonary' || _this.name == 'tissue' || _this.name == 'renal' || _this.name == 'hemiplegia' || _this.name == 'dementia') {
+					_this.function();
 				}
 			}).catch(function (error) {
 				console.log(error);

@@ -5,9 +5,8 @@
 			<form-field-no-label type="number" placeholder="number of antihypertensives" name="antiht"></form-field-no-label>
 		</div>
 		<div class="field is-grouped">
-			<form-check-yes label="Previous MI?" name="mi"></form-check-yes>
 			<form-check-yes label="Any stents?" name="stents"></form-check-yes>
-			<form-check-yes label="CVA?" name="cva"></form-check-yes>
+			<form-check-yes label="Previous CVA?" name="cva"></form-check-yes>
 		</div>
 		<div class="field">
 			<p class="control is-expanded">

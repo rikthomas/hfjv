@@ -48,7 +48,6 @@ new Vue({
 				})
 				this.modalVisible = false;
 	        });
-		Event.$on('miCheck', (value) => { this.cvsVisible = value==1 ? true : false});
 		Event.$on('cvsDrop', function(value){
 			if (value===true)
 			{
