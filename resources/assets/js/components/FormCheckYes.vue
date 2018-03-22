@@ -9,7 +9,7 @@
 
 export default {
 
-		props: ['label', 'name'],
+		props: ['label', 'name', 'function'],
 
 		data() {
 			return{
@@ -40,6 +40,11 @@ export default {
 	                if (this.name=='resp'){Event.$emit('respDrop', this.value);}
 	                if (this.name=='pft'){Event.$emit('pftDrop', this.value);}
 	                if (this.name=='mi'){Event.$emit('miCheck', this.value);}
+	                if (this.name=='mi' || this.name=='ccf' || this.name=='pvd' || this.name=='cvd' || this.name=='pud'
+	                	|| this.name=='leukaemia' || this.name=='lymphoma' || this.name=='aids' || this.name=='pulmonary'
+	                	|| this.name=='tissue' || this.name=='renal' || this.name=='hemiplegia' || this.name=='dementia') {
+	                	this.function();
+	                }
 	              })
 	              .catch(function (error) {
 	                console.log(error);

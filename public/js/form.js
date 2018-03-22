@@ -1982,7 +1982,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-	props: ['label', 'name'],
+	props: ['label', 'name', 'function'],
 
 	data: function data() {
 		return {
@@ -2027,6 +2027,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 				if (_this2.name == 'mi') {
 					Event.$emit('miCheck', _this2.value);
+				}
+				if (_this2.name == 'mi' || _this2.name == 'ccf' || _this2.name == 'pvd' || _this2.name == 'cvd' || _this2.name == 'pud' || _this2.name == 'leukaemia' || _this2.name == 'lymphoma' || _this2.name == 'aids' || _this2.name == 'pulmonary' || _this2.name == 'tissue' || _this2.name == 'renal' || _this2.name == 'hemiplegia' || _this2.name == 'dementia') {
+					_this2.function();
 				}
 			}).catch(function (error) {
 				console.log(error);
@@ -2422,6 +2425,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		this.liver = patient.liver;
 		this.tumour = patient.tumour;
 		this.diabetes = patient.diabetes;
+		this.charlson = patient.charlson;
+		this.tenyear = patient.tenyear;
 	},
 
 
@@ -2437,6 +2442,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).then(function () {
 				_this.isSuccess = true;
 				patient.liver = newValue;
+				_this.calcCharlson();
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -2452,6 +2458,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).then(function () {
 				_this2.isSuccessD = true;
 				patient.diabetes = newValue;
+				_this2.calcCharlson();
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -2467,12 +2474,80 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).then(function () {
 				_this3.isSuccessT = true;
 				patient.tumour = newValue;
+				_this3.calcCharlson();
 			}).catch(function (error) {
 				console.log(error);
 			});
+		},
+		calcCharlson: function calcCharlson() {
+			if (patient.age < 50) {
+				var age = 0;
+			} else if (patient.age >= 50 && patient.age < 60) {
+				var age = 1;
+			} else if (patient.age >= 60 && patient.age < 70) {
+				var age = 2;
+			} else {
+				var age = 3;
+			}
+			var mi = patient.mi == 1 ? 1 : 0;
+			var ccf = patient.ccf == 1 ? 1 : 0;
+			var pvd = patient.pvd == 1 ? 1 : 0;
+			var cvd = patient.cvd == 1 ? 1 : 0;
+			var pud = patient.pud == 1 ? 1 : 0;
+			var leukaemia = patient.leukaemia == 1 ? 2 : 0;
+			var lymphoma = patient.lymphoma == 1 ? 2 : 0;
+			var aids = patient.aids == 1 ? 6 : 0;
+			var pulmonary = patient.pulmonary == 1 ? 1 : 0;
+			var tissue = patient.tissue == 1 ? 1 : 0;
+			var renal = patient.renal == 1 ? 2 : 0;
+			var hemiplegia = patient.hemiplegia == 1 ? 2 : 0;
+			var dementia = patient.dementia == 1 ? 1 : 0;
+			var diabetes = isNaN(parseInt(patient.diabetes)) ? 0 : parseInt(patient.diabetes);
+			var tumour = isNaN(parseInt(patient.tumour)) ? 0 : parseInt(patient.tumour);
+			var liver = isNaN(parseInt(patient.liver)) ? 0 : parseInt(patient.liver);
+			var cci = age + mi + ccf + pvd + cvd + pud + leukaemia + lymphoma + aids + pulmonary + tissue + renal + hemiplegia + dementia + diabetes + tumour + liver;
+			console.log('age:' + age);
+			console.log('mi:' + mi);
+			console.log('ccf:' + ccf);
+			console.log('pvd:' + pvd);
+			console.log('cvd:' + cvd);
+			console.log('pud:' + pud);
+			console.log('leukaemia:' + leukaemia);
+			console.log('lymphoma:' + lymphoma);
+			console.log('aids:' + aids);
+			console.log('pulmonary:' + pulmonary);
+			console.log('tissue:' + tissue);
+			console.log('renal:' + renal);
+			console.log('hemiplegia:' + hemiplegia);
+			console.log('dementia:' + dementia);
+			console.log('diabetes:' + diabetes);
+			console.log('tumour:' + tumour);
+			console.log('liver:' + liver);
+			var ten = Math.exp(cci * 0.9);
+			var teny = 100 * Math.pow(0.983, ten);
+			var tenyear = Math.round(teny * 10) / 10;
+			this.charlson = cci;
+			this.tenyear = tenyear;
+		}
+	},
+	watch: {
+		charlson: function charlson() {
+			if (isFinite(this.charlson)) {
+				axios.put('/patient/update/' + patient.id, {
+					field: 'charlson',
+					value: this.charlson
+				});
+			}
+		},
+		tenyear: function tenyear() {
+			if (isFinite(this.tenyear)) {
+				axios.put('/patient/update/' + patient.id, {
+					field: 'tenyear',
+					value: this.tenyear
+				});
+			}
 		}
 	}
-
 });
 
 /***/ }),
@@ -2488,15 +2563,25 @@ var render = function() {
       "div",
       { staticClass: "field is-grouped" },
       [
-        _c("form-check-yes", { attrs: { label: "MI", name: "mi" } }),
+        _c("form-check-yes", {
+          attrs: { label: "MI", name: "mi", function: _vm.calcCharlson }
+        }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "CCF", name: "ccf" } }),
+        _c("form-check-yes", {
+          attrs: { label: "CCF", name: "ccf", function: _vm.calcCharlson }
+        }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "PVD", name: "pvd" } }),
+        _c("form-check-yes", {
+          attrs: { label: "PVD", name: "pvd", function: _vm.calcCharlson }
+        }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "CVD", name: "cvd" } }),
+        _c("form-check-yes", {
+          attrs: { label: "CVD", name: "cvd", function: _vm.calcCharlson }
+        }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "PUD", name: "pud" } })
+        _c("form-check-yes", {
+          attrs: { label: "PUD", name: "pud", function: _vm.calcCharlson }
+        })
       ],
       1
     ),
@@ -2506,14 +2591,24 @@ var render = function() {
       { staticClass: "field is-grouped" },
       [
         _c("form-check-yes", {
-          attrs: { label: "Leukaemia", name: "leukaemia" }
+          attrs: {
+            label: "Leukaemia",
+            name: "leukaemia",
+            function: _vm.calcCharlson
+          }
         }),
         _vm._v(" "),
         _c("form-check-yes", {
-          attrs: { label: "Lymphoma", name: "lymphoma" }
+          attrs: {
+            label: "Lymphoma",
+            name: "lymphoma",
+            function: _vm.calcCharlson
+          }
         }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "AIDS", name: "aids" } })
+        _c("form-check-yes", {
+          attrs: { label: "AIDS", name: "aids", function: _vm.calcCharlson }
+        })
       ],
       1
     ),
@@ -2523,22 +2618,44 @@ var render = function() {
       { staticClass: "field" },
       [
         _c("form-check-yes", {
-          attrs: { label: "Chronic Pulmonary Disease", name: "pulmonary" }
+          attrs: {
+            label: "Chronic Pulmonary Disease",
+            name: "pulmonary",
+            function: _vm.calcCharlson
+          }
         }),
         _vm._v(" "),
         _c("form-check-yes", {
-          attrs: { label: "Connective Tissue Disease", name: "tissue" }
+          attrs: {
+            label: "Connective Tissue Disease",
+            name: "tissue",
+            function: _vm.calcCharlson
+          }
         }),
         _vm._v(" "),
         _c("form-check-yes", {
-          attrs: { label: "Moderate to Severe Renal Failure", name: "renal" }
+          attrs: {
+            label: "Moderate to Severe Renal Failure",
+            name: "renal",
+            function: _vm.calcCharlson
+          }
         }),
         _vm._v(" "),
         _c("form-check-yes", {
-          attrs: { label: "Hemiplegia", name: "hemiplegia" }
+          attrs: {
+            label: "Hemiplegia",
+            name: "hemiplegia",
+            function: _vm.calcCharlson
+          }
         }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "Dementia", name: "dementia" } })
+        _c("form-check-yes", {
+          attrs: {
+            label: "Dementia",
+            name: "dementia",
+            function: _vm.calcCharlson
+          }
+        })
       ],
       1
     ),

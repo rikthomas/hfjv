@@ -1,23 +1,23 @@
 <template>
 <div>
 	<div class="field is-grouped">
-			<form-check-yes label="MI" name="mi"></form-check-yes>
-			<form-check-yes label="CCF" name="ccf"></form-check-yes>
-			<form-check-yes label="PVD" name="pvd"></form-check-yes>
-			<form-check-yes label="CVD" name="cvd"></form-check-yes>
-			<form-check-yes label="PUD" name="pud"></form-check-yes>
+			<form-check-yes label="MI" name="mi" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="CCF" name="ccf" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="PVD" name="pvd" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="CVD" name="cvd" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="PUD" name="pud" :function="calcCharlson"></form-check-yes>
 	</div>
 	<div class="field is-grouped">
-			<form-check-yes label="Leukaemia" name="leukaemia"></form-check-yes>
-			<form-check-yes label="Lymphoma" name="lymphoma"></form-check-yes>
-			<form-check-yes label="AIDS" name="aids"></form-check-yes>
+			<form-check-yes label="Leukaemia" name="leukaemia" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="Lymphoma" name="lymphoma" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="AIDS" name="aids" :function="calcCharlson"></form-check-yes>
 	</div>
 	<div class="field">
-			<form-check-yes label="Chronic Pulmonary Disease" name="pulmonary"></form-check-yes>
-			<form-check-yes label="Connective Tissue Disease" name="tissue"></form-check-yes>
-			<form-check-yes label="Moderate to Severe Renal Failure" name="renal"></form-check-yes>
-			<form-check-yes label="Hemiplegia" name="hemiplegia"></form-check-yes>
-			<form-check-yes label="Dementia" name="dementia"></form-check-yes>
+			<form-check-yes label="Chronic Pulmonary Disease" name="pulmonary" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="Connective Tissue Disease" name="tissue" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="Moderate to Severe Renal Failure" name="renal" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="Hemiplegia" name="hemiplegia" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="Dementia" name="dementia" :function="calcCharlson"></form-check-yes>
 	</div>
 	
 	<div class="field">
@@ -83,7 +83,7 @@ import FormField from './FormField.vue';
 				isSuccessT: true,
 				isSuccessD: true,
 				charlson: '',
-				tenyear: '',
+				tenyear: ''
 			}
 		},
 
@@ -91,6 +91,8 @@ import FormField from './FormField.vue';
 			this.liver = patient.liver;
 			this.tumour = patient.tumour;
 			this.diabetes = patient.diabetes;
+			this.charlson = patient.charlson;
+			this.tenyear = patient.tenyear;
 		},
 
 		methods: {
@@ -104,6 +106,7 @@ import FormField from './FormField.vue';
 	            }).then(() => {
 	                this.isSuccess = true;
 	                patient.liver = newValue;
+	                this.calcCharlson();
 	              })
 	              .catch(function (error) {
 	                console.log(error);
@@ -119,6 +122,7 @@ import FormField from './FormField.vue';
 	            }).then(() => {
 	                this.isSuccessD = true;
 	                patient.diabetes = newValue;
+	                this.calcCharlson();
 	              })
 	              .catch(function (error) {
 	                console.log(error);
@@ -134,14 +138,83 @@ import FormField from './FormField.vue';
 	            }).then(() => {
 	                this.isSuccessT = true;
 	                patient.tumour = newValue;
+	                this.calcCharlson();
 	              })
 	              .catch(function (error) {
 	                console.log(error);
 	              });         
+			},
+			calcCharlson() {
+			 if (patient.age < 50) {
+			 	var age = 0;
+			 } else if (patient.age >= 50 && patient.age < 60) {
+			 	var age = 1;
+			 } else if (patient.age >= 60 && patient.age < 70) {
+			 	var age = 2;
+			 } else {
+			 	var age = 3;
+			 }
+			 var mi = patient.mi==1 ? 1 : 0;
+			 var ccf = patient.ccf==1 ? 1 : 0;
+			 var pvd = patient.pvd==1 ? 1 : 0;
+			 var cvd = patient.cvd==1 ? 1 : 0;
+			 var pud = patient.pud==1 ? 1 : 0;
+			 var leukaemia = patient.leukaemia==1 ? 2 : 0;
+			 var lymphoma = patient.lymphoma==1 ? 2 : 0;
+			 var aids = patient.aids==1 ? 6 : 0;
+			 var pulmonary = patient.pulmonary==1 ? 1 : 0;
+			 var tissue = patient.tissue==1 ? 1 : 0;
+			 var renal = patient.renal==1 ? 2 : 0;
+			 var hemiplegia = patient.hemiplegia==1 ? 2 : 0;
+			 var dementia = patient.dementia==1 ? 1 : 0;
+			 var diabetes = isNaN(parseInt(patient.diabetes)) ? 0 : parseInt(patient.diabetes);
+			 var tumour = isNaN(parseInt(patient.tumour)) ? 0 : parseInt(patient.tumour);
+			 var liver = isNaN(parseInt(patient.liver)) ? 0 : parseInt(patient.liver);
+			 var cci = (age + mi + ccf + pvd + cvd + pud + leukaemia + lymphoma + aids
+			 	+ pulmonary + tissue + renal + hemiplegia + dementia + diabetes + tumour + liver);
+			 console.log('age:' + age);
+			 console.log('mi:' + mi);
+			 console.log('ccf:' + ccf);
+			 console.log('pvd:' + pvd);
+			 console.log('cvd:' + cvd);
+			 console.log('pud:' + pud);
+			 console.log('leukaemia:' + leukaemia);
+			 console.log('lymphoma:' + lymphoma);
+			 console.log('aids:' + aids);
+			 console.log('pulmonary:' + pulmonary);
+			 console.log('tissue:' + tissue);
+			 console.log('renal:' + renal);
+			 console.log('hemiplegia:' + hemiplegia);
+			 console.log('dementia:' + dementia);
+			 console.log('diabetes:' + diabetes);
+			 console.log('tumour:' + tumour);
+			 console.log('liver:' + liver);
+			 var ten = Math.exp(cci*0.9);
+			 var teny = 100*(Math.pow(0.983, ten));
+			 var tenyear = Math.round( teny * 10 ) / 10;
+			 this.charlson = cci;
+			 this.tenyear = tenyear;
+
+		},
+	},
+	watch: {
+		charlson: function() {
+			if(isFinite(this.charlson)){
+			axios.put('/patient/update/' + patient.id, {
+	                field: 'charlson',
+	                value: this.charlson,
+	            })
 			}
 		},
-
-
+		tenyear: function () {
+			if(isFinite(this.tenyear)){
+			axios.put('/patient/update/' + patient.id, {
+	                field: 'tenyear',
+	                value: this.tenyear,
+	            })
+			}
+		}
+	}
 }
 
 </script>
