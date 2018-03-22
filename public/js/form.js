@@ -374,7 +374,9 @@ new Vue({
 			});
 			_this.modalVisible = false;
 		});
-		//Event.$on('cvsDrop', (value) => { this.cvsVisible = value=='yes' ? true : false});
+		Event.$on('miCheck', function (value) {
+			_this.cvsVisible = value == 1 ? true : false;
+		});
 		Event.$on('cvsDrop', function (value) {
 			if (value === true) {
 				this.cvsVisible = true;
@@ -1989,13 +1991,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.value = patient[this.name];
+		if (this.name == 'mi') Event.$on('miCheck', function (value) {
+			_this.value = value;
+		});
+		if (this.name == 'cvs') Event.$on('miCheck', function (value) {
+			_this.value = value;
+		});
 	},
 
 
 	methods: {
 		updateYN: function updateYN() {
-			var _this = this;
+			var _this2 = this;
 
 			this.isSuccess = false;
 			var field = this.name;
@@ -2004,16 +2014,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: field,
 				value: newValue
 			}).then(function () {
-				_this.isSuccess = true;
-				patient[_this.name] = newValue;
-				if (_this.name == 'cvs') {
-					Event.$emit('cvsDrop', _this.value);
+				_this2.isSuccess = true;
+				patient[_this2.name] = newValue;
+				if (_this2.name == 'cvs') {
+					Event.$emit('cvsDrop', _this2.value);
 				}
-				if (_this.name == 'resp') {
-					Event.$emit('respDrop', _this.value);
+				if (_this2.name == 'resp') {
+					Event.$emit('respDrop', _this2.value);
 				}
-				if (_this.name == 'pft') {
-					Event.$emit('pftDrop', _this.value);
+				if (_this2.name == 'pft') {
+					Event.$emit('pftDrop', _this2.value);
+				}
+				if (_this2.name == 'mi') {
+					Event.$emit('miCheck', _this2.value);
 				}
 			}).catch(function (error) {
 				console.log(error);
