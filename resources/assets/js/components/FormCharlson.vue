@@ -5,24 +5,21 @@
 			<form-check-yes label="CCF" name="ccf"></form-check-yes>
 			<form-check-yes label="PVD" name="pvd"></form-check-yes>
 			<form-check-yes label="CVD" name="cvd"></form-check-yes>
-	</div>
-	<div class="field is-grouped">
-			<form-check-yes label="Dementia" name="dementia"></form-check-yes>
-			<form-check-yes label="Chronic Pulmonary Disease" name="pulmonary"></form-check-yes>
-	</div>
-	<div class="field is-grouped">
-			<form-check-yes label="Connective Tissue Disease" name="tissue"></form-check-yes>
 			<form-check-yes label="PUD" name="pud"></form-check-yes>
-	</div>
-	<div class="field is-grouped">
-			<form-check-yes label="Moderate to Severe RF" name="renal"></form-check-yes>
-			<form-check-yes label="Hemiplegia" name="hemiplegia"></form-check-yes>
 	</div>
 	<div class="field is-grouped">
 			<form-check-yes label="Leukaemia" name="leukaemia"></form-check-yes>
 			<form-check-yes label="Lymphoma" name="lymphoma"></form-check-yes>
 			<form-check-yes label="AIDS" name="aids"></form-check-yes>
 	</div>
+	<div class="field">
+			<form-check-yes label="Chronic Pulmonary Disease" name="pulmonary"></form-check-yes>
+			<form-check-yes label="Connective Tissue Disease" name="tissue"></form-check-yes>
+			<form-check-yes label="Moderate to Severe Renal Failure" name="renal"></form-check-yes>
+			<form-check-yes label="Hemiplegia" name="hemiplegia"></form-check-yes>
+			<form-check-yes label="Dementia" name="dementia"></form-check-yes>
+	</div>
+	
 	<div class="field">
 			<p class="control is-expanded">
 			    <label class="label">Diabetes</label>

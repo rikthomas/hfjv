@@ -2399,9 +2399,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -2497,50 +2494,9 @@ var render = function() {
         _vm._v(" "),
         _c("form-check-yes", { attrs: { label: "PVD", name: "pvd" } }),
         _vm._v(" "),
-        _c("form-check-yes", { attrs: { label: "CVD", name: "cvd" } })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "field is-grouped" },
-      [
-        _c("form-check-yes", {
-          attrs: { label: "Dementia", name: "dementia" }
-        }),
-        _vm._v(" "),
-        _c("form-check-yes", {
-          attrs: { label: "Chronic Pulmonary Disease", name: "pulmonary" }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "field is-grouped" },
-      [
-        _c("form-check-yes", {
-          attrs: { label: "Connective Tissue Disease", name: "tissue" }
-        }),
+        _c("form-check-yes", { attrs: { label: "CVD", name: "cvd" } }),
         _vm._v(" "),
         _c("form-check-yes", { attrs: { label: "PUD", name: "pud" } })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "field is-grouped" },
-      [
-        _c("form-check-yes", {
-          attrs: { label: "Moderate to Severe RF", name: "renal" }
-        }),
-        _vm._v(" "),
-        _c("form-check-yes", {
-          attrs: { label: "Hemiplegia", name: "hemiplegia" }
-        })
       ],
       1
     ),
@@ -2558,6 +2514,31 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("form-check-yes", { attrs: { label: "AIDS", name: "aids" } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "field" },
+      [
+        _c("form-check-yes", {
+          attrs: { label: "Chronic Pulmonary Disease", name: "pulmonary" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", {
+          attrs: { label: "Connective Tissue Disease", name: "tissue" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", {
+          attrs: { label: "Moderate to Severe Renal Failure", name: "renal" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", {
+          attrs: { label: "Hemiplegia", name: "hemiplegia" }
+        }),
+        _vm._v(" "),
+        _c("form-check-yes", { attrs: { label: "Dementia", name: "dementia" } })
       ],
       1
     ),
