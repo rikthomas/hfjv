@@ -20,6 +20,8 @@ Vue.component('form-field-no-label', require('./components/FormFieldNoLabel'));
 
 Vue.component('form-charlson', require('./components/FormCharlson.vue'));
 
+Vue.component('form-ecog', require('./components/FormEcog.vue'));
+
 new Vue({
 	el: '#app',
 

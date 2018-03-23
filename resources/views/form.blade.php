@@ -3,7 +3,7 @@
 <div id='app'>
     <section class="section">
         <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
+            <div class="column is-three-fifths is-offset-one-fifth">
                 <article class="message">
                     <div class="message-header">
                         <p>Weights and Measures</p>
@@ -68,6 +68,7 @@
                         </div>
                     </div>
                 </article>
+                <form-ecog></form-ecog>
             </div>
         </div>
     </section>

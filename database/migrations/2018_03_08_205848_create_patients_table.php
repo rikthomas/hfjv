@@ -62,6 +62,7 @@ class CreatePatientsTable extends Migration
             $table->integer('lymphoma')->nullable();
             $table->integer('charlson')->nullable();
             $table->float('tenyear', 3, 1)->nullable();
+            $table->integer('ecog')->nullable();
             $table->timestamps();
         });
     }

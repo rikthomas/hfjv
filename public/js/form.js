@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -174,17 +174,15 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(47)
+var __vue_script__ = __webpack_require__(49)
 /* template */
-var __vue_template__ = __webpack_require__(48)
+var __vue_template__ = __webpack_require__(50)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -223,15 +221,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 5 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(52)
+var __vue_script__ = __webpack_require__(54)
 /* template */
-var __vue_template__ = __webpack_require__(53)
+var __vue_template__ = __webpack_require__(55)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -270,8 +268,102 @@ module.exports = Component.exports
 
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(58)
+/* template */
+var __vue_template__ = __webpack_require__(59)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormCheckYes.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8ed2244c", Component.options)
+  } else {
+    hotAPI.reload("data-v-8ed2244c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 5 */,
 /* 6 */,
-/* 7 */,
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormFieldNoLabel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-775bcc18", Component.options)
+  } else {
+    hotAPI.reload("data-v-775bcc18", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 8 */,
 /* 9 */,
 /* 10 */,
@@ -309,37 +401,41 @@ module.exports = Component.exports
 /* 42 */,
 /* 43 */,
 /* 44 */,
-/* 45 */
+/* 45 */,
+/* 46 */,
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(46);
+module.exports = __webpack_require__(48);
 
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 window.Event = new Vue();
 
-Vue.component('form-field', __webpack_require__(4));
+Vue.component('form-field', __webpack_require__(2));
 
-Vue.component('form-asa', __webpack_require__(49));
+Vue.component('form-asa', __webpack_require__(51));
 
-Vue.component('form-yes-no', __webpack_require__(5));
+Vue.component('form-yes-no', __webpack_require__(3));
 
-Vue.component('form-cvs', __webpack_require__(54));
+Vue.component('form-cvs', __webpack_require__(56));
 
-Vue.component('form-delete-cvs-modal', __webpack_require__(57));
+Vue.component('form-delete-cvs-modal', __webpack_require__(63));
 
-Vue.component('form-delete-resp-modal', __webpack_require__(60));
+Vue.component('form-delete-resp-modal', __webpack_require__(66));
 
-Vue.component('form-resp', __webpack_require__(63));
+Vue.component('form-resp', __webpack_require__(69));
 
-Vue.component('form-check-yes', __webpack_require__(70));
+Vue.component('form-check-yes', __webpack_require__(4));
 
-Vue.component('form-field-no-label', __webpack_require__(73));
+Vue.component('form-field-no-label', __webpack_require__(7));
 
-Vue.component('form-charlson', __webpack_require__(76));
+Vue.component('form-charlson', __webpack_require__(72));
+
+Vue.component('form-ecog', __webpack_require__(79));
 
 new Vue({
 	el: '#app',
@@ -439,7 +535,7 @@ new Vue({
 });
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -508,7 +604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -631,15 +727,15 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(52)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(53)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -678,7 +774,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -732,7 +828,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -854,7 +950,7 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -921,7 +1017,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -998,15 +1094,15 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(55)
+var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(56)
+var __vue_template__ = __webpack_require__(62)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1045,18 +1141,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__);
 //
 //
@@ -1133,7 +1229,320 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 56 */
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: ['label', 'name', 'function'],
+
+	data: function data() {
+		return {
+			value: '',
+			isSuccess: true
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+	},
+
+
+	methods: {
+		updateYN: function updateYN() {
+			var _this = this;
+
+			this.isSuccess = false;
+			var field = this.name;
+			var newValue = this.value;
+			axios.put('/patient/update/' + patient.id, {
+				field: field,
+				value: newValue
+			}).then(function () {
+				_this.isSuccess = true;
+				patient[_this.name] = newValue;
+				if (_this.name == 'cvs') {
+					Event.$emit('cvsDrop', _this.value);
+				}
+				if (_this.name == 'resp') {
+					Event.$emit('respDrop', _this.value);
+				}
+				if (_this.name == 'pft') {
+					Event.$emit('pftDrop', _this.value);
+				}
+				if (_this.name == 'mi' || _this.name == 'ccf' || _this.name == 'pvd' || _this.name == 'cvd' || _this.name == 'pud' || _this.name == 'leukaemia' || _this.name == 'lymphoma' || _this.name == 'aids' || _this.name == 'pulmonary' || _this.name == 'tissue' || _this.name == 'renal' || _this.name == 'hemiplegia' || _this.name == 'dementia') {
+					_this.function();
+				}
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "field" }, [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.value,
+          expression: "value"
+        }
+      ],
+      staticClass: "is-checkradio",
+      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+      attrs: { type: "checkbox", id: _vm.name },
+      domProps: {
+        checked: Array.isArray(_vm.value)
+          ? _vm._i(_vm.value, null) > -1
+          : _vm.value
+      },
+      on: {
+        change: [
+          function($event) {
+            var $$a = _vm.value,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false
+            if (Array.isArray($$a)) {
+              var $$v = null,
+                $$i = _vm._i($$a, $$v)
+              if ($$el.checked) {
+                $$i < 0 && (_vm.value = $$a.concat([$$v]))
+              } else {
+                $$i > -1 &&
+                  (_vm.value = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+              }
+            } else {
+              _vm.value = $$c
+            }
+          },
+          _vm.updateYN
+        ]
+      }
+    }),
+    _vm._v(" "),
+    _c("label", { attrs: { for: _vm.name } }, [_vm._v(_vm._s(_vm.label))])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8ed2244c", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: ['type', 'placeholder', 'name'],
+
+	data: function data() {
+		return {
+			value: '',
+			isDirty: false,
+			isSaved: false
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+		if (this.name == 'weight') {
+			Event.$emit('weight', this.value);
+		}
+		if (this.name == 'height') {
+			Event.$emit('height', this.value);
+		}
+	},
+
+
+	methods: {
+		updateField: function updateField() {
+			var _this = this;
+
+			if (this.value != patient[this.name]) {
+				var field = this.name;
+				var newValue = this.value;
+				axios.put('/patient/update/' + patient.id, {
+					field: field,
+					value: newValue
+				}).then(function () {
+					_this.isDirty = false;
+					_this.isSaved = true;
+					patient[_this.name] = newValue;
+					if (_this.name == 'weight') {
+						Event.$emit('weight', _this.value);
+					}
+					if (_this.name == 'height') {
+						Event.$emit('height', _this.value);
+					}
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		},
+		dirtyCheck: function dirtyCheck() {
+			this.isDirty = this.value != patient[this.name] ? true : false;
+		}
+	}
+
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("p", { staticClass: "control is-expanded" }, [
+    _vm.type === "checkbox"
+      ? _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.value,
+              expression: "value"
+            }
+          ],
+          staticClass: "input",
+          class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
+          attrs: {
+            placeholder: _vm.placeholder,
+            name: _vm.name,
+            type: "checkbox"
+          },
+          domProps: {
+            checked: Array.isArray(_vm.value)
+              ? _vm._i(_vm.value, null) > -1
+              : _vm.value
+          },
+          on: {
+            blur: _vm.updateField,
+            keyup: _vm.dirtyCheck,
+            change: function($event) {
+              var $$a = _vm.value,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.value = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.value = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.value = $$c
+              }
+            }
+          }
+        })
+      : _vm.type === "radio"
+        ? _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.value,
+                expression: "value"
+              }
+            ],
+            staticClass: "input",
+            class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
+            attrs: {
+              placeholder: _vm.placeholder,
+              name: _vm.name,
+              type: "radio"
+            },
+            domProps: { checked: _vm._q(_vm.value, null) },
+            on: {
+              blur: _vm.updateField,
+              keyup: _vm.dirtyCheck,
+              change: function($event) {
+                _vm.value = null
+              }
+            }
+          })
+        : _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.value,
+                expression: "value"
+              }
+            ],
+            staticClass: "input",
+            class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
+            attrs: {
+              placeholder: _vm.placeholder,
+              name: _vm.name,
+              type: _vm.type
+            },
+            domProps: { value: _vm.value },
+            on: {
+              blur: _vm.updateField,
+              keyup: _vm.dirtyCheck,
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.value = $event.target.value
+              }
+            }
+          })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-775bcc18", module.exports)
+  }
+}
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1317,15 +1726,15 @@ if (false) {
 }
 
 /***/ }),
-/* 57 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(58)
+var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(59)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1364,7 +1773,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 58 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1403,7 +1812,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 59 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1460,15 +1869,15 @@ if (false) {
 }
 
 /***/ }),
-/* 60 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(61)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(62)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1507,7 +1916,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 61 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1546,7 +1955,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 62 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1603,15 +2012,15 @@ if (false) {
 }
 
 /***/ }),
-/* 63 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(64)
+var __vue_script__ = __webpack_require__(70)
 /* template */
-var __vue_template__ = __webpack_require__(65)
+var __vue_template__ = __webpack_require__(71)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1650,16 +2059,16 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 64 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__);
 //
 //
@@ -1713,7 +2122,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 65 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1846,426 +2255,15 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(72)
-/* template */
-var __vue_template__ = __webpack_require__(71)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/FormCheckYes.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8ed2244c", Component.options)
-  } else {
-    hotAPI.reload("data-v-8ed2244c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "field" }, [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.value,
-          expression: "value"
-        }
-      ],
-      staticClass: "is-checkradio",
-      class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-      attrs: { type: "checkbox", id: _vm.name },
-      domProps: {
-        checked: Array.isArray(_vm.value)
-          ? _vm._i(_vm.value, null) > -1
-          : _vm.value
-      },
-      on: {
-        change: [
-          function($event) {
-            var $$a = _vm.value,
-              $$el = $event.target,
-              $$c = $$el.checked ? true : false
-            if (Array.isArray($$a)) {
-              var $$v = null,
-                $$i = _vm._i($$a, $$v)
-              if ($$el.checked) {
-                $$i < 0 && (_vm.value = $$a.concat([$$v]))
-              } else {
-                $$i > -1 &&
-                  (_vm.value = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-              }
-            } else {
-              _vm.value = $$c
-            }
-          },
-          _vm.updateYN
-        ]
-      }
-    }),
-    _vm._v(" "),
-    _c("label", { attrs: { for: _vm.name } }, [_vm._v(_vm._s(_vm.label))])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8ed2244c", module.exports)
-  }
-}
-
-/***/ }),
 /* 72 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-	props: ['label', 'name', 'function'],
-
-	data: function data() {
-		return {
-			value: '',
-			isSuccess: true
-		};
-	},
-	created: function created() {
-		this.value = patient[this.name];
-	},
-
-
-	methods: {
-		updateYN: function updateYN() {
-			var _this = this;
-
-			this.isSuccess = false;
-			var field = this.name;
-			var newValue = this.value;
-			axios.put('/patient/update/' + patient.id, {
-				field: field,
-				value: newValue
-			}).then(function () {
-				_this.isSuccess = true;
-				patient[_this.name] = newValue;
-				if (_this.name == 'cvs') {
-					Event.$emit('cvsDrop', _this.value);
-				}
-				if (_this.name == 'resp') {
-					Event.$emit('respDrop', _this.value);
-				}
-				if (_this.name == 'pft') {
-					Event.$emit('pftDrop', _this.value);
-				}
-				if (_this.name == 'mi' || _this.name == 'ccf' || _this.name == 'pvd' || _this.name == 'cvd' || _this.name == 'pud' || _this.name == 'leukaemia' || _this.name == 'lymphoma' || _this.name == 'aids' || _this.name == 'pulmonary' || _this.name == 'tissue' || _this.name == 'renal' || _this.name == 'hemiplegia' || _this.name == 'dementia') {
-					_this.function();
-				}
-			}).catch(function (error) {
-				console.log(error);
-			});
-		}
-	}
-
-});
-
-/***/ }),
-/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(74)
+var __vue_script__ = __webpack_require__(73)
 /* template */
-var __vue_template__ = __webpack_require__(75)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/FormFieldNoLabel.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-775bcc18", Component.options)
-  } else {
-    hotAPI.reload("data-v-775bcc18", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-	props: ['type', 'placeholder', 'name'],
-
-	data: function data() {
-		return {
-			value: '',
-			isDirty: false,
-			isSaved: false
-		};
-	},
-	created: function created() {
-		this.value = patient[this.name];
-		if (this.name == 'weight') {
-			Event.$emit('weight', this.value);
-		}
-		if (this.name == 'height') {
-			Event.$emit('height', this.value);
-		}
-	},
-
-
-	methods: {
-		updateField: function updateField() {
-			var _this = this;
-
-			if (this.value != patient[this.name]) {
-				var field = this.name;
-				var newValue = this.value;
-				axios.put('/patient/update/' + patient.id, {
-					field: field,
-					value: newValue
-				}).then(function () {
-					_this.isDirty = false;
-					_this.isSaved = true;
-					patient[_this.name] = newValue;
-					if (_this.name == 'weight') {
-						Event.$emit('weight', _this.value);
-					}
-					if (_this.name == 'height') {
-						Event.$emit('height', _this.value);
-					}
-				}).catch(function (error) {
-					console.log(error);
-				});
-			}
-		},
-		dirtyCheck: function dirtyCheck() {
-			this.isDirty = this.value != patient[this.name] ? true : false;
-		}
-	}
-
-});
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("p", { staticClass: "control is-expanded" }, [
-    _vm.type === "checkbox"
-      ? _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.value,
-              expression: "value"
-            }
-          ],
-          staticClass: "input",
-          class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
-          attrs: {
-            placeholder: _vm.placeholder,
-            name: _vm.name,
-            type: "checkbox"
-          },
-          domProps: {
-            checked: Array.isArray(_vm.value)
-              ? _vm._i(_vm.value, null) > -1
-              : _vm.value
-          },
-          on: {
-            blur: _vm.updateField,
-            keyup: _vm.dirtyCheck,
-            change: function($event) {
-              var $$a = _vm.value,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false
-              if (Array.isArray($$a)) {
-                var $$v = null,
-                  $$i = _vm._i($$a, $$v)
-                if ($$el.checked) {
-                  $$i < 0 && (_vm.value = $$a.concat([$$v]))
-                } else {
-                  $$i > -1 &&
-                    (_vm.value = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-                }
-              } else {
-                _vm.value = $$c
-              }
-            }
-          }
-        })
-      : _vm.type === "radio"
-        ? _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.value,
-                expression: "value"
-              }
-            ],
-            staticClass: "input",
-            class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
-            attrs: {
-              placeholder: _vm.placeholder,
-              name: _vm.name,
-              type: "radio"
-            },
-            domProps: { checked: _vm._q(_vm.value, null) },
-            on: {
-              blur: _vm.updateField,
-              keyup: _vm.dirtyCheck,
-              change: function($event) {
-                _vm.value = null
-              }
-            }
-          })
-        : _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.value,
-                expression: "value"
-              }
-            ],
-            staticClass: "input",
-            class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
-            attrs: {
-              placeholder: _vm.placeholder,
-              name: _vm.name,
-              type: _vm.type
-            },
-            domProps: { value: _vm.value },
-            on: {
-              blur: _vm.updateField,
-              keyup: _vm.dirtyCheck,
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.value = $event.target.value
-              }
-            }
-          })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-775bcc18", module.exports)
-  }
-}
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(77)
-/* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(74)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -2304,18 +2302,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 77 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__FormCheckYes_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FormFieldNoLabel__);
 //
 //
@@ -2489,23 +2487,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var tumour = isNaN(parseInt(patient.tumour)) ? 0 : parseInt(patient.tumour);
 			var liver = isNaN(parseInt(patient.liver)) ? 0 : parseInt(patient.liver);
 			var cci = age + mi + ccf + pvd + cvd + pud + leukaemia + lymphoma + aids + pulmonary + tissue + renal + hemiplegia + dementia + diabetes + tumour + liver;
-			console.log('age:' + age);
-			console.log('mi:' + mi);
-			console.log('ccf:' + ccf);
-			console.log('pvd:' + pvd);
-			console.log('cvd:' + cvd);
-			console.log('pud:' + pud);
-			console.log('leukaemia:' + leukaemia);
-			console.log('lymphoma:' + lymphoma);
-			console.log('aids:' + aids);
-			console.log('pulmonary:' + pulmonary);
-			console.log('tissue:' + tissue);
-			console.log('renal:' + renal);
-			console.log('hemiplegia:' + hemiplegia);
-			console.log('dementia:' + dementia);
-			console.log('diabetes:' + diabetes);
-			console.log('tumour:' + tumour);
-			console.log('liver:' + liver);
+			// console.log('age:' + age);
+			// console.log('mi:' + mi);
+			// console.log('ccf:' + ccf);
+			// console.log('pvd:' + pvd);
+			// console.log('cvd:' + cvd);
+			// console.log('pud:' + pud);
+			// console.log('leukaemia:' + leukaemia);
+			// console.log('lymphoma:' + lymphoma);
+			// console.log('aids:' + aids);
+			// console.log('pulmonary:' + pulmonary);
+			// console.log('tissue:' + tissue);
+			// console.log('renal:' + renal);
+			// console.log('hemiplegia:' + hemiplegia);
+			// console.log('dementia:' + dementia);
+			// console.log('diabetes:' + diabetes);
+			// console.log('tumour:' + tumour);
+			// console.log('liver:' + liver);
 			var ten = Math.exp(cci * 0.9);
 			var teny = 100 * Math.pow(0.983, ten);
 			var tenyear = Math.round(teny * 10) / 10;
@@ -2534,7 +2532,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 78 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2952,6 +2950,345 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-6f80dc97", module.exports)
+  }
+}
+
+/***/ }),
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(80)
+/* template */
+var __vue_template__ = __webpack_require__(81)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormEcog.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a97633de", Component.options)
+  } else {
+    hotAPI.reload("data-v-a97633de", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			ecog: '',
+			isSuccess: true
+		};
+	},
+	created: function created() {
+		this.ecog = patient.ecog;
+	},
+
+
+	methods: {
+		updateEcog: function updateEcog() {
+			var _this = this;
+
+			this.isSuccess = false;
+			var newValue = this.ecog;
+			axios.put('/patient/update/' + patient.id, {
+				field: 'ecog',
+				value: newValue
+			}).then(function () {
+				_this.isSuccess = true;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("article", { staticClass: "message is-info" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "message-body" }, [
+      _c("div", { staticClass: "field" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.ecog,
+              expression: "ecog"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { id: "ecog1", type: "radio", value: "1" },
+          domProps: { checked: _vm._q(_vm.ecog, "1") },
+          on: {
+            change: [
+              function($event) {
+                _vm.ecog = "1"
+              },
+              _vm.updateEcog
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "ecog1" } }, [
+          _vm._v(
+            "Fully active, able to carry on all pre-disease performance without restriction"
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.ecog,
+              expression: "ecog"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { id: "ecog2", type: "radio", value: "2" },
+          domProps: { checked: _vm._q(_vm.ecog, "2") },
+          on: {
+            change: [
+              function($event) {
+                _vm.ecog = "2"
+              },
+              _vm.updateEcog
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "ecog2" } }, [
+          _vm._v(
+            "Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work"
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.ecog,
+              expression: "ecog"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { id: "ecog3", type: "radio", value: "3" },
+          domProps: { checked: _vm._q(_vm.ecog, "3") },
+          on: {
+            change: [
+              function($event) {
+                _vm.ecog = "3"
+              },
+              _vm.updateEcog
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "ecog3" } }, [
+          _vm._v(
+            "Ambulatory and capable of all selfcare but unable to carry out any work activities; up and about more than 50% of waking hours"
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.ecog,
+              expression: "ecog"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { id: "ecog4", type: "radio", value: "4" },
+          domProps: { checked: _vm._q(_vm.ecog, "4") },
+          on: {
+            change: [
+              function($event) {
+                _vm.ecog = "4"
+              },
+              _vm.updateEcog
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "ecog4" } }, [
+          _vm._v(
+            "Capable of only limited selfcare; confined to bed or chair more than 50% of waking hours"
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.ecog,
+              expression: "ecog"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { id: "ecog5", type: "radio", value: "5" },
+          domProps: { checked: _vm._q(_vm.ecog, "5") },
+          on: {
+            change: [
+              function($event) {
+                _vm.ecog = "5"
+              },
+              _vm.updateEcog
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "ecog5" } }, [
+          _vm._v(
+            "Completely disabled; cannot carry on any selfcare; totally confined to bed or chair"
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.ecog,
+              expression: "ecog"
+            }
+          ],
+          staticClass: "is-checkradio",
+          class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
+          attrs: { id: "ecog6", type: "radio", value: "6" },
+          domProps: { checked: _vm._q(_vm.ecog, "6") },
+          on: {
+            change: [
+              function($event) {
+                _vm.ecog = "6"
+              },
+              _vm.updateEcog
+            ]
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "ecog6" } }, [_vm._v("Dead")])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "message-header" }, [
+      _c("p", [_vm._v("ECOG Performance Status")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a97633de", module.exports)
   }
 }
 
