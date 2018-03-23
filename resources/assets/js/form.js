@@ -22,6 +22,10 @@ Vue.component('form-charlson', require('./components/FormCharlson.vue'));
 
 Vue.component('form-ecog', require('./components/FormEcog.vue'));
 
+Vue.component('form-ppossum', require('./components/FormPpossum.vue'));
+
+Vue.component('form-select', require('./components/FormSelect.vue'));
+
 new Vue({
 	el: '#app',
 

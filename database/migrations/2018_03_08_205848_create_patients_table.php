@@ -63,6 +63,8 @@ class CreatePatientsTable extends Migration
             $table->integer('charlson')->nullable();
             $table->float('tenyear', 3, 1)->nullable();
             $table->integer('ecog')->nullable();
+            $table->integer('ppcardiac')->nullable();
+            $table->integer('ppresp')->nullable();
             $table->timestamps();
         });
     }

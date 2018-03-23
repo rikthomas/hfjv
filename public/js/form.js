@@ -437,6 +437,10 @@ Vue.component('form-charlson', __webpack_require__(72));
 
 Vue.component('form-ecog', __webpack_require__(79));
 
+Vue.component('form-ppossum', __webpack_require__(82));
+
+Vue.component('form-select', __webpack_require__(85));
+
 new Vue({
 	el: '#app',
 
@@ -3085,7 +3089,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("article", { staticClass: "message is-info" }, [
+  return _c("article", { staticClass: "message is-link" }, [
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "message-body" }, [
@@ -3289,6 +3293,320 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-a97633de", module.exports)
+  }
+}
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(83)
+/* template */
+var __vue_template__ = __webpack_require__(84)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormPpossum.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9a826ec8", Component.options)
+  } else {
+    hotAPI.reload("data-v-9a826ec8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormSelect_vue__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormSelect_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			cardiac: [{ "value": 1, "text": "no failure, normal CXR" }, { "value": 2, "text": "cardiac meds, no cardiomegaly" }, { "value": 4, "text": "peripheral oedema, warfarin, borderline cardiomegaly" }, { "value": 8, "text": "raised JVP, cardiomegaly" }],
+			respiratory: [{ "value": 1, "text": "no dyspnoea" }, { "value": 2, "text": "dyspnoea on exertion, mild COPD " }, { "value": 4, "text": "limiting dyspnoea (one flight), moderate COPD" }, { "value": 8, "text": "dyspnoea at rest (rate >30/min), fibrosis or consolidation" }]
+		};
+	}
+});
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("article", { staticClass: "message is-warning" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "message-body" }, [
+      _c(
+        "div",
+        { staticClass: "field" },
+        [
+          _c("form-select", {
+            attrs: {
+              label: "Cardiac/CXR",
+              name: "ppcardiac",
+              data: _vm.cardiac
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "field" },
+        [
+          _c("form-select", {
+            attrs: {
+              label: "Respiratory/CXR",
+              name: "ppresp",
+              data: _vm.respiratory
+            }
+          })
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "message-header" }, [
+      _c("p", [_vm._v("P-POSSUM Score")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9a826ec8", module.exports)
+  }
+}
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(86)
+/* template */
+var __vue_template__ = __webpack_require__(87)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormSelect.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2af56857", Component.options)
+  } else {
+    hotAPI.reload("data-v-2af56857", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: ['label', 'name', 'data'],
+
+	data: function data() {
+		return {
+			value: '',
+			isSuccess: true
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+	},
+
+
+	methods: {
+		updateField: function updateField() {
+			var _this = this;
+
+			this.isSuccess = false;
+			var field = this.name;
+			var newValue = this.value;
+			axios.put('/patient/update/' + patient.id, {
+				field: field,
+				value: newValue
+			}).then(function () {
+				_this.isSuccess = true;
+				patient[_this.name] = newValue;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}
+
+});
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("label", { staticClass: "label" }, [_vm._v(_vm._s(_vm.label))]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "select",
+        class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess }
+      },
+      [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.value,
+                expression: "value"
+              }
+            ],
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.value = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.updateField
+              ]
+            }
+          },
+          _vm._l(_vm.data, function(item) {
+            return _c("option", { domProps: { value: item.value } }, [
+              _vm._v(_vm._s(item.text))
+            ])
+          })
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2af56857", module.exports)
   }
 }
 

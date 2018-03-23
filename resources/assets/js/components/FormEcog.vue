@@ -1,5 +1,5 @@
 <template>
-	<article class="message is-info">
+	<article class="message is-link">
 		<div class="message-header">
 			<p>ECOG Performance Status</p>
 		</div>
