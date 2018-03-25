@@ -3470,25 +3470,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			ppmortality: ''
 		};
 	},
+	created: function created() {
+		this.calcPpossum();
+	},
 
 	methods: {
 		round: function round(value) {
 			return Number(Math.round(value + 'e' + 1) + 'e-' + 1);
 		},
 		calcPpossum: function calcPpossum() {
-			if (patient.age < 61) {
-				var age = 1;
-			} else if (patient.age >= 61 && patient.age < 70) {
-				var age = 2;
-			} else {
-				var age = 4;
+			if (patient.age) {
+				if (patient.age < 61) {
+					var age = 1;
+				} else if (patient.age >= 61 && patient.age < 70) {
+					var age = 2;
+				} else {
+					var age = 4;
+				}
+				this.ppphysiology = age + patient.ppcardiac + patient.ppresp + patient.ppecg + patient.ppbp + patient.pppulse + patient.pphb + patient.ppwbc + patient.ppurea + patient.ppna + patient.ppk + patient.ppgcs;
+				this.ppopscore = patient.ppseverity + patient.ppprocedures + patient.ppbloodloss + patient.ppsoiling + patient.ppmalignancy + patient.ppurgency;
+				var morbexp = 0.16 * this.ppphysiology + 0.19 * this.ppopscore - 5.91;
+				this.ppmorbidity = this.round(100 * (1 / (1 + Math.exp(-morbexp))));
+				var mortexp = -9.065 + 0.1692 * this.ppphysiology + 0.1550 * this.ppopscore;
+				this.ppmortality = this.round(100 * (1 / (1 + Math.exp(-mortexp))));
 			}
-			this.ppphysiology = age + patient.ppcardiac + patient.ppresp + patient.ppecg + patient.ppbp + patient.pppulse + patient.pphb + patient.ppwbc + patient.ppurea + patient.ppna + patient.ppk + patient.ppgcs;
-			this.ppopscore = patient.ppseverity + patient.ppprocedures + patient.ppbloodloss + patient.ppsoiling + patient.ppmalignancy + patient.ppurgency;
-			var morbexp = 0.16 * this.ppphysiology + 0.19 * this.ppopscore - 5.91;
-			this.ppmorbidity = this.round(100 * (1 / (1 + Math.exp(-morbexp))));
-			var mortexp = -9.065 + 0.1692 * this.ppphysiology + 0.1550 * this.ppopscore;
-			this.ppmortality = this.round(100 * (1 / (1 + Math.exp(-mortexp))));
 		}
 	}
 
@@ -3557,7 +3562,7 @@ var render = function() {
       _c("div", { staticClass: "field is-grouped" }, [
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3573,7 +3578,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3589,7 +3594,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3607,7 +3612,7 @@ var render = function() {
       _c("div", { staticClass: "field is-grouped" }, [
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3623,7 +3628,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3639,7 +3644,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3657,7 +3662,7 @@ var render = function() {
       _c("div", { staticClass: "field is-grouped" }, [
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3673,7 +3678,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3689,7 +3694,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3707,7 +3712,7 @@ var render = function() {
       _c("div", { staticClass: "field" }, [
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3725,7 +3730,7 @@ var render = function() {
       _c("div", { staticClass: "field is-grouped" }, [
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3741,7 +3746,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3759,7 +3764,7 @@ var render = function() {
       _c("div", { staticClass: "field is-grouped" }, [
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -3775,7 +3780,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "p",
-          { staticClass: "control" },
+          { staticClass: "control is-expanded" },
           [
             _c("form-select", {
               attrs: {
@@ -4033,7 +4038,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "select",
+        staticClass: "select is-fullwidth",
         class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess }
       },
       [

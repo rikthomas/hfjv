@@ -14,56 +14,56 @@
 				<form-select label="ECG" name="ppecg" :data="ecg" :function="calcPpossum"></form-select>
 			</div>
 			<div class="field is-grouped">
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Systolic BP" name="ppbp" :data="systolic" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Pulse" name="pppulse" :data="pulse" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Haemoglobin g/dl" name="pphb" :data="hb" :function="calcPpossum"></form-select>
 				</p>
 			</div>
 			<div class="field is-grouped">
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="WBC" name="ppwbc" :data="wbc" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Urea mmol/L" name="ppurea" :data="urea" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Sodium mmol/L" name="ppna" :data="na" :function="calcPpossum"></form-select>
 				</p>
 			</div>
 			<div class="field is-grouped">
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="K+ mmol/L" name="ppk" :data="potassium" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="GCS" name="ppgcs" :data="gcs" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Operative Severity" name="ppseverity" :data="severity" :function="calcPpossum"></form-select>
 				</p>
 			</div>
 			<div class="field">
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Pertioneal soiling" name="ppsoiling" :data="soiling" :function="calcPpossum"></form-select>
 				</p>
 			</div>
 			<div class="field is-grouped">
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="No. of procedures" name="ppprocedures" :data="procedures" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Blood loss ml" name="ppbloodloss" :data="blood" :function="calcPpossum"></form-select>
 				</p>
 			</div>
 			<div class="field is-grouped">
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Malignancy status" name="ppmalignancy" :data="malignancy" :function="calcPpossum"></form-select>
 				</p>
-				<p class="control">
+				<p class="control is-expanded">
 					<form-select label="Urgency" name="ppurgency" :data="urgency" :function="calcPpossum"></form-select>
 				</p>
 			</div>
@@ -211,43 +211,48 @@
 				ppmortality: '',
 			}
 		},
+		created(){
+			this.calcPpossum();
+		},
 		methods: {
 			round(value) {
 				return Number(Math.round(value+'e'+1)+'e-'+1);
 			},
 			calcPpossum()
 			{
-				if (patient.age < 61) {
-			 	var age = 1;
-			 } else if (patient.age >= 61 && patient.age < 70) {
-			 	var age = 2;
-			 } else {
-			 	var age = 4;
-			 }
-			 this.ppphysiology = 
-			 age +
-			 patient.ppcardiac +
-			 patient.ppresp +
-			 patient.ppecg +
-			 patient.ppbp +
-			 patient.pppulse +
-			 patient.pphb + 
-			 patient.ppwbc +
-			 patient.ppurea + 
-			 patient.ppna +
-			 patient.ppk +
-			 patient.ppgcs;
-			 this.ppopscore = 
-			 patient.ppseverity +
-			 patient.ppprocedures +
-			 patient.ppbloodloss + 
-			 patient.ppsoiling +
-			 patient.ppmalignancy +
-			 patient.ppurgency;
-			 var morbexp = (0.16 * this.ppphysiology) + (0.19 * this.ppopscore) - 5.91;
-			 this.ppmorbidity = this.round(100*(1/(1 + Math.exp(-morbexp))));
-			 var mortexp = -9.065 + (0.1692 * this.ppphysiology) + (0.1550 * this.ppopscore);
-			 this.ppmortality = this.round(100*(1/(1 + Math.exp(-mortexp))));
+				if (patient.age) {
+					if (patient.age < 61) {
+				 	var age = 1;
+				 } else if (patient.age >= 61 && patient.age < 70) {
+				 	var age = 2;
+				 } else {
+				 	var age = 4;
+				 }
+				 this.ppphysiology = 
+				 age +
+				 patient.ppcardiac +
+				 patient.ppresp +
+				 patient.ppecg +
+				 patient.ppbp +
+				 patient.pppulse +
+				 patient.pphb + 
+				 patient.ppwbc +
+				 patient.ppurea + 
+				 patient.ppna +
+				 patient.ppk +
+				 patient.ppgcs;
+				 this.ppopscore = 
+				 patient.ppseverity +
+				 patient.ppprocedures +
+				 patient.ppbloodloss + 
+				 patient.ppsoiling +
+				 patient.ppmalignancy +
+				 patient.ppurgency;
+				 var morbexp = (0.16 * this.ppphysiology) + (0.19 * this.ppopscore) - 5.91;
+				 this.ppmorbidity = this.round(100*(1/(1 + Math.exp(-morbexp))));
+				 var mortexp = -9.065 + (0.1692 * this.ppphysiology) + (0.1550 * this.ppopscore);
+				 this.ppmortality = this.round(100*(1/(1 + Math.exp(-mortexp))));
+				}
 			}
 		}
 
