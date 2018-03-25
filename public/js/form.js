@@ -3469,7 +3469,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			ppmorbidity: '',
 			ppmortality: ''
 		};
+	},
+
+	methods: {
+		round: function round(value) {
+			return Number(Math.round(value + 'e' + 1) + 'e-' + 1);
+		},
+		calcPpossum: function calcPpossum() {
+			if (patient.age < 61) {
+				var age = 1;
+			} else if (patient.age >= 61 && patient.age < 70) {
+				var age = 2;
+			} else {
+				var age = 4;
+			}
+			this.ppphysiology = age + patient.ppcardiac + patient.ppresp + patient.ppecg + patient.ppbp + patient.pppulse + patient.pphb + patient.ppwbc + patient.ppurea + patient.ppna + patient.ppk + patient.ppgcs;
+			this.ppopscore = patient.ppseverity + patient.ppprocedures + patient.ppbloodloss + patient.ppsoiling + patient.ppmalignancy + patient.ppurgency;
+			var morbexp = 0.16 * this.ppphysiology + 0.19 * this.ppopscore - 5.91;
+			this.ppmorbidity = this.round(100 * (1 / (1 + Math.exp(-morbexp))));
+			var mortexp = -9.065 + 0.1692 * this.ppphysiology + 0.1550 * this.ppopscore;
+			this.ppmortality = this.round(100 * (1 / (1 + Math.exp(-mortexp))));
+		}
 	}
+
 });
 
 /***/ }),
@@ -3492,7 +3514,8 @@ var render = function() {
             attrs: {
               label: "Cardiac/CXR",
               name: "ppcardiac",
-              data: _vm.cardiac
+              data: _vm.cardiac,
+              function: _vm.calcPpossum
             }
           })
         ],
@@ -3507,7 +3530,8 @@ var render = function() {
             attrs: {
               label: "Respiratory/CXR",
               name: "ppresp",
-              data: _vm.respiratory
+              data: _vm.respiratory,
+              function: _vm.calcPpossum
             }
           })
         ],
@@ -3519,7 +3543,12 @@ var render = function() {
         { staticClass: "field" },
         [
           _c("form-select", {
-            attrs: { label: "ECG", name: "ppecg", data: _vm.ecg }
+            attrs: {
+              label: "ECG",
+              name: "ppecg",
+              data: _vm.ecg,
+              function: _vm.calcPpossum
+            }
           })
         ],
         1
@@ -3531,7 +3560,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "Systolic BP", name: "ppbp", data: _vm.systolic }
+              attrs: {
+                label: "Systolic BP",
+                name: "ppbp",
+                data: _vm.systolic,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3542,7 +3576,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "Pulse", name: "pppulse", data: _vm.pulse }
+              attrs: {
+                label: "Pulse",
+                name: "pppulse",
+                data: _vm.pulse,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3553,7 +3592,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "Haemoglobin g/dl", name: "pphb", data: _vm.hb }
+              attrs: {
+                label: "Haemoglobin g/dl",
+                name: "pphb",
+                data: _vm.hb,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3566,7 +3610,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "WBC", name: "ppwbc", data: _vm.wbc }
+              attrs: {
+                label: "WBC",
+                name: "ppwbc",
+                data: _vm.wbc,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3577,7 +3626,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "Urea mmol/L", name: "ppurea", data: _vm.urea }
+              attrs: {
+                label: "Urea mmol/L",
+                name: "ppurea",
+                data: _vm.urea,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3588,7 +3642,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "Sodium mmol/L", name: "ppna", data: _vm.na }
+              attrs: {
+                label: "Sodium mmol/L",
+                name: "ppna",
+                data: _vm.na,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3601,7 +3660,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "K+ mmol/L", name: "ppk", data: _vm.potassium }
+              attrs: {
+                label: "K+ mmol/L",
+                name: "ppk",
+                data: _vm.potassium,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3612,7 +3676,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "GCS", name: "ppgcs", data: _vm.gcs }
+              attrs: {
+                label: "GCS",
+                name: "ppgcs",
+                data: _vm.gcs,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3626,7 +3695,8 @@ var render = function() {
               attrs: {
                 label: "Operative Severity",
                 name: "ppseverity",
-                data: _vm.severity
+                data: _vm.severity,
+                function: _vm.calcPpossum
               }
             })
           ],
@@ -3643,7 +3713,8 @@ var render = function() {
               attrs: {
                 label: "Pertioneal soiling",
                 name: "ppsoiling",
-                data: _vm.soiling
+                data: _vm.soiling,
+                function: _vm.calcPpossum
               }
             })
           ],
@@ -3660,7 +3731,8 @@ var render = function() {
               attrs: {
                 label: "No. of procedures",
                 name: "ppprocedures",
-                data: _vm.procedures
+                data: _vm.procedures,
+                function: _vm.calcPpossum
               }
             })
           ],
@@ -3675,7 +3747,8 @@ var render = function() {
               attrs: {
                 label: "Blood loss ml",
                 name: "ppbloodloss",
-                data: _vm.blood
+                data: _vm.blood,
+                function: _vm.calcPpossum
               }
             })
           ],
@@ -3692,7 +3765,8 @@ var render = function() {
               attrs: {
                 label: "Malignancy status",
                 name: "ppmalignancy",
-                data: _vm.malignancy
+                data: _vm.malignancy,
+                function: _vm.calcPpossum
               }
             })
           ],
@@ -3704,7 +3778,12 @@ var render = function() {
           { staticClass: "control" },
           [
             _c("form-select", {
-              attrs: { label: "Urgency", name: "ppurgency", data: _vm.urgency }
+              attrs: {
+                label: "Urgency",
+                name: "ppurgency",
+                data: _vm.urgency,
+                function: _vm.calcPpossum
+              }
             })
           ],
           1
@@ -3905,7 +3984,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
-	props: ['label', 'name', 'data'],
+	props: ['label', 'name', 'data', 'function'],
 
 	data: function data() {
 		return {
@@ -3931,6 +4010,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).then(function () {
 				_this.isSuccess = true;
 				patient[_this.name] = newValue;
+				_this.function();
 			}).catch(function (error) {
 				console.log(error);
 			});

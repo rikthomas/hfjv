@@ -12,7 +12,7 @@
 <script>
 	export default {
 
-		props: ['label', 'name', 'data'],
+		props: ['label', 'name', 'data', 'function'],
 
 		data() {
 			return {
@@ -37,6 +37,7 @@
 	            }).then(() => {
 	                this.isSuccess = true;
 	                patient[this.name] = newValue;
+	                this.function();
 	              })
 	              .catch(function (error) {
 	                console.log(error);
