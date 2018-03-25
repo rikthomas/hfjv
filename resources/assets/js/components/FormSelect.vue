@@ -6,7 +6,7 @@
 				<option v-for="item in data" :value="item.value">{{ item.text }}</option>
 			</select>
 		</div>
-	</div>
+</div>
 </template>
 
 <script>

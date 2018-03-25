@@ -3367,13 +3367,107 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			cardiac: [{ "value": 1, "text": "no failure, normal CXR" }, { "value": 2, "text": "cardiac meds, no cardiomegaly" }, { "value": 4, "text": "peripheral oedema, warfarin, borderline cardiomegaly" }, { "value": 8, "text": "raised JVP, cardiomegaly" }],
-			respiratory: [{ "value": 1, "text": "no dyspnoea" }, { "value": 2, "text": "dyspnoea on exertion, mild COPD " }, { "value": 4, "text": "limiting dyspnoea (one flight), moderate COPD" }, { "value": 8, "text": "dyspnoea at rest (rate >30/min), fibrosis or consolidation" }]
+			respiratory: [{ "value": 1, "text": "no dyspnoea" }, { "value": 2, "text": "dyspnoea on exertion, mild COPD" }, { "value": 4, "text": "limiting dyspnoea (one flight), moderate COPD" }, { "value": 8, "text": "dyspnoea at rest (rate >30/min), fibrosis or consolidation" }],
+			ecg: [{ "value": 1, "text": "normal" }, { "value": 2, "text": "AF, rate 60-90" }, { "value": 8, "text": "any other abnormal rhythm, >4/min ectopics, Q waves, ST/T changes" }],
+			systolic: [{ "value": 8, "text": "<90" }, { "value": 4, "text": "90-99" }, { "value": 2, "text": "100-109" }, { "value": 1, "text": "110-130" }, { "value": 2, "text": "131-170" }, { "value": 4, "text": ">170" }],
+			pulse: [{ "value": 8, "text": "<40" }, { "value": 2, "text": "40-49" }, { "value": 1, "text": "50-80" }, { "value": 2, "text": "81-100" }, { "value": 4, "text": "101-150" }, { "value": 8, "text": ">120" }],
+			hb: [{ "value": 8, "text": "<10" }, { "value": 4, "text": "10-11.4" }, { "value": 2, "text": "11.5-12.9" }, { "value": 1, "text": "13.0-16.0" }, { "value": 2, "text": "16.1-17" }, { "value": 4, "text": "17.1-18" }, { "value": 8, "text": "18" }],
+			wbc: [{ "value": 4, "text": "<3" }, { "value": 2, "text": "3.1-4" }, { "value": 1, "text": "4-10" }, { "value": 2, "text": "10.1-20" }, { "value": 4, "text": ">20" }],
+			urea: [{ "value": 1, "text": "<7.6" }, { "value": 2, "text": "7.6-10" }, { "value": 4, "text": "10.1-15" }, { "value": 8, "text": ">15" }],
+			na: [{ "value": 1, "text": ">135" }, { "value": 2, "text": "131-135" }, { "value": 4, "text": "126-130" }, { "value": 8, "text": "<126" }],
+			potassium: [{ "value": 8, "text": "<2.9" }, { "value": 4, "text": "2.9-3.1" }, { "value": 2, "text": "3.2-3.4" }, { "value": 1, "text": "3.5-5" }, { "value": 2, "text": "5.1-5.3" }, { "value": 4, "text": "5.4-5.9" }, { "value": 8, "text": ">5.9" }],
+			gcs: [{ "value": 1, "text": "15" }, { "value": 2, "text": "12-14" }, { "value": 4, "text": "9-11" }, { "value": 8, "text": "<9" }],
+			severity: [{ "value": 1, "text": "minor" }, { "value": 2, "text": "moderate" }, { "value": 4, "text": "major" }, { "value": 8, "text": "major+" }],
+			procedures: [{ "value": 1, "text": "1" }, { "value": 4, "text": "2" }, { "value": 8, "text": ">2" }],
+			blood: [{ "value": 1, "text": "<100" }, { "value": 2, "text": "101-500" }, { "value": 4, "text": "501-999" }, { "value": 8, "text": ">1000" }],
+			soiling: [{ "value": 1, "text": "none" }, { "value": 2, "text": "minor" }, { "value": 4, "text": "local pus" }, { "value": 8, "text": "free bowel content, pus or blood" }],
+			malignancy: [{ "value": 1, "text": "none" }, { "value": 2, "text": "primary only" }, { "value": 4, "text": "nodal mets" }, { "value": 8, "text": "distant mets" }],
+			urgency: [{ "value": 1, "text": "elective" }, { "value": 4, "text": "2-24 hours" }, { "value": 8, "text": "less than 2 hours" }],
+			ppphysiology: '',
+			ppopscore: '',
+			ppmorbidity: '',
+			ppmortality: ''
 		};
 	}
 });
@@ -3418,7 +3512,310 @@ var render = function() {
           })
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "field" },
+        [
+          _c("form-select", {
+            attrs: { label: "ECG", name: "ppecg", data: _vm.ecg }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "Systolic BP", name: "ppbp", data: _vm.systolic }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "Pulse", name: "pppulse", data: _vm.pulse }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "Haemoglobin g/dl", name: "pphb", data: _vm.hb }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "WBC", name: "ppwbc", data: _vm.wbc }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "Urea mmol/L", name: "ppurea", data: _vm.urea }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "Sodium mmol/L", name: "ppna", data: _vm.na }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "K+ mmol/L", name: "ppk", data: _vm.potassium }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "GCS", name: "ppgcs", data: _vm.gcs }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: {
+                label: "Operative Severity",
+                name: "ppseverity",
+                data: _vm.severity
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: {
+                label: "Pertioneal soiling",
+                name: "ppsoiling",
+                data: _vm.soiling
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: {
+                label: "No. of procedures",
+                name: "ppprocedures",
+                data: _vm.procedures
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: {
+                label: "Blood loss ml",
+                name: "ppbloodloss",
+                data: _vm.blood
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: {
+                label: "Malignancy status",
+                name: "ppmalignancy",
+                data: _vm.malignancy
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "control" },
+          [
+            _c("form-select", {
+              attrs: { label: "Urgency", name: "ppurgency", data: _vm.urgency }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c("p", { staticClass: "control is-expanded" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Physiology Score")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.ppphysiology,
+                expression: "ppphysiology"
+              }
+            ],
+            staticClass: "input",
+            attrs: { type: "number", name: "ppphysiology", disabled: "" },
+            domProps: { value: _vm.ppphysiology },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.ppphysiology = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control is-expanded" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Operative Severity")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.ppopscore,
+                expression: "ppopscore"
+              }
+            ],
+            staticClass: "input",
+            attrs: { type: "number", name: "ppopscore", disabled: "" },
+            domProps: { value: _vm.ppopscore },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.ppopscore = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control is-expanded" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Morbidity %")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.ppmorbidity,
+                expression: "ppmorbidity"
+              }
+            ],
+            staticClass: "input",
+            attrs: { type: "number", name: "ppmorbidity", disabled: "" },
+            domProps: { value: _vm.ppmorbidity },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.ppmorbidity = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "control is-expanded" }, [
+          _c("label", { staticClass: "label" }, [_vm._v("Mortality %")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.ppmortality,
+                expression: "ppmortality"
+              }
+            ],
+            staticClass: "input",
+            attrs: { type: "number", name: "ppmortality", disabled: "" },
+            domProps: { value: _vm.ppmortality },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.ppmortality = $event.target.value
+              }
+            }
+          })
+        ])
+      ])
     ])
   ])
 }

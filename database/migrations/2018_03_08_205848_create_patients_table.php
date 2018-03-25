@@ -65,6 +65,25 @@ class CreatePatientsTable extends Migration
             $table->integer('ecog')->nullable();
             $table->integer('ppcardiac')->nullable();
             $table->integer('ppresp')->nullable();
+            $table->integer('ppecg')->nullable();
+            $table->integer('ppbp')->nullable();
+            $table->integer('pppulse')->nullable();
+            $table->integer('pphb')->nullable();
+            $table->integer('ppwbc')->nullable();
+            $table->integer('ppurea')->nullable();
+            $table->integer('ppna')->nullable();
+            $table->integer('ppk')->nullable();
+            $table->integer('ppgcs')->nullable();
+            $table->integer('ppseverity')->nullable();
+            $table->integer('ppprocedures')->nullable();
+            $table->integer('ppbloodloss')->nullable();
+            $table->integer('ppsoiling')->nullable();
+            $table->integer('ppmalignancy')->nullable();
+            $table->integer('ppurgency')->nullable();
+            $table->integer('ppphysiology')->nullable();
+            $table->integer('ppopscore')->nullable();
+            $table->integer('ppmorbidity')->nullable();
+            $table->integer('ppmortality')->nullable();
             $table->timestamps();
         });
     }
