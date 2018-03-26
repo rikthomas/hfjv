@@ -3495,6 +3495,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.ppmortality = this.round(100 * (1 / (1 + Math.exp(-mortexp))));
 			}
 		}
+	},
+	watch: {
+		ppphysiology: function ppphysiology() {
+			if (isFinite(this.ppphysiology)) {
+				axios.put('/patient/update/' + patient.id, {
+					field: 'ppphysiology',
+					value: this.ppphysiology
+				});
+			}
+		},
+		ppopscore: function ppopscore() {
+			if (isFinite(this.ppopscore)) {
+				axios.put('/patient/update/' + patient.id, {
+					field: 'ppopscore',
+					value: this.ppopscore
+				});
+			}
+		},
+		ppmorbidity: function ppmorbidity() {
+			if (isFinite(this.ppmorbidity)) {
+				axios.put('/patient/update/' + patient.id, {
+					field: 'ppmorbidity',
+					value: this.ppmorbidity
+				});
+			}
+		},
+		ppmortality: function ppmortality() {
+			if (isFinite(this.ppmortality)) {
+				axios.put('/patient/update/' + patient.id, {
+					field: 'ppmortality',
+					value: this.ppmortality
+				});
+			}
+		}
 	}
 
 });
@@ -3823,7 +3857,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "control is-expanded" }, [
-          _c("label", { staticClass: "label" }, [_vm._v("Operative Severity")]),
+          _c("label", { staticClass: "label" }, [_vm._v("Operative Score")]),
           _vm._v(" "),
           _c("input", {
             directives: [

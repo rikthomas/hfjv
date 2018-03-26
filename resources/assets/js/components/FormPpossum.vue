@@ -73,7 +73,7 @@
 		          <input type="number" class="input" name="ppphysiology" v-model="ppphysiology" disabled>
 		        </p>
 		        <p class="control is-expanded">
-		          <label class="label">Operative Severity</label>
+		          <label class="label">Operative Score</label>
 		          <input type="number" class="input" name="ppopscore" v-model="ppopscore" disabled>
 		        </p>
 		        <p class="control is-expanded">
@@ -254,7 +254,41 @@
 				 this.ppmortality = this.round(100*(1/(1 + Math.exp(-mortexp))));
 				}
 			}
-		}
+		},
+		watch: {
+			ppphysiology: function () {
+				if(isFinite(this.ppphysiology)){
+			axios.put('/patient/update/' + patient.id, {
+	                field: 'ppphysiology',
+	                value: this.ppphysiology,
+	            })
+			}
+		},
+			ppopscore: function () {
+				if(isFinite(this.ppopscore)){
+			axios.put('/patient/update/' + patient.id, {
+	                field: 'ppopscore',
+	                value: this.ppopscore,
+	            })
+			}
+		},
+			ppmorbidity: function () {
+				if(isFinite(this.ppmorbidity)){
+			axios.put('/patient/update/' + patient.id, {
+	                field: 'ppmorbidity',
+	                value: this.ppmorbidity,
+	            })
+			}
+		},
+			ppmortality: function () {
+				if(isFinite(this.ppmortality)){
+			axios.put('/patient/update/' + patient.id, {
+	                field: 'ppmortality',
+	                value: this.ppmortality,
+	            })
+			}
+		},
+		},
 
 	}
 </script>

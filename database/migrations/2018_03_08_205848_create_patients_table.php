@@ -82,8 +82,8 @@ class CreatePatientsTable extends Migration
             $table->integer('ppurgency')->nullable();
             $table->integer('ppphysiology')->nullable();
             $table->integer('ppopscore')->nullable();
-            $table->integer('ppmorbidity')->nullable();
-            $table->integer('ppmortality')->nullable();
+            $table->float('ppmorbidity', 3, 1)->nullable();
+            $table->float('ppmortality', 3, 1)->nullable();
             $table->timestamps();
         });
     }
