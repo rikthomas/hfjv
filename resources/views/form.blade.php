@@ -4,6 +4,31 @@
     <section class="section">
         <div class="columns">
             <div class="column is-three-fifths is-offset-one-fifth">
+                <article class="message is-success">
+                    <div class="message-header">
+                        <p>Case Details</p>
+                    </div>
+                    <div class="message-body">
+                        <div class="field is-grouped">
+                            <form-field label="Anaesthetist" type="text" placeholder="who are you!" name="anaesthetist"></form-field>
+                            <form-select label="Tumour site" name="tumoursite" :data="tumoursite" :function="dummy"></form-select>
+                        </div>
+                        <div class="field is-grouped">
+                            <p class="control is-expanded">
+                                <form-select label="IR Procedure Type" name="procedure" :data="procedure" :function="dummy"></form-select>
+                            </p>
+                            <p class="control is-expanded">
+                                <form-select label="Patient Position" name="position" :data="position" :function="dummy"></form-select>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <form-check-yes label="Appropriate for HFJV?" name="proceed"></form-check-yes>
+                        </div>
+                        <div class="field">
+                            <form-textarea label="Rationale" placeholder="please state reasons why patient not suitable and what anaesthetic techique was used instead...." name="noproceed"></form-textarea>
+                        </div>
+                    </div>
+                </article>
                 <article class="message">
                     <div class="message-header">
                         <p>Weights and Measures</p>

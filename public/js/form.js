@@ -441,6 +441,8 @@ Vue.component('form-ppossum', __webpack_require__(82));
 
 Vue.component('form-select', __webpack_require__(85));
 
+Vue.component('form-textarea', __webpack_require__(88));
+
 new Vue({
 	el: '#app',
 
@@ -450,7 +452,10 @@ new Vue({
 		cvsVisible: '',
 		respVisible: '',
 		modalVisible: false,
-		respModalVisible: false
+		respModalVisible: false,
+		tumoursite: [{ "value": "renal", "text": "Renal" }, { "value": "lung", "text": "Lung" }, { "value": "liver", "text": "Liver" }],
+		procedure: [{ "value": "cryoablation", "text": "Cryoablation" }, { "value": "microwave", "text": "Microwave" }, { "value": "gammaknife", "text": "Gamma Knife" }],
+		position: [{ "value": "Prone", "text": "Prone" }, { "value": "lateral", "text": "Lateral" }, { "value": "supine", "text": "Supine" }]
 	},
 
 	created: function created() {
@@ -534,7 +539,8 @@ new Vue({
 	methods: {
 		reload: function reload() {
 			location.reload();
-		}
+		},
+		dummy: function dummy() {}
 	}
 });
 
@@ -4123,6 +4129,171 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-2af56857", module.exports)
+  }
+}
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormTextarea.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dd341256", Component.options)
+  } else {
+    hotAPI.reload("data-v-dd341256", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+	props: ['label', 'placeholder', 'name', 'textColor'],
+
+	data: function data() {
+		return {
+			value: '',
+			isDirty: false,
+			isSaved: false
+		};
+	},
+	created: function created() {
+		this.value = patient[this.name];
+		if (this.name == 'weight') {
+			Event.$emit('weight', this.value);
+		}
+		if (this.name == 'height') {
+			Event.$emit('height', this.value);
+		}
+	},
+
+
+	methods: {
+		updateField: function updateField() {
+			var _this = this;
+
+			if (this.value != patient[this.name]) {
+				var field = this.name;
+				var newValue = this.value;
+				axios.put('/patient/update/' + patient.id, {
+					field: field,
+					value: newValue
+				}).then(function () {
+					_this.isDirty = false;
+					_this.isSaved = true;
+					patient[_this.name] = newValue;
+					if (_this.name == 'weight') {
+						Event.$emit('weight', _this.value);
+					}
+					if (_this.name == 'height') {
+						Event.$emit('height', _this.value);
+					}
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		},
+		dirtyCheck: function dirtyCheck() {
+			this.isDirty = this.value != patient[this.name] ? true : false;
+		}
+	}
+
+});
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("p", { staticClass: "control is-expanded" }, [
+    _c("label", { staticClass: "label", class: _vm.textColor }, [
+      _vm._v(_vm._s(_vm.label))
+    ]),
+    _vm._v(" "),
+    _c("textarea", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.value,
+          expression: "value"
+        }
+      ],
+      staticClass: "textarea",
+      class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
+      attrs: { placeholder: _vm.placeholder, name: _vm.name },
+      domProps: { value: _vm.value },
+      on: {
+        blur: _vm.updateField,
+        keyup: _vm.dirtyCheck,
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.value = $event.target.value
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dd341256", module.exports)
   }
 }
 

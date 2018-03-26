@@ -26,6 +26,8 @@ Vue.component('form-ppossum', require('./components/FormPpossum.vue'));
 
 Vue.component('form-select', require('./components/FormSelect.vue'));
 
+Vue.component('form-textarea', require('./components/FormTextarea.vue'));
+
 new Vue({
 	el: '#app',
 
@@ -36,6 +38,9 @@ new Vue({
 		respVisible: '',
 		modalVisible: false,
 		respModalVisible: false,
+		tumoursite: [{"value": "renal", "text": "Renal"}, {"value": "lung", "text": "Lung"}, {"value": "liver", "text": "Liver"},],
+		procedure: [{"value": "cryoablation", "text": "Cryoablation"}, {"value": "microwave", "text": "Microwave"}, {"value": "gammaknife", "text": "Gamma Knife"},],
+		position: [{"value": "Prone", "text": "Prone"}, {"value": "lateral", "text": "Lateral"},{"value": "supine", "text": "Supine"},],
 	},
 
 	created() {
@@ -118,6 +123,9 @@ new Vue({
 	methods: {
 		reload() {
 			location.reload();
+		},
+		dummy() {
+
 		}
 	}
 });
