@@ -41,13 +41,16 @@ new Vue({
 		tumoursite: [{"value": "renal", "text": "Renal"}, {"value": "lung", "text": "Lung"}, {"value": "liver", "text": "Liver"},],
 		procedure: [{"value": "cryoablation", "text": "Cryoablation"}, {"value": "microwave", "text": "Microwave"}, {"value": "gammaknife", "text": "Gamma Knife"},],
 		position: [{"value": "Prone", "text": "Prone"}, {"value": "lateral", "text": "Lateral"},{"value": "supine", "text": "Supine"},],
+		hfjvCase: '',
 	},
 
 	created() {
 		this.cvsVisible = patient.cvs==1 ? true : false;
 		this.respVisible = patient.resp==1 ? true : false;
+		this.hfjvCase = patient.proceed==1 ? true : false;
 		Event.$on('weight', (weight) => { this.weight = weight });
 		Event.$on('height', (height) => { this.height = height });
+		Event.$on('proceedDrop', (value) => { this.hfjvCase = value});
 		Event.$on('closeCvsModal', () => 
 			{ 
 				axios.put('/patient/update/' + patient.id, {

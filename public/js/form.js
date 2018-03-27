@@ -455,7 +455,8 @@ new Vue({
 		respModalVisible: false,
 		tumoursite: [{ "value": "renal", "text": "Renal" }, { "value": "lung", "text": "Lung" }, { "value": "liver", "text": "Liver" }],
 		procedure: [{ "value": "cryoablation", "text": "Cryoablation" }, { "value": "microwave", "text": "Microwave" }, { "value": "gammaknife", "text": "Gamma Knife" }],
-		position: [{ "value": "Prone", "text": "Prone" }, { "value": "lateral", "text": "Lateral" }, { "value": "supine", "text": "Supine" }]
+		position: [{ "value": "Prone", "text": "Prone" }, { "value": "lateral", "text": "Lateral" }, { "value": "supine", "text": "Supine" }],
+		hfjvCase: ''
 	},
 
 	created: function created() {
@@ -463,11 +464,15 @@ new Vue({
 
 		this.cvsVisible = patient.cvs == 1 ? true : false;
 		this.respVisible = patient.resp == 1 ? true : false;
+		this.hfjvCase = patient.proceed == 1 ? true : false;
 		Event.$on('weight', function (weight) {
 			_this.weight = weight;
 		});
 		Event.$on('height', function (height) {
 			_this.height = height;
+		});
+		Event.$on('proceedDrop', function (value) {
+			_this.hfjvCase = value;
 		});
 		Event.$on('closeCvsModal', function () {
 			axios.put('/patient/update/' + patient.id, {
@@ -1281,6 +1286,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).then(function () {
 				_this.isSuccess = true;
 				patient[_this.name] = newValue;
+				if (_this.name == 'proceed') {
+					Event.$emit('proceedDrop', _this.value);
+				}
 				if (_this.name == 'cvs') {
 					Event.$emit('cvsDrop', _this.value);
 				}

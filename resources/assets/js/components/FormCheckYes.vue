@@ -34,6 +34,7 @@ export default {
 	            }).then(() => {
 	            	this.isSuccess = true;
 	            	patient[this.name] = newValue;
+	            	if (this.name=='proceed'){Event.$emit('proceedDrop', this.value);}
 	                if (this.name=='cvs'){Event.$emit('cvsDrop', this.value);}
 	                if (this.name=='resp'){Event.$emit('respDrop', this.value);}
 	                if (this.name=='pft'){Event.$emit('pftDrop', this.value);}
