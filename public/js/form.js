@@ -443,6 +443,8 @@ Vue.component('form-select', __webpack_require__(85));
 
 Vue.component('form-textarea', __webpack_require__(88));
 
+Vue.component('form-anaesthetic', __webpack_require__(91));
+
 new Vue({
 	el: '#app',
 
@@ -1300,6 +1302,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 				if (_this.name == 'mi' || _this.name == 'ccf' || _this.name == 'pvd' || _this.name == 'cvd' || _this.name == 'pud' || _this.name == 'leukaemia' || _this.name == 'lymphoma' || _this.name == 'aids' || _this.name == 'pulmonary' || _this.name == 'tissue' || _this.name == 'renal' || _this.name == 'hemiplegia' || _this.name == 'dementia') {
 					_this.function();
+				}
+				if (_this.name == 'hfjvuse') {
+					Event.$emit('hfjvDrop', _this.value);
+				}
+				if (_this.name == 'ippv') {
+					Event.$emit('ippvDrop', _this.value);
 				}
 			}).catch(function (error) {
 				console.log(error);
@@ -3164,7 +3172,7 @@ var render = function() {
         _vm._v(" "),
         _c("label", { attrs: { for: "ecog2" } }, [
           _vm._v(
-            "Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work"
+            "Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g. light house work, office work"
           )
         ])
       ]),
@@ -4302,6 +4310,422 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-dd341256", module.exports)
+  }
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = __webpack_require__(93)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/FormAnaesthetic.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-aca45698", Component.options)
+  } else {
+    hotAPI.reload("data-v-aca45698", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormField_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FormField_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__FormYesNo_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormSelect_vue__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__FormSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__FormSelect_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			hfjvuse: '',
+			ippvuse: '',
+			destination: [{ "value": "ward", "text": "Ward" }, { "value": "icu", "text": "ICU" }]
+		};
+	},
+	created: function created() {
+		var _this = this;
+
+		this.hfjvuse = patient.hfjvuse == 1 ? true : false;
+		this.ippvuse = patient.ippv == 1 ? true : false;
+		Event.$on('hfjvDrop', function (value) {
+			_this.hfjvuse = value;
+		});
+		Event.$on('ippvDrop', function (value) {
+			_this.ippvuse = value;
+		});
+	},
+
+
+	methods: {
+		dummy: function dummy() {}
+	}
+
+});
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("article", { staticClass: "message" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "message-body" }, [
+      _c(
+        "div",
+        { staticClass: "field is-grouped" },
+        [
+          _c("form-check-yes", {
+            attrs: { label: "TIVA", name: "tiva", function: _vm.dummy }
+          }),
+          _vm._v(" "),
+          _c("form-check-yes", {
+            attrs: {
+              label: "Arterial Line",
+              name: "artline",
+              function: _vm.dummy
+            }
+          }),
+          _vm._v(" "),
+          _c("form-check-yes", {
+            attrs: { label: "HFJV used?", name: "hfjvuse", function: _vm.dummy }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.hfjvuse,
+              expression: "hfjvuse"
+            }
+          ],
+          attrs: { id: "hfjvuse" }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "field is-grouped" },
+            [
+              _c("form-field", {
+                attrs: {
+                  label: "Frequency",
+                  type: "number",
+                  placeholder: "per min",
+                  name: "frequency"
+                }
+              }),
+              _vm._v(" "),
+              _c("form-field", {
+                attrs: {
+                  label: "Driving pressure",
+                  type: "number",
+                  placeholder: "min bar",
+                  name: "drivingpressuremin"
+                }
+              }),
+              _vm._v(" "),
+              _c("form-field", {
+                attrs: {
+                  label: "I'm a Ghost",
+                  textColor: "has-text-white-ter",
+                  type: "number",
+                  placeholder: "max bar",
+                  name: "drivingpressuremax"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "field is-grouped" },
+            [
+              _c("form-field", {
+                attrs: {
+                  label: "FiO2",
+                  type: "number",
+                  placeholder: "% please",
+                  name: "fio2"
+                }
+              }),
+              _vm._v(" "),
+              _c("form-field", {
+                attrs: {
+                  label: "Mean Pressure",
+                  type: "number",
+                  placeholder: "min bar",
+                  name: "meanpressuremin"
+                }
+              }),
+              _vm._v(" "),
+              _c("form-field", {
+                attrs: {
+                  label: "I'm also a Ghost",
+                  textColor: "has-text-white-ter",
+                  type: "number",
+                  placeholder: "max bar",
+                  name: "meanpressuremax"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "field is-grouped" },
+            [
+              _c("form-field", {
+                attrs: {
+                  label: "ETCO2 checks",
+                  type: "number",
+                  placeholder: "total number",
+                  name: "etco2"
+                }
+              }),
+              _vm._v(" "),
+              _c("form-field", {
+                attrs: {
+                  label: "CO2 range",
+                  type: "number",
+                  placeholder: "min CO2",
+                  name: "minco2"
+                }
+              }),
+              _vm._v(" "),
+              _c("form-field", {
+                attrs: {
+                  label: "Another Ghost",
+                  textColor: "has-text-white-ter",
+                  type: "number",
+                  placeholder: "max co2",
+                  name: "maxco2"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "field is-grouped" },
+            [
+              _c("form-field", {
+                attrs: {
+                  label: "Desaturation <92%",
+                  type: "number",
+                  placeholder: "total number",
+                  name: "desat"
+                }
+              }),
+              _vm._v(" "),
+              _c("form-field", {
+                attrs: {
+                  label: "Lowest saturations",
+                  type: "number",
+                  placeholder: "%",
+                  name: "lowestdesat"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "field is-grouped" },
+            [
+              _c("form-check-yes", {
+                attrs: {
+                  label: "Converted to IPPV?",
+                  name: "ippv",
+                  function: _vm.dummy
+                }
+              }),
+              _vm._v(" "),
+              _c("form-check-yes", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.ippvuse,
+                    expression: "ippvuse"
+                  }
+                ],
+                attrs: {
+                  label: "Was IPPV better tolerated?",
+                  name: "tolerance",
+                  function: _vm.dummy
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "field" },
+            [
+              _c("form-field", {
+                attrs: {
+                  label:
+                    "Anaesthetist's overall satisfaction with HFJV for this case",
+                  type: "number",
+                  placeholder: "rating 0 - 100 please....",
+                  name: "satisfaction"
+                }
+              }),
+              _vm._v(" "),
+              _c("br")
+            ],
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "field is-grouped" },
+        [
+          _c("form-check-yes", {
+            attrs: {
+              label: "Extubated at the end?",
+              name: "extubated",
+              function: _vm.dummy
+            }
+          }),
+          _vm._v(" "),
+          _c("form-select", {
+            attrs: {
+              label: "Post-op destination",
+              name: "destination",
+              data: _vm.destination,
+              function: _vm.dummy
+            }
+          })
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "message-header" }, [
+      _c("p", [_vm._v("Anaesthetic Details")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-aca45698", module.exports)
   }
 }
 

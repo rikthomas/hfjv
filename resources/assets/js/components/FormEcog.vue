@@ -10,7 +10,7 @@
 			</div>
 			<div class="field">
 				<input class="is-checkradio" id="ecog2" type="radio" v-model="ecog" value="2" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateEcog">
-		        <label for="ecog2">Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work</label>	
+		        <label for="ecog2">Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g. light house work, office work</label>	
 			</div>
 			<div class="field">
 				<input class="is-checkradio" id="ecog3" type="radio" v-model="ecog" value="3" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateEcog">

@@ -68,7 +68,7 @@
 
 <script>
 
-import FormField from './FormField.vue';
+	import FormField from './FormField.vue';
 	import FormYesNo from './FormYesNo.vue';
 	import FormCheckYes from './FormCheckYes.vue';
 	import FormFieldNoLabel from './FormFieldNoLabel';

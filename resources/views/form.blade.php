@@ -96,6 +96,7 @@
                     </article>
                         <form-ecog></form-ecog>
                         <form-ppossum></form-ppossum>
+                        <form-anaesthetic></form-anaesthetic>
                 </div>
             </div>
         </div>

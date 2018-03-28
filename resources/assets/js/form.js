@@ -28,6 +28,8 @@ Vue.component('form-select', require('./components/FormSelect.vue'));
 
 Vue.component('form-textarea', require('./components/FormTextarea.vue'));
 
+Vue.component('form-anaesthetic', require('./components/FormAnaesthetic.vue'));
+
 new Vue({
 	el: '#app',
 
@@ -50,7 +52,7 @@ new Vue({
 		this.hfjvCase = patient.proceed==1 ? true : false;
 		Event.$on('weight', (weight) => { this.weight = weight });
 		Event.$on('height', (height) => { this.height = height });
-		Event.$on('proceedDrop', (value) => { this.hfjvCase = value});
+		Event.$on('proceedDrop', (value) => { this.hfjvCase = value });
 		Event.$on('closeCvsModal', () => 
 			{ 
 				axios.put('/patient/update/' + patient.id, {

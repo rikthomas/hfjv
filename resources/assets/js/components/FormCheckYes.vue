@@ -43,6 +43,8 @@ export default {
 	                	|| this.name=='tissue' || this.name=='renal' || this.name=='hemiplegia' || this.name=='dementia') {
 	                	this.function();
 	                }
+	                if (this.name=='hfjvuse'){Event.$emit('hfjvDrop', this.value);}
+	                if (this.name=='ippv'){Event.$emit('ippvDrop', this.value);}
 	              })
 	              .catch(function (error) {
 	                console.log(error);

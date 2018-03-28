@@ -90,6 +90,25 @@ class CreatePatientsTable extends Migration
             $table->integer('ppopscore')->nullable();
             $table->float('ppmorbidity', 3, 1)->nullable();
             $table->float('ppmortality', 3, 1)->nullable();
+            $table->integer('tiva')->nullable();
+            $table->integer('artline')->nullable();
+            $table->integer('hfjvuse')->nullable();
+            $table->integer('frequency')->nullable();
+            $table->integer('drivingpressuremin')->nullable();
+            $table->integer('drivingpressuremax')->nullable();
+            $table->integer('fio2')->nullable();
+            $table->integer('meanpressuremin')->nullable();
+            $table->integer('meanpressuremax')->nullable();
+            $table->integer('etco2')->nullable();
+            $table->integer('minco2')->nullable();
+            $table->integer('maxco2')->nullable();
+            $table->integer('desat')->nullable();
+            $table->integer('lowestdesat')->nullable();
+            $table->integer('ippv')->nullable();
+            $table->integer('tolerance')->nullable();
+            $table->integer('satisfaction')->nullable();
+            $table->integer('extubated')->nullable();
+            $table->string('destination')->nullable();
             $table->timestamps();
         });
     }
