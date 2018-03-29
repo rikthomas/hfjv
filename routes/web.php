@@ -19,3 +19,5 @@ Route::put('/patient/update/{id}', 'PatientController@updateField');
 Route::put('/patient/delcvs/{id}', 'PatientController@deleteCVS');
 
 Route::put('/patient/delresp/{id}', 'PatientController@deleteResp');
+
+Route::get('/datatables/cases', 'PatientController@datatable');

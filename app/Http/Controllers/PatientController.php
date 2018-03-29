@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Patient;
 use JavaScript;
+use DataTables;
 
 class PatientController extends Controller
 {
@@ -132,5 +133,14 @@ class PatientController extends Controller
         $patient->pefr = null;
         $patient->otherresp = null;
         $patient->save();
+    }
+
+    public function datatable() {
+        $data = Patient::select('id', 'anaesthetist', 'created_at')->get();
+        $cases = [];
+        foreach ($data as $case) {
+            array_push($cases, array('id'=>$case->id, 'anaesthetist'=>$case->anaesthetist, 'created_at'=>$case->created_at->format('d/m/Y')));
+        }
+        return Datatables::of($cases)->make(true);   
     }
 }

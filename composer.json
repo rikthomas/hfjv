@@ -10,7 +10,8 @@
         "laracasts/utilities": "^3.0",
         "laravel-frontend-presets/bulma": "^1.7",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "yajra/laravel-datatables-oracle": "^8.4"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
