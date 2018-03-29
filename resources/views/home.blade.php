@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @push('styles')
-<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/dataTables.bulma.min.css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" />
 @endpush
 
 @section('content')
@@ -28,6 +29,7 @@
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables.bulma.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     $('#caseTable').DataTable({
