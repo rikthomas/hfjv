@@ -17,8 +17,29 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-@yield('content')
+        <div id="app">
 
+            <section class="section">
+                        <div class="container">
+                            <div class="columns">                      
+                                <div class="column is-2">
+                                    <aside class="menu is-hidden-mobile">
+                                      <p class="menu-label">
+                                        Menu
+                                    </p>
+                                    <ul class="menu-list">
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/patient/create">New Case</a></li>
+                                    </ul>
+                                    </aside>
+                                 </div>
+                                 @yield('content')
+                            </div>
+                        </div>
+                    </section>
+
+
+</div>
 <!-- Scripts -->
         @include ('footer')
         <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>

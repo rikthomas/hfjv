@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div id='app'>
-    <section class="section">
-        <div class="columns">
-            <div class="column is-three-fifths is-offset-one-fifth">
+            <div class="column is-8">
                 <article class="message is-success">
                     <div class="message-header">
                         <p>Case Details</p>
@@ -99,9 +96,7 @@
                         <form-anaesthetic></form-anaesthetic>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+
 @endsection
 
 @push('scripts')
