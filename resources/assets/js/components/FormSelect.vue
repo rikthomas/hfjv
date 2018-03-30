@@ -2,7 +2,7 @@
 	<div>
 		<label class="label">{{ label }}</label>
 		<div class="select is-fullwidth" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}">
-			<select v-model="value" @change="updateField">
+			<select v-model="value" :disabled="disabled" @change="updateField">
 				<option v-for="item in data" :value="item.value">{{ item.text }}</option>
 			</select>
 		</div>
@@ -17,12 +17,15 @@
 		data() {
 			return {
 				value: '',
-				isSuccess: true
+				isSuccess: true,
+				disabled: ''
 			}
 		},
 
 		created() {
 			this.value = patient[this.name];
+			this.disabled = Event.disabled;
+			Event.$on('enableForm', () => { this.disabled = Event.disabled });
 		},
 
 		methods: {

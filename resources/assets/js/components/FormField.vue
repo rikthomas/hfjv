@@ -1,7 +1,7 @@
 <template>
 	<p class="control is-expanded">
       <label class="label" :class="textColor">{{ label }}</label>
-      <input :type="type" class="input" :class="{'is-success': isSaved, 'is-danger': isDirty}"  :placeholder="placeholder" :name="name" v-model="value" @blur="updateField" @keyup="dirtyCheck">
+      <input :type="type" class="input" :class="{'is-success': isSaved, 'is-danger': isDirty}"  :placeholder="placeholder" :name="name" v-model="value" @blur="updateField" @keyup="dirtyCheck" :disabled="disabled">
     </p>
 </template>
 
@@ -16,11 +16,14 @@
 				value: '',
 				isDirty: false,
 				isSaved: false,
+				disabled: ''
 			}
 		},
 
 		created() {
 			this.value = patient[this.name];
+			this.disabled = Event.disabled;
+			Event.$on('enableForm', () => { this.disabled = Event.disabled });
 			if (this.name=='weight'){Event.$emit('weight', this.value);}
 			if (this.name=='height'){Event.$emit('height', this.value);}
 		},

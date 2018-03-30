@@ -11,11 +11,11 @@
 		<div class="field">
 			<p class="control is-expanded">
 			    <label class="label has-text-danger">LVEF if known</label>
-			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef1" value="<35%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
+			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef1" value="<35%" :disabled="disabled" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
 			        <label for="lvef1"><35%</label>
-			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef2" value="35-50%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
+			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef2" value="35-50%" :disabled="disabled" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
 			        <label for="lvef2">35-50%</label>
-			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef3" value=">50%" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
+			        <input class="is-checkradio" type="radio" v-model="lvef" id="lvef3" value=">50%" :disabled="disabled" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLVEF">
 			        <label for="lvef3">>50%</label>
 			</p>
 		</div>
@@ -45,12 +45,15 @@
 		data() {
 			return {
 				lvef: '',
-				isSuccess: true
+				isSuccess: true,
+				disabled: '',
 			}
 		},
 
 		created() {
 			this.lvef = patient.lvef;
+			this.disabled = Event.disabled;
+			Event.$on('enableForm', () => { this.disabled = Event.disabled });
 		},
 
 		methods: {

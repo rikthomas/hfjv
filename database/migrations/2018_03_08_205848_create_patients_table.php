@@ -109,6 +109,7 @@ class CreatePatientsTable extends Migration
             $table->integer('satisfaction')->nullable();
             $table->integer('extubated')->nullable();
             $table->string('destination')->nullable();
+            $table->integer('disabled')->default('0');
             $table->timestamps();
         });
     }

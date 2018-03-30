@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Patient;
 use JavaScript;
 use DataTables;
+use Carbon\Carbon;
 
 class PatientController extends Controller
 {
@@ -50,10 +51,18 @@ class PatientController extends Controller
      */
     public function show($id)
     {
+        $patient = Patient::find($id);
+        if (!$patient->created_at->isToday()) {$patient->disabled = 1;}
         JavaScript::put([
-            'patient' => Patient::find($id),
+            'patient' => $patient,
         ]);
         return view('form');
+        
+
+        // JavaScript::put([
+        //     'patient' => Patient::find($id),
+        // ]);
+        // return view('form');
     }
 
     /**

@@ -1,6 +1,14 @@
 @extends('layouts.app')
+
+@push('styles')
+<link rel="stylesheet" href="/css/font-awesome.min.css" />
+@endpush
+
 @section('content')
             <div class="column is-8">
+                <div class="field">
+                    <a class="button is-info" v-show="disabled" @click="unlock"><i class="fa fa-lock">&nbsp</i>Unlock Form</a>
+                </div>
                 <article class="message is-success">
                     <div class="message-header">
                         <p>Case Details</p>
@@ -96,7 +104,6 @@
                         <form-anaesthetic></form-anaesthetic>
                 </div>
             </div>
-
 @endsection
 
 @push('scripts')

@@ -23,33 +23,33 @@
 	<div class="field">
 			<p class="control is-expanded">
 			    <label class="label">Diabetes</label>
-			    	<input class="is-checkradio" type="radio" v-model="diabetes" id="diabetes0" value=0 :class="{'is-success': isSuccessD, 'is-danger': !isSuccessD}" @change="updateDiabetes">
+			    	<input class="is-checkradio" type="radio" v-model="diabetes" id="diabetes0" value=0 :disabled="disabled" :class="{'is-success': isSuccessD, 'is-danger': !isSuccessD}" @change="updateDiabetes">
 			        <label for="diabetes0">No</label> 
-			        <input class="is-checkradio" type="radio" v-model="diabetes" id="diabetes1" value=1 :class="{'is-success': isSuccessD, 'is-danger': !isSuccessD}" @change="updateDiabetes">
+			        <input class="is-checkradio" type="radio" v-model="diabetes" id="diabetes1" value=1 :disabled="disabled" :class="{'is-success': isSuccessD, 'is-danger': !isSuccessD}" @change="updateDiabetes">
 			        <label for="diabetes1">Uncomplicated</label>
-			        <input class="is-checkradio" type="radio" v-model="diabetes" id="diabetes2" value=2 :class="{'is-success': isSuccessD, 'is-danger': !isSuccessD}" @change="updateDiabetes">
+			        <input class="is-checkradio" type="radio" v-model="diabetes" id="diabetes2" value=2 :disabled="disabled" :class="{'is-success': isSuccessD, 'is-danger': !isSuccessD}" @change="updateDiabetes">
 			        <label for="diabetes2">End-Organ Damage</label>   
 			</p>
 	</div>
 	<div class="field">
 			<p class="control is-expanded">
 			    <label class="label">Solid Tumour</label>
-			    	<input class="is-checkradio" type="radio" v-model="tumour" id="tumour0" value=0 :class="{'is-success': isSuccessT, 'is-danger': !isSuccessT}" @change="updateTumour">
+			    	<input class="is-checkradio" type="radio" v-model="tumour" id="tumour0" value=0 :disabled="disabled" :class="{'is-success': isSuccessT, 'is-danger': !isSuccessT}" @change="updateTumour">
 			        <label for="tumour0">No</label> 
-			        <input class="is-checkradio" type="radio" v-model="tumour" id="tumour1" value=2 :class="{'is-success': isSuccessT, 'is-danger': !isSuccessT}" @change="updateTumour">
+			        <input class="is-checkradio" type="radio" v-model="tumour" id="tumour1" value=2 :disabled="disabled" :class="{'is-success': isSuccessT, 'is-danger': !isSuccessT}" @change="updateTumour">
 			        <label for="tumour1">Yes</label>
-			        <input class="is-checkradio" type="radio" v-model="tumour" id="tumour2" value=6 :class="{'is-success': isSuccessT, 'is-danger': !isSuccessT}" @change="updateTumour">
+			        <input class="is-checkradio" type="radio" v-model="tumour" id="tumour2" value=6 :disabled="disabled" :class="{'is-success': isSuccessT, 'is-danger': !isSuccessT}" @change="updateTumour">
 			        <label for="tumour2">Metastatic</label>   
 			</p>
 	</div>
 	<div class="field">
 			<p class="control is-expanded">
 			    <label class="label">Liver Disease</label>
-			    	<input class="is-checkradio" type="radio" v-model="liver" id="liver0" value=0 :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLiver">
+			    	<input class="is-checkradio" type="radio" v-model="liver" id="liver0" value=0 :disabled="disabled" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLiver">
 			        <label for="liver0">None</label> 
-			        <input class="is-checkradio" type="radio" v-model="liver" id="liver1" value=1 :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLiver">
+			        <input class="is-checkradio" type="radio" v-model="liver" id="liver1" value=1 :disabled="disabled" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLiver">
 			        <label for="liver1">Mild</label>
-			        <input class="is-checkradio" type="radio" v-model="liver" id="liver2" value=3 :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLiver">
+			        <input class="is-checkradio" type="radio" v-model="liver" id="liver2" value=3 :disabled="disabled" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" @change="updateLiver">
 			        <label for="liver2">Moderate to Severe</label>   
 			</p>
 	</div>
@@ -83,7 +83,8 @@
 				isSuccessT: true,
 				isSuccessD: true,
 				charlson: '',
-				tenyear: ''
+				tenyear: '',
+				disabled: ''
 			}
 		},
 
@@ -93,6 +94,8 @@
 			this.diabetes = patient.diabetes;
 			this.charlson = patient.charlson;
 			this.tenyear = patient.tenyear;
+			this.disabled = Event.disabled;
+			Event.$on('enableForm', () => { this.disabled = Event.disabled });
 		},
 
 		methods: {

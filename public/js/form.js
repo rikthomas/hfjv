@@ -460,7 +460,14 @@ module.exports = __webpack_require__(49);
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.Event = new Vue();
+window.Event = new Vue({
+	data: {
+		disabled: ''
+	},
+	created: function created() {
+		this.disabled = patient['disabled'] == 0 ? false : true;
+	}
+});
 
 Vue.component('form-field', __webpack_require__(2));
 
@@ -505,12 +512,17 @@ new Vue({
 		tumoursite: [{ "value": "renal", "text": "Renal" }, { "value": "lung", "text": "Lung" }, { "value": "liver", "text": "Liver" }],
 		procedure: [{ "value": "cryoablation", "text": "Cryoablation" }, { "value": "microwave", "text": "Microwave" }, { "value": "gammaknife", "text": "Gamma Knife" }],
 		position: [{ "value": "Prone", "text": "Prone" }, { "value": "lateral", "text": "Lateral" }, { "value": "supine", "text": "Supine" }],
-		hfjvCase: ''
+		hfjvCase: '',
+		disabled: ''
 	},
 
 	created: function created() {
 		var _this = this;
 
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 		this.cvsVisible = patient.cvs == 1 ? true : false;
 		this.respVisible = patient.resp == 1 ? true : false;
 		this.hfjvCase = patient.proceed == 1 ? true : false;
@@ -594,7 +606,13 @@ new Vue({
 		reload: function reload() {
 			location.reload();
 		},
-		dummy: function dummy() {}
+		dummy: function dummy() {},
+		unlock: function unlock() {
+			Event.disabled = false;
+			{
+				Event.$emit('enableForm');
+			}
+		}
 	}
 });
 
@@ -621,11 +639,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			value: '',
 			isDirty: false,
-			isSaved: false
+			isSaved: false,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.value = patient[this.name];
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 		if (this.name == 'weight') {
 			Event.$emit('weight', this.value);
 		}
@@ -637,7 +662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	methods: {
 		updateField: function updateField() {
-			var _this = this;
+			var _this2 = this;
 
 			if (this.value != patient[this.name]) {
 				var field = this.name;
@@ -646,14 +671,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					field: field,
 					value: newValue
 				}).then(function () {
-					_this.isDirty = false;
-					_this.isSaved = true;
-					patient[_this.name] = newValue;
-					if (_this.name == 'weight') {
-						Event.$emit('weight', _this.value);
+					_this2.isDirty = false;
+					_this2.isSaved = true;
+					patient[_this2.name] = newValue;
+					if (_this2.name == 'weight') {
+						Event.$emit('weight', _this2.value);
 					}
-					if (_this.name == 'height') {
-						Event.$emit('height', _this.value);
+					if (_this2.name == 'height') {
+						Event.$emit('height', _this2.value);
 					}
 				}).catch(function (error) {
 					console.log(error);
@@ -695,6 +720,7 @@ var render = function() {
           attrs: {
             placeholder: _vm.placeholder,
             name: _vm.name,
+            disabled: _vm.disabled,
             type: "checkbox"
           },
           domProps: {
@@ -739,6 +765,7 @@ var render = function() {
             attrs: {
               placeholder: _vm.placeholder,
               name: _vm.name,
+              disabled: _vm.disabled,
               type: "radio"
             },
             domProps: { checked: _vm._q(_vm.value, null) },
@@ -764,6 +791,7 @@ var render = function() {
             attrs: {
               placeholder: _vm.placeholder,
               name: _vm.name,
+              disabled: _vm.disabled,
               type: _vm.type
             },
             domProps: { value: _vm.value },
@@ -864,17 +892,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			asa: '',
-			isSuccess: true
+			isSuccess: true,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.asa = patient.asa;
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 	},
 
 
 	methods: {
 		updateAsa: function updateAsa() {
-			var _this = this;
+			var _this2 = this;
 
 			this.isSuccess = false;
 			var newValue = this.asa;
@@ -882,7 +917,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: 'asa',
 				value: newValue
 			}).then(function () {
-				_this.isSuccess = true;
+				_this2.isSuccess = true;
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -908,7 +943,7 @@ var render = function() {
       ],
       staticClass: "is-checkradio",
       class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-      attrs: { id: "asa1", type: "radio", value: "1" },
+      attrs: { disabled: _vm.disabled, id: "asa1", type: "radio", value: "1" },
       domProps: { checked: _vm._q(_vm.asa, "1") },
       on: {
         change: [
@@ -928,7 +963,7 @@ var render = function() {
       ],
       staticClass: "is-checkradio",
       class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-      attrs: { id: "asa2", type: "radio", value: "2" },
+      attrs: { disabled: _vm.disabled, id: "asa2", type: "radio", value: "2" },
       domProps: { checked: _vm._q(_vm.asa, "2") },
       on: {
         change: [
@@ -948,7 +983,7 @@ var render = function() {
       ],
       staticClass: "is-checkradio",
       class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-      attrs: { id: "asa3", type: "radio", value: "3" },
+      attrs: { disabled: _vm.disabled, id: "asa3", type: "radio", value: "3" },
       domProps: { checked: _vm._q(_vm.asa, "3") },
       on: {
         change: [
@@ -968,7 +1003,7 @@ var render = function() {
       ],
       staticClass: "is-checkradio",
       class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-      attrs: { id: "asa4", type: "radio", value: "4" },
+      attrs: { disabled: _vm.disabled, id: "asa4", type: "radio", value: "4" },
       domProps: { checked: _vm._q(_vm.asa, "4") },
       on: {
         change: [
@@ -988,7 +1023,7 @@ var render = function() {
       ],
       staticClass: "is-checkradio",
       class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-      attrs: { id: "asa5", type: "radio", value: "5" },
+      attrs: { disabled: _vm.disabled, id: "asa5", type: "radio", value: "5" },
       domProps: { checked: _vm._q(_vm.asa, "5") },
       on: {
         change: [
@@ -1264,17 +1299,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			lvef: '',
-			isSuccess: true
+			isSuccess: true,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.lvef = patient.lvef;
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 	},
 
 
 	methods: {
 		updateLVEF: function updateLVEF() {
-			var _this = this;
+			var _this2 = this;
 
 			this.isSuccess = false;
 			var newValue = this.lvef;
@@ -1282,7 +1324,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: 'lvef',
 				value: newValue
 			}).then(function () {
-				_this.isSuccess = true;
+				_this2.isSuccess = true;
 				patient.lvef = newValue;
 			}).catch(function (error) {
 				console.log(error);
@@ -1314,17 +1356,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			value: '',
-			isSuccess: true
+			isSuccess: true,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.value = patient[this.name];
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 	},
 
 
 	methods: {
 		updateYN: function updateYN() {
-			var _this = this;
+			var _this2 = this;
 
 			this.isSuccess = false;
 			var field = this.name;
@@ -1333,28 +1382,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: field,
 				value: newValue
 			}).then(function () {
-				_this.isSuccess = true;
-				patient[_this.name] = newValue;
-				if (_this.name == 'proceed') {
-					Event.$emit('proceedDrop', _this.value);
+				_this2.isSuccess = true;
+				patient[_this2.name] = newValue;
+				if (_this2.name == 'proceed') {
+					Event.$emit('proceedDrop', _this2.value);
 				}
-				if (_this.name == 'cvs') {
-					Event.$emit('cvsDrop', _this.value);
+				if (_this2.name == 'cvs') {
+					Event.$emit('cvsDrop', _this2.value);
 				}
-				if (_this.name == 'resp') {
-					Event.$emit('respDrop', _this.value);
+				if (_this2.name == 'resp') {
+					Event.$emit('respDrop', _this2.value);
 				}
-				if (_this.name == 'pft') {
-					Event.$emit('pftDrop', _this.value);
+				if (_this2.name == 'pft') {
+					Event.$emit('pftDrop', _this2.value);
 				}
-				if (_this.name == 'mi' || _this.name == 'ccf' || _this.name == 'pvd' || _this.name == 'cvd' || _this.name == 'pud' || _this.name == 'leukaemia' || _this.name == 'lymphoma' || _this.name == 'aids' || _this.name == 'pulmonary' || _this.name == 'tissue' || _this.name == 'renal' || _this.name == 'hemiplegia' || _this.name == 'dementia') {
-					_this.function();
+				if (_this2.name == 'mi' || _this2.name == 'ccf' || _this2.name == 'pvd' || _this2.name == 'cvd' || _this2.name == 'pud' || _this2.name == 'leukaemia' || _this2.name == 'lymphoma' || _this2.name == 'aids' || _this2.name == 'pulmonary' || _this2.name == 'tissue' || _this2.name == 'renal' || _this2.name == 'hemiplegia' || _this2.name == 'dementia') {
+					_this2.function();
 				}
-				if (_this.name == 'hfjvuse') {
-					Event.$emit('hfjvDrop', _this.value);
+				if (_this2.name == 'hfjvuse') {
+					Event.$emit('hfjvDrop', _this2.value);
 				}
-				if (_this.name == 'ippv') {
-					Event.$emit('ippvDrop', _this.value);
+				if (_this2.name == 'ippv') {
+					Event.$emit('ippvDrop', _this2.value);
 				}
 			}).catch(function (error) {
 				console.log(error);
@@ -1384,7 +1433,7 @@ var render = function() {
       ],
       staticClass: "is-checkradio",
       class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-      attrs: { type: "checkbox", id: _vm.name },
+      attrs: { type: "checkbox", id: _vm.name, disabled: _vm.disabled },
       domProps: {
         checked: Array.isArray(_vm.value)
           ? _vm._i(_vm.value, null) > -1
@@ -1670,7 +1719,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { type: "radio", id: "lvef1", value: "<35%" },
+          attrs: {
+            type: "radio",
+            id: "lvef1",
+            value: "<35%",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.lvef, "<35%") },
           on: {
             change: [
@@ -1695,7 +1749,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { type: "radio", id: "lvef2", value: "35-50%" },
+          attrs: {
+            type: "radio",
+            id: "lvef2",
+            value: "35-50%",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.lvef, "35-50%") },
           on: {
             change: [
@@ -1720,7 +1779,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { type: "radio", id: "lvef3", value: ">50%" },
+          attrs: {
+            type: "radio",
+            id: "lvef3",
+            value: ">50%",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.lvef, ">50%") },
           on: {
             change: [
@@ -2472,21 +2536,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			isSuccessT: true,
 			isSuccessD: true,
 			charlson: '',
-			tenyear: ''
+			tenyear: '',
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.liver = patient.liver;
 		this.tumour = patient.tumour;
 		this.diabetes = patient.diabetes;
 		this.charlson = patient.charlson;
 		this.tenyear = patient.tenyear;
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 	},
 
 
 	methods: {
 		updateLiver: function updateLiver() {
-			var _this = this;
+			var _this2 = this;
 
 			this.isSuccess = false;
 			var newValue = this.liver;
@@ -2494,15 +2565,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: 'liver',
 				value: newValue
 			}).then(function () {
-				_this.isSuccess = true;
+				_this2.isSuccess = true;
 				patient.liver = newValue;
-				_this.calcCharlson();
+				_this2.calcCharlson();
 			}).catch(function (error) {
 				console.log(error);
 			});
 		},
 		updateDiabetes: function updateDiabetes() {
-			var _this2 = this;
+			var _this3 = this;
 
 			this.isSuccessD = false;
 			var newValue = this.diabetes;
@@ -2510,15 +2581,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: 'diabetes',
 				value: newValue
 			}).then(function () {
-				_this2.isSuccessD = true;
+				_this3.isSuccessD = true;
 				patient.diabetes = newValue;
-				_this2.calcCharlson();
+				_this3.calcCharlson();
 			}).catch(function (error) {
 				console.log(error);
 			});
 		},
 		updateTumour: function updateTumour() {
-			var _this3 = this;
+			var _this4 = this;
 
 			this.isSuccessT = false;
 			var newValue = this.tumour;
@@ -2526,9 +2597,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: 'tumour',
 				value: newValue
 			}).then(function () {
-				_this3.isSuccessT = true;
+				_this4.isSuccessT = true;
 				patient.tumour = newValue;
-				_this3.calcCharlson();
+				_this4.calcCharlson();
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -2729,7 +2800,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccessD, "is-danger": !_vm.isSuccessD },
-          attrs: { type: "radio", id: "diabetes0", value: "0" },
+          attrs: {
+            type: "radio",
+            id: "diabetes0",
+            value: "0",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.diabetes, "0") },
           on: {
             change: [
@@ -2754,7 +2830,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccessD, "is-danger": !_vm.isSuccessD },
-          attrs: { type: "radio", id: "diabetes1", value: "1" },
+          attrs: {
+            type: "radio",
+            id: "diabetes1",
+            value: "1",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.diabetes, "1") },
           on: {
             change: [
@@ -2779,7 +2860,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccessD, "is-danger": !_vm.isSuccessD },
-          attrs: { type: "radio", id: "diabetes2", value: "2" },
+          attrs: {
+            type: "radio",
+            id: "diabetes2",
+            value: "2",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.diabetes, "2") },
           on: {
             change: [
@@ -2812,7 +2898,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccessT, "is-danger": !_vm.isSuccessT },
-          attrs: { type: "radio", id: "tumour0", value: "0" },
+          attrs: {
+            type: "radio",
+            id: "tumour0",
+            value: "0",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.tumour, "0") },
           on: {
             change: [
@@ -2837,7 +2928,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccessT, "is-danger": !_vm.isSuccessT },
-          attrs: { type: "radio", id: "tumour1", value: "2" },
+          attrs: {
+            type: "radio",
+            id: "tumour1",
+            value: "2",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.tumour, "2") },
           on: {
             change: [
@@ -2862,7 +2958,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccessT, "is-danger": !_vm.isSuccessT },
-          attrs: { type: "radio", id: "tumour2", value: "6" },
+          attrs: {
+            type: "radio",
+            id: "tumour2",
+            value: "6",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.tumour, "6") },
           on: {
             change: [
@@ -2893,7 +2994,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { type: "radio", id: "liver0", value: "0" },
+          attrs: {
+            type: "radio",
+            id: "liver0",
+            value: "0",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.liver, "0") },
           on: {
             change: [
@@ -2918,7 +3024,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { type: "radio", id: "liver1", value: "1" },
+          attrs: {
+            type: "radio",
+            id: "liver1",
+            value: "1",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.liver, "1") },
           on: {
             change: [
@@ -2943,7 +3054,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { type: "radio", id: "liver2", value: "3" },
+          attrs: {
+            type: "radio",
+            id: "liver2",
+            value: "3",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.liver, "3") },
           on: {
             change: [
@@ -3119,17 +3235,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			ecog: '',
-			isSuccess: true
+			isSuccess: true,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.ecog = patient.ecog;
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 	},
 
 
 	methods: {
 		updateEcog: function updateEcog() {
-			var _this = this;
+			var _this2 = this;
 
 			this.isSuccess = false;
 			var newValue = this.ecog;
@@ -3137,7 +3260,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: 'ecog',
 				value: newValue
 			}).then(function () {
-				_this.isSuccess = true;
+				_this2.isSuccess = true;
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -3170,7 +3293,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { id: "ecog1", type: "radio", value: "1" },
+          attrs: {
+            id: "ecog1",
+            type: "radio",
+            value: "1",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.ecog, "1") },
           on: {
             change: [
@@ -3201,7 +3329,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { id: "ecog2", type: "radio", value: "2" },
+          attrs: {
+            id: "ecog2",
+            type: "radio",
+            value: "2",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.ecog, "2") },
           on: {
             change: [
@@ -3232,7 +3365,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { id: "ecog3", type: "radio", value: "3" },
+          attrs: {
+            id: "ecog3",
+            type: "radio",
+            value: "3",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.ecog, "3") },
           on: {
             change: [
@@ -3263,7 +3401,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { id: "ecog4", type: "radio", value: "4" },
+          attrs: {
+            id: "ecog4",
+            type: "radio",
+            value: "4",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.ecog, "4") },
           on: {
             change: [
@@ -3294,7 +3437,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { id: "ecog5", type: "radio", value: "5" },
+          attrs: {
+            id: "ecog5",
+            type: "radio",
+            value: "5",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.ecog, "5") },
           on: {
             change: [
@@ -3325,7 +3473,12 @@ var render = function() {
           ],
           staticClass: "is-checkradio",
           class: { "is-success": _vm.isSuccess, "is-danger": !_vm.isSuccess },
-          attrs: { id: "ecog6", type: "radio", value: "6" },
+          attrs: {
+            id: "ecog6",
+            type: "radio",
+            value: "6",
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm._q(_vm.ecog, "6") },
           on: {
             change: [
@@ -3623,17 +3776,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			value: '',
-			isSuccess: true
+			isSuccess: true,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.value = patient[this.name];
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 	},
 
 
 	methods: {
 		updateField: function updateField() {
-			var _this = this;
+			var _this2 = this;
 
 			this.isSuccess = false;
 			var field = this.name;
@@ -3642,9 +3802,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				field: field,
 				value: newValue
 			}).then(function () {
-				_this.isSuccess = true;
-				patient[_this.name] = newValue;
-				_this.function();
+				_this2.isSuccess = true;
+				patient[_this2.name] = newValue;
+				_this2.function();
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -3682,6 +3842,7 @@ var render = function() {
                 expression: "value"
               }
             ],
+            attrs: { disabled: _vm.disabled },
             on: {
               change: [
                 function($event) {
@@ -4214,11 +4375,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			value: '',
 			isDirty: false,
-			isSaved: false
+			isSaved: false,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.value = patient[this.name];
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 		if (this.name == 'weight') {
 			Event.$emit('weight', this.value);
 		}
@@ -4230,7 +4398,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	methods: {
 		updateField: function updateField() {
-			var _this = this;
+			var _this2 = this;
 
 			if (this.value != patient[this.name]) {
 				var field = this.name;
@@ -4239,14 +4407,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					field: field,
 					value: newValue
 				}).then(function () {
-					_this.isDirty = false;
-					_this.isSaved = true;
-					patient[_this.name] = newValue;
-					if (_this.name == 'weight') {
-						Event.$emit('weight', _this.value);
+					_this2.isDirty = false;
+					_this2.isSaved = true;
+					patient[_this2.name] = newValue;
+					if (_this2.name == 'weight') {
+						Event.$emit('weight', _this2.value);
 					}
-					if (_this.name == 'height') {
-						Event.$emit('height', _this.value);
+					if (_this2.name == 'height') {
+						Event.$emit('height', _this2.value);
 					}
 				}).catch(function (error) {
 					console.log(error);
@@ -4284,7 +4452,11 @@ var render = function() {
       ],
       staticClass: "textarea",
       class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
-      attrs: { placeholder: _vm.placeholder, name: _vm.name },
+      attrs: {
+        disabled: _vm.disabled,
+        placeholder: _vm.placeholder,
+        name: _vm.name
+      },
       domProps: { value: _vm.value },
       on: {
         blur: _vm.updateField,

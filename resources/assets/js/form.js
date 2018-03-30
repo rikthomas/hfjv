@@ -1,4 +1,11 @@
-window.Event = new Vue();
+window.Event = new Vue({
+	data: {
+		disabled: '',
+	},
+	created() {
+		this.disabled = patient['disabled']==0 ? false : true;
+	}
+});
 
 Vue.component('form-field', require('./components/FormField.vue'));
 
@@ -44,9 +51,12 @@ new Vue({
 		procedure: [{"value": "cryoablation", "text": "Cryoablation"}, {"value": "microwave", "text": "Microwave"}, {"value": "gammaknife", "text": "Gamma Knife"},],
 		position: [{"value": "Prone", "text": "Prone"}, {"value": "lateral", "text": "Lateral"},{"value": "supine", "text": "Supine"},],
 		hfjvCase: '',
+		disabled: '',
 	},
 
 	created() {
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', () => { this.disabled = Event.disabled });
 		this.cvsVisible = patient.cvs==1 ? true : false;
 		this.respVisible = patient.resp==1 ? true : false;
 		this.hfjvCase = patient.proceed==1 ? true : false;
@@ -131,6 +141,10 @@ new Vue({
 		},
 		dummy() {
 
+		},
+		unlock() {
+			Event.disabled = false;
+			{Event.$emit('enableForm');}
 		}
 	}
 });

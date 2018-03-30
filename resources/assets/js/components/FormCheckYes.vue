@@ -1,6 +1,6 @@
 <template>
 	<div class="field">
-		<input type="checkbox" class="is-checkradio" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" :id="name" v-model="value" @change="updateYN">
+		<input type="checkbox" class="is-checkradio" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}" :id="name" :disabled="disabled" v-model="value" @change="updateYN">
 		<label :for="name">{{ label }}</label>
 	</div>
 </template>
@@ -15,11 +15,14 @@ export default {
 			return{
 				value: '',
 				isSuccess: true,
+				disabled: '',
 			}
 		},
 
 		created() {
 			this.value = patient[this.name];
+			this.disabled = Event.disabled;
+			Event.$on('enableForm', () => { this.disabled = Event.disabled });
 		},
 
 		methods: {
