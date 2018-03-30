@@ -1498,11 +1498,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			value: '',
 			isDirty: false,
-			isSaved: false
+			isSaved: false,
+			disabled: ''
 		};
 	},
 	created: function created() {
+		var _this = this;
+
 		this.value = patient[this.name];
+		this.disabled = Event.disabled;
+		Event.$on('enableForm', function () {
+			_this.disabled = Event.disabled;
+		});
 		if (this.name == 'weight') {
 			Event.$emit('weight', this.value);
 		}
@@ -1514,7 +1521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	methods: {
 		updateField: function updateField() {
-			var _this = this;
+			var _this2 = this;
 
 			if (this.value != patient[this.name]) {
 				var field = this.name;
@@ -1523,14 +1530,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					field: field,
 					value: newValue
 				}).then(function () {
-					_this.isDirty = false;
-					_this.isSaved = true;
-					patient[_this.name] = newValue;
-					if (_this.name == 'weight') {
-						Event.$emit('weight', _this.value);
+					_this2.isDirty = false;
+					_this2.isSaved = true;
+					patient[_this2.name] = newValue;
+					if (_this2.name == 'weight') {
+						Event.$emit('weight', _this2.value);
 					}
-					if (_this.name == 'height') {
-						Event.$emit('height', _this.value);
+					if (_this2.name == 'height') {
+						Event.$emit('height', _this2.value);
 					}
 				}).catch(function (error) {
 					console.log(error);
@@ -1567,6 +1574,7 @@ var render = function() {
           class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
           attrs: {
             placeholder: _vm.placeholder,
+            disabled: _vm.disabled,
             name: _vm.name,
             type: "checkbox"
           },
@@ -1611,6 +1619,7 @@ var render = function() {
             class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
             attrs: {
               placeholder: _vm.placeholder,
+              disabled: _vm.disabled,
               name: _vm.name,
               type: "radio"
             },
@@ -1636,6 +1645,7 @@ var render = function() {
             class: { "is-success": _vm.isSaved, "is-danger": _vm.isDirty },
             attrs: {
               placeholder: _vm.placeholder,
+              disabled: _vm.disabled,
               name: _vm.name,
               type: _vm.type
             },
