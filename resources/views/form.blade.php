@@ -107,5 +107,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/form.js') }}"></script>
+<script src="{{ mix('js/form.js') }}"></script>
 @endpush

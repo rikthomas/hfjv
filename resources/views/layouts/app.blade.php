@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('styles')
     </head>
     <body>
@@ -43,7 +43,7 @@
 </div>
 <!-- Scripts -->
         @include ('footer')
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ mix('js/app.js') }}"></script>
         @stack('scripts')
     </body>
 </html>
