@@ -44,7 +44,7 @@ $(document).ready(function() {
             {data: 'anaesthetist', name: 'anaesthetist'},
             {data: 'created_at', name: 'created_at'},
         ],
-        order: [[2, 'asc']]
+        order: [[2, 'asc'], [0, 'desc']]
     });
 });
 </script>
