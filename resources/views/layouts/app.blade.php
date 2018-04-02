@@ -24,19 +24,8 @@
                     <div class="navbar-brand">
                         <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name', 'Laravel') }}</a>
 
-                        <div class="navbar-burger burger" data-target="navMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-
-                    <div class="navbar-menu" id="navMenu">
-                        <div class="navbar-start">
-                            <a class="navbar-item" href="/patient/create">New Case</a>
-                        </div>
-                            
-                        <div class="navbar-end"></div>
+                    <div class="navbar-menu is-active">
+                            <a class="navbar-item" href="/patient/create">New Case</a>           
                     </div>
                 </div>
             </nav>
