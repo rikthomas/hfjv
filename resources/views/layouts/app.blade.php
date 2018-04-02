@@ -19,28 +19,29 @@
     </head>
     <body>
         <div id="app">
+            <nav class="navbar has-shadow">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name', 'Laravel') }}</a>
 
-            <section class="section">
-                        <div class="container">
-                            <div class="columns">                      
-                                <div class="column is-2">
-                                    <aside class="menu is-hidden-mobile">
-                                      <p class="menu-label">
-                                        Menu
-                                    </p>
-                                    <ul class="menu-list">
-                                        <li><a href="/">Home</a></li>
-                                        <li><a href="/patient/create">New Case</a></li>
-                                    </ul>
-                                    </aside>
-                                 </div>
-                                 @yield('content')
-                            </div>
+                        <div class="navbar-burger burger" data-target="navMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
-                    </section>
+                    </div>
 
-
-</div>
+                    <div class="navbar-menu" id="navMenu">
+                        <div class="navbar-start">
+                            <a class="navbar-item" href="/patient/create">New Case</a>
+                        </div>
+                            
+                        <div class="navbar-end"></div>
+                    </div>
+                </div>
+            </nav>
+        @yield('content')
+    </div>
 <!-- Scripts -->
         @include ('footer')
         <script src="{{ mix('js/app.js') }}"></script>

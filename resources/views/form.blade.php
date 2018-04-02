@@ -5,7 +5,9 @@
 @endpush
 
 @section('content')
-            <div class="column is-8">
+    <section class="section">   
+        <div class="columns">  
+            <div class="column is-three-fifths is-offset-one-fifth">
                 <div class="field">
                     <a class="button is-info" v-show="disabled" @click="unlock"><i class="fa fa-lock">&nbsp</i>Unlock Form</a>
                 </div>
@@ -104,6 +106,8 @@
                         <form-anaesthetic></form-anaesthetic>
                 </div>
             </div>
+        </div>
+    </section>
 @endsection
 
 @push('scripts')

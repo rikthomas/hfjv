@@ -6,7 +6,9 @@
 @endpush
 
 @section('content')
-            <div class="column is-8">
+    <section class="section">   
+        <div class="columns">  
+            <div class="column is-three-fifths is-offset-one-fifth">
                 <article class="message">
                     <div class="message-header">
                         <p>Cases</p>
@@ -19,11 +21,13 @@
                                     <th>Anaesthetist</th>
                                     <th>Date</th>
                                 </tr>
-                            </thead>
-                            
+                            </thead>                          
                         </table>
+                    </div>
                 </article>
             </div>
+        </div>
+    </section>
 @endsection
 
 @push('scripts')
