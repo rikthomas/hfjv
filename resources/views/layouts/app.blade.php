@@ -23,10 +23,7 @@
                 <div class="container">
                     <div class="navbar-brand">
                         <a href="{{ url('/') }}" class="navbar-item">{{ config('app.name', 'Laravel') }}</a>
-
-                    <div class="navbar-menu is-active">
-                            <a class="navbar-item" href="/patient/create">New Case</a>           
-                    </div>
+                        <a class="navbar-item" href="/patient/create">New Case</a>           
                 </div>
             </nav>
         @yield('content')

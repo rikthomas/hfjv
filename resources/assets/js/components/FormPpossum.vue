@@ -125,7 +125,7 @@
 				{"value": 2, "text": "40-49"},
 				{"value": 1, "text": "50-80"},
 				{"value": 2, "text": "81-100"},
-				{"value": 4, "text": "101-150"},
+				{"value": 4, "text": "101-120"},
 				{"value": 8, "text": ">120"},
 				],
 				hb: [	
@@ -221,38 +221,157 @@
 			calcPpossum()
 			{
 				if (patient.age) {
-					if (patient.age < 61) {
-				 	var age = 1;
-				 } else if (patient.age >= 61 && patient.age < 70) {
-				 	var age = 2;
-				 } else {
-				 	var age = 4;
-				 }
+						if (patient.age < 61) {
+					 	var age = 1;
+					 } else if (patient.age >= 61 && patient.age < 70) {
+					 	var age = 2;
+					 } else {
+					 	var age = 4;
+					 }
+				}
+				for (var i = 0; i < this.cardiac.length; i++)
+				{
+					if (patient.ppcardiac == this.cardiac[i].text)
+					{
+						var ppcardiac = this.cardiac[i].value;
+					}
+				}
+				for (var i = 0; i < this.respiratory.length; i++)
+				{
+					if (patient.ppresp == this.respiratory[i].text)
+					{
+						var ppresp = this.respiratory[i].value;
+					}
+				}
+				for (var i = 0; i < this.ecg.length; i++)
+				{
+					if (patient.ppecg == this.ecg[i].text)
+					{
+						var ppecg = this.ecg[i].value;
+					}
+				}
+				for (var i = 0; i < this.systolic.length; i++)
+				{
+					if (patient.ppbp == this.systolic[i].text)
+					{
+						var ppbp = this.systolic[i].value;
+					}
+				}
+				for (var i = 0; i < this.pulse.length; i++)
+				{
+					if (patient.pppulse == this.pulse[i].text)
+					{
+						var pppulse = this.pulse[i].value;
+					}
+				}
+				for (var i = 0; i < this.hb.length; i++)
+				{
+					if (patient.pphb == this.hb[i].text)
+					{
+						var pphb = this.hb[i].value;
+					}
+				}
+				for (var i = 0; i < this.wbc.length; i++)
+				{
+					if (patient.ppwbc == this.wbc[i].text)
+					{
+						var ppwbc = this.wbc[i].value;
+					}
+				}
+				for (var i = 0; i < this.urea.length; i++)
+				{
+					if (patient.ppurea == this.urea[i].text)
+					{
+						var ppurea = this.urea[i].value;
+					}
+				}
+				for (var i = 0; i < this.na.length; i++)
+				{
+					if (patient.ppna == this.na[i].text)
+					{
+						var ppna = this.na[i].value;
+					}
+				}
+				for (var i = 0; i < this.potassium.length; i++)
+				{
+					if (patient.ppk == this.potassium[i].text)
+					{
+						var ppk = this.potassium[i].value;
+					}
+				}
+				for (var i = 0; i < this.gcs.length; i++)
+				{
+					if (patient.ppgcs == this.gcs[i].text)
+					{
+						var ppgcs = this.gcs[i].value;
+					}
+				}
+				for (var i = 0; i < this.severity.length; i++)
+				{
+					if (patient.ppseverity == this.severity[i].text)
+					{
+						var ppseverity = this.severity[i].value;
+					}
+				}
+				for (var i = 0; i < this.procedures.length; i++)
+				{
+					if (patient.ppprocedures == this.procedures[i].text)
+					{
+						var ppprocedures = this.procedures[i].value;
+					}
+				}
+				for (var i = 0; i < this.blood.length; i++)
+				{
+					if (patient.ppbloodloss == this.blood[i].text)
+					{
+						var ppbloodloss = this.blood[i].value;
+					}
+				}
+				for (var i = 0; i < this.soiling.length; i++)
+				{
+					if (patient.ppsoiling == this.soiling[i].text)
+					{
+						var ppsoiling = this.soiling[i].value;
+					}
+				}
+				for (var i = 0; i < this.malignancy.length; i++)
+				{
+					if (patient.ppmalignancy == this.malignancy[i].text)
+					{
+						var ppmalignancy = this.malignancy[i].value;
+					}
+				}
+				for (var i = 0; i < this.urgency.length; i++)
+				{
+					if (patient.ppurgency == this.urgency[i].text)
+					{
+						var ppurgency = this.urgency[i].value;
+					}
+				}
 				 this.ppphysiology = 
 				 age +
-				 patient.ppcardiac +
-				 patient.ppresp +
-				 patient.ppecg +
-				 patient.ppbp +
-				 patient.pppulse +
-				 patient.pphb + 
-				 patient.ppwbc +
-				 patient.ppurea + 
-				 patient.ppna +
-				 patient.ppk +
-				 patient.ppgcs;
+				 ppcardiac +
+				 ppresp +
+				 ppecg +
+				 ppbp +
+				 pppulse +
+				 pphb + 
+				 ppwbc +
+				 ppurea + 
+				 ppna +
+				 ppk +
+				 ppgcs;
 				 this.ppopscore = 
-				 patient.ppseverity +
-				 patient.ppprocedures +
-				 patient.ppbloodloss + 
-				 patient.ppsoiling +
-				 patient.ppmalignancy +
-				 patient.ppurgency;
+				 ppseverity +
+				 ppprocedures +
+				 ppbloodloss + 
+				 ppsoiling +
+				 ppmalignancy +
+				 ppurgency;
 				 var morbexp = (0.16 * this.ppphysiology) + (0.19 * this.ppopscore) - 5.91;
 				 this.ppmorbidity = this.round(100*(1/(1 + Math.exp(-morbexp))));
 				 var mortexp = -9.065 + (0.1692 * this.ppphysiology) + (0.1550 * this.ppopscore);
 				 this.ppmortality = this.round(100*(1/(1 + Math.exp(-mortexp))));
-				}
 			}
 		},
 		watch: {

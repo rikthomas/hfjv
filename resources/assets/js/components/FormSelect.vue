@@ -3,7 +3,7 @@
 		<label class="label">{{ label }}</label>
 		<div class="select is-fullwidth" :class="{'is-success': isSuccess, 'is-danger': !isSuccess}">
 			<select v-model="value" :disabled="disabled" @change="updateField">
-				<option v-for="item in data" :value="item.value">{{ item.text }}</option>
+				<option v-for="item in data" :value="item.text">{{ item.text }}</option>
 			</select>
 		</div>
 	</div>
