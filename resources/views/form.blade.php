@@ -13,7 +13,7 @@
                 </div>
                 <article class="message is-success">
                     <div class="message-header">
-                        <p>Case Details</p>
+                        <p>Case Details: @{{ date }}</p>
                     </div>
                     <div class="message-body">
                         <div class="field is-grouped">
@@ -104,6 +104,7 @@
                         <form-ecog></form-ecog>
                         <form-ppossum></form-ppossum>
                         <form-anaesthetic></form-anaesthetic>
+                        <form-postop></form-postop>
                 </div>
             </div>
         </div>

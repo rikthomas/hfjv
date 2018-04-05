@@ -37,6 +37,8 @@ Vue.component('form-textarea', require('./components/FormTextarea.vue'));
 
 Vue.component('form-anaesthetic', require('./components/FormAnaesthetic.vue'));
 
+Vue.component('form-postop', require('./components/FormPostop.vue'));
+
 new Vue({
 	el: '#app',
 
@@ -47,11 +49,12 @@ new Vue({
 		respVisible: '',
 		modalVisible: false,
 		respModalVisible: false,
-		tumoursite: [{"value": "renal", "text": "Renal"}, {"value": "lung", "text": "Lung"}, {"value": "liver", "text": "Liver"},],
+		tumoursite: [{"value": "renal", "text": "Renal"}, {"value": "lung", "text": "Lung"}, {"value": "liver", "text": "Liver"}, {"value": "pancreas", "text": "Pancreas"},],
 		procedure: [{"value": "cryoablation", "text": "Cryoablation"}, {"value": "microwave", "text": "Microwave"}, {"value": "gammaknife", "text": "Gamma Knife"},],
 		position: [{"value": "Prone", "text": "Prone"}, {"value": "lateral", "text": "Lateral"},{"value": "supine", "text": "Supine"},],
 		hfjvCase: '',
 		disabled: '',
+		date: patient.date,
 	},
 
 	created() {

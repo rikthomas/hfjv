@@ -20,6 +20,7 @@
                                     <th>Case</th>
                                     <th>Anaesthetist</th>
                                     <th>Date</th>
+                                    <th>Follow Up</th>
                                 </tr>
                             </thead>                          
                         </table>
@@ -42,11 +43,19 @@ $(document).ready(function() {
         ajax: '/datatables/cases',
         columns: [
             {data: 'id', name: 'id',
-            render: function (data, type, row, meta){
+            render: function (data){
                     return '<a href="/patient/' + data + '">' + '#' + data + '</a>';
                 }},
             {data: 'anaesthetist', name: 'anaesthetist'},
             {data: 'created_at', name: 'created_at'},
+            {data: 'fucomplete', name: 'fucomplete',
+            render: function (data){
+                if (data==1) {
+                    return  '<i class="fa fa-thumbs-up" style="color:green" aria-hidden="true"></i>';
+                } else {
+                    return  '<i class="fa fa-thumbs-down" style="color:red" aria-hidden="true"></i>'
+                }
+            }}
         ],
         order: [[0, 'desc']]
     });

@@ -52,6 +52,7 @@ class PatientController extends Controller
     {
         $patient = Patient::find($id);
         if (!$patient->created_at->isToday()) {$patient->disabled = 1;}
+        $patient->date = $patient->created_at->format('d/m/Y');
         JavaScript::put([
             'patient' => $patient,
         ]);
@@ -84,10 +85,7 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        $patient->update(['age' => $request->age, 'weight' => $request->weight, 'height' => $request->height]);
-        
-        return redirect ('patient/' . $patient->id );
-
+        // 
     }
 
     /**
@@ -144,10 +142,10 @@ class PatientController extends Controller
     }
 
     public function datatable() {
-        $data = Patient::select('id', 'anaesthetist', 'created_at')->get();
+        $data = Patient::select('id', 'anaesthetist', 'created_at', 'fucomplete')->get();
         $cases = [];
         foreach ($data as $case) {
-            array_push($cases, array('id'=>$case->id, 'anaesthetist'=>$case->anaesthetist, 'created_at'=>$case->created_at->format('d/m/Y')));
+            array_push($cases, array('id'=>$case->id, 'anaesthetist'=>$case->anaesthetist, 'created_at'=>$case->created_at->format('d/m/Y'), 'fucomplete'=>$case->fucomplete));
         }
         return Datatables::of($cases)->make(true);   
     }

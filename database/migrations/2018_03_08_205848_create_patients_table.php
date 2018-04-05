@@ -110,6 +110,15 @@ class CreatePatientsTable extends Migration
             $table->integer('extubated')->nullable();
             $table->string('destination')->nullable();
             $table->integer('disabled')->default('0');
+            $table->string('los')->nullable();
+            $table->string('discharge')->nullable();
+            $table->integer('unplannedicu')->nullable();
+            $table->integer('complication')->nullable();
+            $table->integer('haemothorax')->nullable();
+            $table->integer('ptx')->nullable();
+            $table->integer('cvsunstable')->nullable();
+            $table->string('othercomplication')->nullable();
+            $table->integer('fucomplete')->nullable();
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@
 			<form-check-yes label="MI" name="mi" :function="calcCharlson"></form-check-yes>
 			<form-check-yes label="CCF" name="ccf" :function="calcCharlson"></form-check-yes>
 			<form-check-yes label="PVD" name="pvd" :function="calcCharlson"></form-check-yes>
-			<form-check-yes label="CVD" name="cvd" :function="calcCharlson"></form-check-yes>
+			<form-check-yes label="CVA" name="cvd" :function="calcCharlson"></form-check-yes>
 			<form-check-yes label="PUD" name="pud" :function="calcCharlson"></form-check-yes>
 	</div>
 	<div class="field is-grouped">
@@ -154,8 +154,10 @@
 			 	var age = 1;
 			 } else if (patient.age >= 60 && patient.age < 70) {
 			 	var age = 2;
-			 } else {
+			 } else if (patient.age >= 70 && patient.age < 80) {
 			 	var age = 3;
+			 } else {
+			 	var age = 4;
 			 }
 			 var mi = patient.mi==1 ? 1 : 0;
 			 var ccf = patient.ccf==1 ? 1 : 0;
