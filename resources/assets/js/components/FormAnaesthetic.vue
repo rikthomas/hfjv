@@ -17,8 +17,8 @@
 				</div>
 				<div class="field is-grouped">
 					<form-field label="FiO2" type="number" placeholder="% please" name="fio2"></form-field>
-					<form-field label="Mean Pressure" type="number" placeholder="min bar" name="meanpressuremin"></form-field>
-					<form-field label="I'm also a Ghost" textColor="has-text-white-ter" type="number" placeholder="max bar" name="meanpressuremax"></form-field>
+					<form-field label="Mean Pressure" type="number" placeholder="min cmH20" name="meanpressuremin"></form-field>
+					<form-field label="I'm also a Ghost" textColor="has-text-white-ter" type="number" placeholder="max cmH20" name="meanpressuremax"></form-field>
 				</div>
 				<div class="field is-grouped">
 					<form-field label="ETCO2 checks" type="number" placeholder="total number" name="etco2"></form-field>
@@ -42,6 +42,9 @@
 					<form-check-yes label="Extubated at the end?" name="extubated" :function="dummy"></form-check-yes>
 					<form-select label="Post-op destination" name="destination" :data="destination" :function="dummy"></form-select>
 				</div>
+				<div class="field">
+					<form-textarea label="Additional Comments" placeholder="any other comments, procedures or complications not captured elsewhere" name="comments"></form-textarea>
+				</div>
 		</div>
 	</article>
 </template>
@@ -50,6 +53,7 @@
 	import FormField from './FormField.vue';
 	import FormYesNo from './FormYesNo.vue';
 	import FormSelect from './FormSelect.vue';
+	import FormTextarea from './FormTextarea.vue';
 
 	export default {
 
