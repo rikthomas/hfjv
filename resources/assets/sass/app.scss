@@ -5,3 +5,16 @@
 // Variables
 @import "bulma";
 @import "bulma-extensions";
+
+//Customisation
+input[type=text]:disabled {
+     background: none;
+     color: black;
+}
+
+input[type=number]:disabled {
+     background: none;
+     color: black;
+}
+
+

@@ -1,7 +1,7 @@
 <template>
 	<p class="control is-expanded">
       <label class="label" :class="textColor">{{ label }}</label>
-      <textarea class="textarea" :class="{'is-success': isSaved, 'is-danger': isDirty}"  :disabled="disabled" :placeholder="placeholder" :name="name" v-model="value" @blur="updateField" @keyup="dirtyCheck"></textarea>
+      <textarea class="textarea has-text-black" :class="{'is-success': isSaved, 'is-danger': isDirty}"  :disabled="disabled" :placeholder="placeholder" :name="name" v-model="value" @blur="updateField" @keyup="dirtyCheck"></textarea>
     </p>
 </template>
 
