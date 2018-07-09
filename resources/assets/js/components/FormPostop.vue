@@ -24,6 +24,13 @@
 				<form-check-yes label="Cardiovascular instability" name="cvsunstable" :function="dummy"></form-check-yes>
 				<form-field label="Other" type="text" placeholder="" name="othercomplication"></form-field>
 			</div>
+			<div class="field is-grouped">
+				<form-check-yes label="Morphine required in the 24 hours post-procedure" name="postopmorphine" :function="dummy"></form-check-yes>
+				<form-field label="Oral morphine equivalent in the first 24 hours (mg)" type="number" placeholder="in mg" name="postopmorphineamount" v-if="oralequivalent"></form-field>
+			</div>
+			<div class="field">
+				<form-field label="Time to first request for supplemental analgesia (enter the time since the procedure, not the actual time)" type="time" placeholder="" name="suppanalgesiatime"></form-field>
+			</div>
 			<div class="field">
 				<form-check-yes label="Follow up complete" name="fucomplete" :function="dummy"></form-check-yes>
 			</div>
@@ -43,14 +50,17 @@
 				isSuccess: true,
 				disabled: '',
 				compx: '',
+				oralequivalent: '',
 			}
 		},
 		created() {
 			this.discharge = patient.discharge;
 			this.disabled = Event.disabled;
 			this.compx = patient.complication==1 ? true : false;
+			this.oralequivalent = patient.postopmorphine==1 ? true : false;
 			Event.$on('enableForm', () => { this.disabled = Event.disabled });
 			Event.$on('compxDrop', (value) => { this.compx = value });
+			Event.$on('oralDrop', (value) => { this.oralequivalent = value});
 		},
 		methods: {
 			updateDischarge()

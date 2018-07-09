@@ -49,6 +49,7 @@ export default {
 	                if (this.name=='hfjvuse'){Event.$emit('hfjvDrop', this.value);}
 	                if (this.name=='ippv'){Event.$emit('ippvDrop', this.value);}
 	                if (this.name=='complication'){Event.$emit('compxDrop', this.value);}
+	                if (this.name=='postopmorphine'){Event.$emit('oralDrop', this.value);}
 	              })
 	              .catch(function (error) {
 	                console.log(error);
