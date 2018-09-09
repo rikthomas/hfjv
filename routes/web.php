@@ -21,3 +21,5 @@ Route::put('/patient/delcvs/{id}', 'PatientController@deleteCVS');
 Route::put('/patient/delresp/{id}', 'PatientController@deleteResp');
 
 Route::get('/datatables/cases', 'PatientController@datatable');
+
+Route::get('/export', 'PatientController@export');

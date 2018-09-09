@@ -26,6 +26,7 @@
                         </table>
                     </div>
                 </article>
+                <a href="/export" class="button is-link">Export DB</a>
             </div>
         </div>
     </section>
