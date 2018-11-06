@@ -26,10 +26,7 @@
 			</div>
 			<div class="field is-grouped">
 				<form-check-yes label="Morphine/opiates required in the 24 hours post-procedure (excluding recovery)" name="postopmorphine" :function="dummy"></form-check-yes>
-			</div>
-			<div class="field is-grouped" v-if="oralequivalent">
-				<form-field label="How much (morphine equivalent)?" type="number" placeholder="in mg" name="postopmorphineamount"></form-field>
-				<form-field label="Time to first request for supplemental analgesia (time since the procedure, not the actual time)" type="time" placeholder="" name="suppanalgesiatime"></form-field>
+				<form-field label="How much (morphine equivalent)?" type="number" placeholder="in mg" name="postopmorphineamount" v-if="oralequivalent"></form-field>
 			</div>
 			<div class="field">
 				<form-check-yes label="Follow up complete" name="fucomplete" :function="dummy"></form-check-yes>
