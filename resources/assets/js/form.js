@@ -7,37 +7,37 @@ window.Event = new Vue({
 	}
 });
 
-Vue.component('form-field', require('./components/FormField.vue'));
+Vue.component('form-field', require('./components/FormField.vue').default);
 
-Vue.component('form-asa', require('./components/FormAsa.vue'));
+Vue.component('form-asa', require('./components/FormAsa.vue').default);
 
-Vue.component('form-yes-no', require('./components/FormYesNo.vue'));
+Vue.component('form-yes-no', require('./components/FormYesNo.vue').default);
 
-Vue.component('form-cvs', require('./components/FormCvs.vue'));
+Vue.component('form-cvs', require('./components/FormCvs.vue').default);
 
-Vue.component('form-delete-cvs-modal', require('./components/FormDeleteCvsModal.vue'));
+Vue.component('form-delete-cvs-modal', require('./components/FormDeleteCvsModal.vue').default);
 
-Vue.component('form-delete-resp-modal', require('./components/FormDeleteRespModal.vue'));
+Vue.component('form-delete-resp-modal', require('./components/FormDeleteRespModal.vue').default);
 
-Vue.component('form-resp', require('./components/FormResp.vue'));
+Vue.component('form-resp', require('./components/FormResp.vue').default);
 
-Vue.component('form-check-yes', require('./components/FormCheckYes.vue'));
+Vue.component('form-check-yes', require('./components/FormCheckYes.vue').default);
 
 Vue.component('form-field-no-label', require('./components/FormFieldNoLabel'));
 
-Vue.component('form-charlson', require('./components/FormCharlson.vue'));
+Vue.component('form-charlson', require('./components/FormCharlson.vue').default);
 
-Vue.component('form-ecog', require('./components/FormEcog.vue'));
+Vue.component('form-ecog', require('./components/FormEcog.vue').default);
 
-Vue.component('form-ppossum', require('./components/FormPpossum.vue'));
+Vue.component('form-ppossum', require('./components/FormPpossum.vue').default);
 
-Vue.component('form-select', require('./components/FormSelect.vue'));
+Vue.component('form-select', require('./components/FormSelect.vue').default);
 
-Vue.component('form-textarea', require('./components/FormTextarea.vue'));
+Vue.component('form-textarea', require('./components/FormTextarea.vue').default);
 
-Vue.component('form-anaesthetic', require('./components/FormAnaesthetic.vue'));
+Vue.component('form-anaesthetic', require('./components/FormAnaesthetic.vue').default);
 
-Vue.component('form-postop', require('./components/FormPostop.vue'));
+Vue.component('form-postop', require('./components/FormPostop.vue').default);
 
 new Vue({
 	el: '#app',
