@@ -59,6 +59,13 @@ class PatientController extends Controller
         $patient->save();
     }
 
+    public function updateDate(Request $request, $id)
+    {
+        $patient = Patient::findOrFail($id);
+        $patient->created_at = Carbon::parse($request->date)->format('Y-m-d H:i:s');
+        $patient->save();
+    }
+
     public function deleteCVS($id)
     {
         $patient = Patient::findOrFail($id);

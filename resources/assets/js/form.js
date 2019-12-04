@@ -39,6 +39,8 @@ Vue.component('form-anaesthetic', require('./components/FormAnaesthetic.vue').de
 
 Vue.component('form-postop', require('./components/FormPostop.vue').default);
 
+Vue.component('form-change-date-modal', require('./components/FormChangeDateModal.vue').default);
+
 new Vue({
 	el: '#app',
 
@@ -122,6 +124,13 @@ new Vue({
 			this.respVisible = false;
 			this.reload();
 		});
+		Event.$on('updateDate', function(value){
+			axios.put('/patient/update-date/' + patient.id, {
+				date: value
+			}).then(() => {
+			location.reload();
+			})
+		})
 	},
 	computed: {
 		bmi: function () {
@@ -148,6 +157,9 @@ new Vue({
 		unlock() {
 			Event.disabled = false;
 			{Event.$emit('enableForm');}
+		},
+		changeDate() {
+			Event.$emit('showDateModal')
 		}
 	}
 });

@@ -5,6 +5,7 @@
 @endpush
 
 @section('content')
+    <form-change-date-modal></form-change-date-modal>
     <section class="section">   
         <div class="columns">  
             <div class="column is-three-fifths is-offset-one-fifth">
@@ -13,7 +14,7 @@
                 </div>
                 <article class="message is-success">
                     <div class="message-header">
-                        <p>Case Details: @{{ date }}</p>
+                        <p>Case Details: @{{ date }}</p><a class="button is-success is-inverted is-small" v-show="!disabled" @click="changeDate">Change Date</a>
                     </div>
                     <div class="message-body">
                         <div class="field is-grouped">

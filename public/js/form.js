@@ -249,6 +249,61 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/FormChangeDateModal.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/FormChangeDateModal.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      showDateModal: false,
+      newDate: ''
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Event.$on('showDateModal', function () {
+      return _this.showDateModal = true;
+    });
+  },
+  methods: {
+    close: function close() {
+      this.showDateModal = false;
+      this.newDate = '';
+    },
+    ok: function ok() {
+      Event.$emit('updateDate', this.newDate);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/FormCharlson.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/FormCharlson.vue?vue&type=script&lang=js& ***!
@@ -2298,6 +2353,91 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/FormChangeDateModal.vue?vue&type=template&id=eb2eacf8&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/FormChangeDateModal.vue?vue&type=template&id=eb2eacf8& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal", class: { "is-active": _vm.showDateModal } },
+    [
+      _c("div", { staticClass: "modal-background" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal-card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("section", { staticClass: "modal-card-body" }, [
+          _c("p", [_vm._v("Select a new date")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.newDate,
+                expression: "newDate"
+              }
+            ],
+            staticClass: "input",
+            attrs: { type: "date" },
+            domProps: { value: _vm.newDate },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.newDate = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("footer", { staticClass: "modal-card-foot" }, [
+          _c(
+            "button",
+            { staticClass: "button is-success", on: { click: _vm.ok } },
+            [_vm._v("That's the one!")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "button is-danger", on: { click: _vm.close } },
+            [_vm._v("Not what I meant....")]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "modal-card-head" }, [
+      _c("p", { staticClass: "modal-card-title" }, [
+        _vm._v("Retrospective Entry?")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -4932,6 +5072,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/FormChangeDateModal.vue":
+/*!****************************************************************!*\
+  !*** ./resources/assets/js/components/FormChangeDateModal.vue ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FormChangeDateModal_vue_vue_type_template_id_eb2eacf8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormChangeDateModal.vue?vue&type=template&id=eb2eacf8& */ "./resources/assets/js/components/FormChangeDateModal.vue?vue&type=template&id=eb2eacf8&");
+/* harmony import */ var _FormChangeDateModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormChangeDateModal.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/FormChangeDateModal.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _FormChangeDateModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _FormChangeDateModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FormChangeDateModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormChangeDateModal_vue_vue_type_template_id_eb2eacf8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormChangeDateModal_vue_vue_type_template_id_eb2eacf8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/FormChangeDateModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/FormChangeDateModal.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/assets/js/components/FormChangeDateModal.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormChangeDateModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FormChangeDateModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/FormChangeDateModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormChangeDateModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/FormChangeDateModal.vue?vue&type=template&id=eb2eacf8&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/assets/js/components/FormChangeDateModal.vue?vue&type=template&id=eb2eacf8& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormChangeDateModal_vue_vue_type_template_id_eb2eacf8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./FormChangeDateModal.vue?vue&type=template&id=eb2eacf8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/FormChangeDateModal.vue?vue&type=template&id=eb2eacf8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormChangeDateModal_vue_vue_type_template_id_eb2eacf8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormChangeDateModal_vue_vue_type_template_id_eb2eacf8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/FormCharlson.vue":
 /*!*********************************************************!*\
   !*** ./resources/assets/js/components/FormCharlson.vue ***!
@@ -5929,6 +6139,7 @@ Vue.component('form-select', __webpack_require__(/*! ./components/FormSelect.vue
 Vue.component('form-textarea', __webpack_require__(/*! ./components/FormTextarea.vue */ "./resources/assets/js/components/FormTextarea.vue")["default"]);
 Vue.component('form-anaesthetic', __webpack_require__(/*! ./components/FormAnaesthetic.vue */ "./resources/assets/js/components/FormAnaesthetic.vue")["default"]);
 Vue.component('form-postop', __webpack_require__(/*! ./components/FormPostop.vue */ "./resources/assets/js/components/FormPostop.vue")["default"]);
+Vue.component('form-change-date-modal', __webpack_require__(/*! ./components/FormChangeDateModal.vue */ "./resources/assets/js/components/FormChangeDateModal.vue")["default"]);
 new Vue({
   el: '#app',
   data: {
@@ -6048,6 +6259,13 @@ new Vue({
 
       _this.reload();
     });
+    Event.$on('updateDate', function (value) {
+      axios.put('/patient/update-date/' + patient.id, {
+        date: value
+      }).then(function () {
+        location.reload();
+      });
+    });
   },
   computed: {
     bmi: function bmi() {
@@ -6074,6 +6292,9 @@ new Vue({
       {
         Event.$emit('enableForm');
       }
+    },
+    changeDate: function changeDate() {
+      Event.$emit('showDateModal');
     }
   }
 });
