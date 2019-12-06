@@ -29,8 +29,9 @@
                                 <form-select label="Patient Position" name="position" :data="position" :function="dummy"></form-select>
                             </p>
                         </div>
-                        <div class="field">
+                        <div class="field is-grouped">
                             <form-check-yes label="Appropriate for HFJV?" name="proceed"></form-check-yes>
+                            <form-check-yes label="Epic Import" name="epic"></form-check-yes>
                         </div>
                         <div class="field" v-show="!hfjvCase">
                             <form-textarea label="Rationale" placeholder="please state reasons why patient not suitable and what anaesthetic techique was used instead...." name="noproceed"></form-textarea>
