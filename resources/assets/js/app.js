@@ -4,7 +4,11 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-require('./bulma-extensions');
+import 'babel-polyfill';
+import 'whatwg-fetch';
+require('es6-promise').polyfill();
+require('es6-object-assign').polyfill();
+ require('./bulma-extensions');
 window.Vue = require('vue');
 import axios from 'axios';
 window.axios = axios;
