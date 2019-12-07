@@ -54,6 +54,7 @@ new Vue({
 		tumoursite: [{"value": "renal", "text": "Renal"}, {"value": "lung", "text": "Lung"}, {"value": "liver", "text": "Liver"}, {"value": "pancreas", "text": "Pancreas"},],
 		procedure: [{"value": "cryoablation", "text": "Cryoablation"}, {"value": "microwave", "text": "Microwave"}, {"value": "gammaknife", "text": "Gamma Knife"},],
 		position: [{"value": "Prone", "text": "Prone"}, {"value": "lateral", "text": "Lateral"},{"value": "supine", "text": "Supine"},],
+		sex: [{"value": "male", "text": "Male"}, {"value": "female", "text": "Female"}],
 		hfjvCase: '',
 		disabled: '',
 		date: patient.date,

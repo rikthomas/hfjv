@@ -120,7 +120,8 @@ class DataDump implements FromCollection, WithHeadings
             postopmorphineamount,
             suppanalgesiatime,
             fucomplete,
-            epic
+            epic,
+            sex
             "
         ))->get();
         return collect($data);
@@ -236,7 +237,8 @@ class DataDump implements FromCollection, WithHeadings
             'Amount of morphine',
             'Time to supplemental analgesia',
             'Follow up complete',
-            'Epic Import'
+            'Epic Import',
+            'Sex'
         ];
     }
 }

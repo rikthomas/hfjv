@@ -45,10 +45,15 @@
                         </div>
                         <div class="message-body">
                             <div class="field is-grouped">
-                                <form-field label="Age" type="number" placeholder="is just a number" name="age"></form-field>
-                                <form-field label="Weight" type="number" placeholder="in kg" name="weight"></form-field>
+                                <p class="control">
+                                    <form-select label="Sex" name="sex" :data="sex" :function="dummy"></form-select>
+                                </p>
+                                <p class="control">
+                                    <form-field label="Age" type="number" placeholder="is just a number" name="age"></form-field>
+                                </p>
                             </div>
                             <div class="field is-grouped">
+                                <form-field label="Weight" type="number" placeholder="in kg" name="weight"></form-field>
                                 <form-field label="Height" type="number" placeholder="in cm" name="height"></form-field>
                                 <p class="control is-expanded">
                                   <label class="label">BMI</label>
