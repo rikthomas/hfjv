@@ -7,7 +7,7 @@ Database for recording information for IR RFA cases using HFJV
 - P-POSSUM Score calculator
 - Follow up indicator
 
-### Install
+### Installation
 This is a standard laravel/vue project. You'll need composer and npm installed. Run:
 
 - `composer install`
