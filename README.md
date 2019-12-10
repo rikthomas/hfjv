@@ -1,6 +1,6 @@
 # hfjv
 ### High Frequency Jet Ventilation Database
-This database records information for IR RFA cases using HFJV
+Database for recording information for IR RFA cases using HFJV
 ### Features
 - Instant form field saving using clean/dirty indicators with form locking
 - Charlson Comorbidity calculator
