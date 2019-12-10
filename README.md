@@ -10,12 +10,12 @@ Database for recording information for IR RFA cases using HFJV
 ### Install
 This is a standard laravel/vue project. You'll need composer and npm installed. Run:
 
-`composer install`
+- `composer install`
 
-`npm install`
+- `npm install`
 
-`cp .env.example .env` and edit for correct DB connections
+- `cp .env.example .env` and edit for correct DB connections
 
-`php artisan key:generate`
+- `php artisan key:generate`
 
-`php artisan migrate`
+- `php artisan migrate`
